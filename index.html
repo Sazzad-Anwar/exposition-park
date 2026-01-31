@@ -48,10 +48,17 @@
                         <li><a href="#" class="text-white hover:text-gray-300">Contact</a></li>
                     </ul>
                     <hr class="w-px h-10 bg-white/30" />
-                    <button class="flex gap-2 items-center text-white">
+                    <div class="flex gap-2 items-center text-white">
                         <img src="/world.svg" alt="world" class="w-6 h-6" />
-                        <span>English</span>
-                    </button>
+                        <div id="google_translate_element"></div>
+                    </div>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                        }
+                    </script>
+                    <script type="text/javascript"
+                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </div>
             </div>
 
@@ -68,10 +75,11 @@
                     <li><a href="#" class="text-white block py-2 border-b border-white/10">Contact</a></li>
                 </ul>
                 <div class="pt-4 flex items-center justify-between">
-                    <button class="flex gap-2 items-center text-white">
+                    <div class="flex gap-2 items-center text-white">
                         <img src="/world.svg" alt="world" class="w-6 h-6" />
-                        <span>English</span>
-                    </button>
+                        <div id="google_translate_element_mobile"></div>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -563,6 +571,13 @@
 
 
     <script src="/src/main.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInitMobile() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element_mobile');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInitMobile"></script>
 </body>
 
 </html>

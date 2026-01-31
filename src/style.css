@@ -17,3 +17,90 @@
     max-width: var(--container-8xl);
   }
 } */
+
+/* Google Translate Overrides */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important; /* Forces body back to normal flow */
+}
+
+/* Hide the new Google Translate top bar structure if present */
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  font-family: inherit !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value {
+  color: white !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span {
+  color: white !important;
+  border-left: none !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span:nth-child(3),
+.goog-te-gadget-simple .goog-te-menu-value span:nth-child(5) {
+  display: none !important; /* Hide standard Google arrows/separators if needed */
+}
+
+/* Explicitly hide the arrow images */
+.goog-te-gadget-simple .goog-te-menu-value img {
+  display: none !important;
+}
+
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* Explicitly target anchor tags for color and alignment */
+.goog-te-gadget-simple a {
+  color: white !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.goog-te-gadget-simple a:hover,
+.goog-te-gadget-simple a:visited,
+.goog-te-gadget-simple a:link,
+.goog-te-gadget-simple a:active {
+  color: white !important;
+}
+
+/* Hide the tooltip that appears on hover */
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
