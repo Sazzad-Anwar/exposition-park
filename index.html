@@ -16,7 +16,10 @@
 </head>
 
 <body class="relative font-sans">
-    <header x-data="{ mobileMenuOpen: false }" class="bg-transparent backdrop-blur-2xl py-4 absolute top-0 w-full z-50">
+    <header x-data="{ mobileMenuOpen: false, isScrolled: false }"
+        @scroll.window="isScrolled = (window.pageYOffset > 20)"
+        class="fixed top-0 w-full z-50 transition-all duration-300 py-4"
+        :class="isScrolled ? 'bg-[#1F1F1F]/60 backdrop-blur-2xl shadow-lg': 'bg-transparent backdrop-blur-2xl'">
         <nav class="container mx-auto px-4 md:px-8">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -24,14 +27,16 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white p-2">
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white p-2"
+                    aria-label="Toggle mobile menu" :aria-expanded="mobileMenuOpen">
                     <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                     <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -85,7 +90,7 @@
         </nav>
     </header>
 
-    <section class="space-y-28">
+    <main class="space-y-28">
         <!-- Hero section -->
         <section class="object-center bg-no-repeat bg-cover min-h-screen lg:h-220 grid items-center py-20 lg:py-0"
             style="background-image: url('/hero.svg')">
@@ -101,51 +106,52 @@
                         Find convenient parking options, rates, accessibility information,
                         and event-day guidelines all in one place
                     </p>
-                    <a href="#"
+                    <a href="#" aria-label="View Parking Map"
                         class="inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
                         View Parking Map
                     </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                    <div
+                <!-- Pricing Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4" role="list">
+                    <div role="listitem"
                         class="bg-white rounded-lg p-5 flex items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col justify-between">
-                            <span class="text-text-secondary text-sm md:text-base font-normal">
+                            <h2 class="text-text-secondary text-sm md:text-base font-normal">
                                 Daily Parking
-                            </span>
-                            <h4 class="font-bold text-2xl md:text-[28px]">$20.00</h4>
+                            </h2>
+                            <p class="font-bold text-2xl md:text-[28px]">$20.00</p>
                         </div>
-                        <img src="/parking.svg" alt="parking" class="size-10 md:size-12" />
+                        <img src="/parking.svg" alt="" aria-hidden="true" class="size-10 md:size-12" />
                     </div>
-                    <div
+                    <div role="listitem"
                         class="bg-white rounded-lg p-5 flex items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col justify-between">
-                            <span class="text-text-secondary text-sm md:text-base font-normal">
+                            <h2 class="text-text-secondary text-sm md:text-base font-normal">
                                 Special Event & After Hours
-                            </span>
-                            <h4 class="font-bold text-2xl md:text-[28px]">$24.00</h4>
+                            </h2>
+                            <p class="font-bold text-2xl md:text-[28px]">$24.00</p>
                         </div>
-                        <img src="/calendar.svg" alt="calendar" class="size-10 md:size-12" />
+                        <img src="/calendar.svg" alt="" aria-hidden="true" class="size-10 md:size-12" />
                     </div>
-                    <div
+                    <div role="listitem"
                         class="bg-white rounded-lg p-5 flex items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col justify-between">
-                            <span class="text-text-secondary text-sm md:text-base font-normal">
+                            <h2 class="text-text-secondary text-sm md:text-base font-normal">
                                 School Buses
-                            </span>
-                            <h4 class="font-bold text-2xl md:text-[28px]">$20.00</h4>
+                            </h2>
+                            <p class="font-bold text-2xl md:text-[28px]">$20.00</p>
                         </div>
-                        <img src="/bus.svg" alt="bus" class="size-10 md:size-12" />
+                        <img src="/bus.svg" alt="" aria-hidden="true" class="size-10 md:size-12" />
                     </div>
-                    <div
+                    <div role="listitem"
                         class="bg-white rounded-lg p-5 flex items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col justify-between">
-                            <span class="text-text-secondary text-sm md:text-base font-normal">
+                            <h2 class="text-text-secondary text-sm md:text-base font-normal">
                                 Oversized Vehicles
-                            </span>
-                            <h4 class="font-bold text-2xl md:text-[28px]">$42.00</h4>
+                            </h2>
+                            <p class="font-bold text-2xl md:text-[28px]">$42.00</p>
                         </div>
-                        <img src="/car.svg" alt="bus" class="size-10 md:size-12" />
+                        <img src="/car.svg" alt="" aria-hidden="true" class="size-10 md:size-12" />
                     </div>
                 </div>
             </div>
@@ -160,82 +166,82 @@
             </p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 xl:gap-8 mt-12">
                 <div class="p-0 md:p-5 space-y-4">
-                    <img src="/parking-1.svg" alt="parking-1" class="h-auto w-full rounded-xl" />
+                    <img src="/parking-1.svg" alt="Parking lot view during an event" class="h-auto w-full rounded-xl" />
                     <div class="">
-                        <h4 class="font-bold text-2xl md:text-[28px]">Special Event Rates</h4>
+                        <h3 class="font-bold text-2xl md:text-[28px]">Special Event Rates</h3>
                         <ul class="pt-5 mb-6 space-y-3">
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Event rates vary by type and are on the organizer’s website.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Minimum rate for special event parking after 5pm is $24.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     The parking fee is a flat rate, regardless of the duration of
                                     stay.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     All parking payments are non-refundable.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     NO in and out allowed.
                                 </p>
                             </li>
                         </ul>
-                        <a href="#"
+                        <a href="#" aria-label="View Parking Map for Special Events"
                             class="inline-block py-4 px-6 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
                             View Parking Map
                         </a>
                     </div>
                 </div>
                 <div class="p-0 md:p-5 space-y-4">
-                    <img src="/parking-1.svg" alt="parking-1" class="h-auto w-full rounded-xl" />
+                    <img src="/parking-1.svg" alt="Oversized vehicle parking area" class="h-auto w-full rounded-xl" />
                     <div class="">
-                        <h4 class="font-bold text-2xl md:text-[28px]">Oversized Vehicle Parking</h4>
+                        <h3 class="font-bold text-2xl md:text-[28px]">Oversized Vehicle Parking</h3>
                         <ul class="pt-5 mb-6 space-y-3">
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Oversized parking is subject to availability.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Oversized parking will be charged at the event rate per space
                                     occupied.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Guests should pre-purchase oversized parking from the
                                     organizer.
                                 </p>
                             </li>
                             <li class="flex items-start gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-sm md:text-base">
                                     Vehicles requiring multiple spaces must purchase multiple
                                     parking passes.
                                 </p>
                             </li>
                         </ul>
-                        <a href="#"
+                        <a href="#" aria-label="View Parking Map for Oversized Vehicles"
                             class="inline-block py-4 px-6 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
                             View Parking Map
                         </a>
@@ -258,20 +264,20 @@
                         </p>
                         <div class="space-y-4 mb-8 md:mb-10">
                             <div class="flex items-start gap-3 md:gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-base lg:text-lg">
                                     Vehicles requiring multiple spaces must purchase multiple
                                     parking passes.
                                 </p>
                             </div>
                             <div class="flex items-start gap-3 md:gap-4">
-                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5 mt-1 shrink-0" />
+                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
                                 <p class="text-text-secondary text-base lg:text-lg">
                                     Authorized activities only
                                 </p>
                             </div>
                         </div>
-                        <a href="#"
+                        <a href="#" aria-label="Request Third-Party Parking"
                             class="inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
                             Request Parking
                         </a>
@@ -289,15 +295,15 @@
                 <p class="text-text-secondary text-lg md:text-xl">
                     For questions related to parking operations, rates, or permits.
                 </p>
-                <img src="/contact-image.svg" alt="contact-image"
+                <img src="/contact-image.svg" alt="Parking office exterior"
                     class="w-full h-auto mt-8 md:mt-12 rounded-2xl shadow-lg">
             </div>
             <div class="space-y-6">
                 <div class="p-0 md:p-6 space-y-4">
-                    <img src="/clock-icon.svg" alt="clock-icon" class="size-10 md:size-12">
-                    <p class="font-bold text-2xl md:text-3xl">
+                    <img src="/clock-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                    <h3 class="font-bold text-2xl md:text-3xl">
                         Office Hours
-                    </p>
+                    </h3>
                     <div class="space-y-2">
                         <p class="text-base">
                             Monday – Friday: <b class="block md:inline">8:00 AM – 5:00 PM </b>
@@ -311,10 +317,10 @@
                     </div>
                 </div>
                 <div class="p-0 md:p-6 space-y-4">
-                    <img src="/email-icon.svg" alt="email-icon" class="size-10 md:size-12">
-                    <p class="font-bold text-2xl md:text-3xl">
+                    <img src="/email-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                    <h3 class="font-bold text-2xl md:text-3xl">
                         Contact Information
-                    </p>
+                    </h3>
                     <div class="space-y-2">
                         <p class="text-base">
                             Phone: <b class="block md:inline">(213) 744-2119</b>
@@ -325,10 +331,10 @@
                     </div>
                 </div>
                 <div class="p-0 md:p-6 space-y-4">
-                    <img src="/map-icon.svg" alt="map-icon" class="size-10 md:size-12">
-                    <p class="font-bold text-2xl md:text-3xl">
+                    <img src="/map-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                    <h3 class="font-bold text-2xl md:text-3xl">
                         Location
-                    </p>
+                    </h3>
                     <p class="text-base leading-relaxed">
                         Office of Exposition Park Management • 700 Exposition Park Drive • Los Angeles, CA 90037
                     </p>
@@ -342,21 +348,21 @@
                 parking operations, rates, or permits.</p>
             <div class="mt-12 flex flex-col items-center w-full lg:w-8/12 mx-auto divide-y divide-gray-100">
                 <div x-data="{open:true}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-1"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             What types of payments are accepted?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-1">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             Cash and all major credit cards, except American Express, are accepted at Exposition Park.
                             For
@@ -368,21 +374,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-2"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Is there bus and oversized parking during events?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-2">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             Yes, but availability may be limited. We recommend booking in advance through event
                             organizers.
@@ -391,21 +397,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-3"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Is in-and-out parking access allowed?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-3">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             No, in-and-out parking is not permitted once you have exited the facility.
                         </p>
@@ -413,21 +419,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-4"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Is there bus parking for museum visitors?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-4">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             Dedicated museum bus parking is available on specific lots. Please check our map for
                             details.
@@ -436,21 +442,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-5"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Where is ADA parking located?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-5">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             ADA accessible parking is available in all lots and structures, typically located closest to
                             venue entrances.
@@ -459,21 +465,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-6"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Are there electric vehicle (EV) charging stations?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-6">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             Yes, EV charging stations are located on Level A of the Blue Parking Structure.
                         </p>
@@ -481,21 +487,21 @@
                 </div>
 
                 <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open"
+                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-7"
                         class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <p class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
                             Are there height restrictions in the Blue Parking Structure?
-                        </p>
+                        </h3>
                         <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus">
+                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
                                 <path d="M5 12h14" />
                                 <path d="M12 5v14" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open">
+                    <div x-show="open" id="faq-answer-7">
                         <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
                             The clearance height is 8'2". Oversized vehicles should use the open lots.
                         </p>
@@ -506,21 +512,22 @@
         <footer class="bg-[#1F1F1F] px-4 md:px-16 pt-16 pb-8">
             <section class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 pb-16 border-b border-[#2F2F2F]">
                 <div>
-                    <img src="/logo.svg" alt="logo" class="w-auto h-12 mb-6" />
+                    <img src="/logo.svg" alt="Exposition Park Logo" class="w-auto h-12 mb-6" />
                     <p class="text-white text-lg mb-6">A California state park in the south region of Los Angeles.</p>
                     <p class="text-white text-lg mb-4">Follow us on</p>
                     <div class="flex space-x-6">
-                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="/facebook-icon.svg"
-                                alt="facebook-icon" class="w-6 h-6" /></a>
-                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="/x-icon.svg" alt="x-icon"
+                        <a href="#" class="hover:opacity-80 transition-opacity" aria-label="Follow us on Facebook"><img
+                                src="/facebook-icon.svg" alt="" aria-hidden="true" class="w-6 h-6" /></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity"
+                            aria-label="Follow us on X (Twitter)"><img src="/x-icon.svg" alt="" aria-hidden="true"
                                 class="w-6 h-6" /></a>
-                        <a href="#" class="hover:opacity-80 transition-opacity"><img src="/instagram-icon.svg"
-                                alt="instagram-icon" class="w-6 h-6" /></a>
+                        <a href="#" class="hover:opacity-80 transition-opacity" aria-label="Follow us on Instagram"><img
+                                src="/instagram-icon.svg" alt="" aria-hidden="true" class="w-6 h-6" /></a>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="space-y-4">
-                        <h5 class="font-semibold text-base text-white">Visit</h5>
+                        <h2 class="font-semibold text-base text-white">Visit</h2>
                         <ul class="space-y-2 text-sm text-[#717171]">
                             <li><a href="#" class="hover:text-white transition-colors">Plan Your Visit</a></li>
                             <li><a href="#" class="hover:text-white transition-colors">Hours & Directions</a></li>
@@ -529,7 +536,7 @@
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h5 class="font-semibold text-base text-white">Parking</h5>
+                        <h2 class="font-semibold text-base text-white">Parking</h2>
                         <ul class="space-y-2 text-sm text-[#717171]">
                             <li><a href="#" class="hover:text-white transition-colors">Locations</a></li>
                             <li><a href="#" class="hover:text-white transition-colors">Bus Parking</a></li>
@@ -539,7 +546,7 @@
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h5 class="font-semibold text-base text-white">Events</h5>
+                        <h2 class="font-semibold text-base text-white">Events</h2>
                         <ul class="space-y-2 text-sm text-[#717171]">
                             <li><a href="#" class="hover:text-white transition-colors">Calendar</a></li>
                             <li><a href="#" class="hover:text-white transition-colors">Rentals</a></li>
@@ -547,7 +554,7 @@
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h5 class="font-semibold text-base text-white">About</h5>
+                        <h2 class="font-semibold text-base text-white">About</h2>
                         <ul class="space-y-2 text-sm text-[#717171]">
                             <li><a href="#" class="hover:text-white transition-colors">History</a></li>
                             <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
@@ -567,7 +574,7 @@
                 </div>
             </div>
         </footer>
-    </section>
+    </main>
 
 
     <script src="/src/main.js"></script>
