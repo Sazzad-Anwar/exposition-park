@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="/src/style.css" rel="stylesheet" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>exposition-park</title>
+</head>
+
+<body class="relative font-sans">
+    <header class="bg-transparent backdrop-blur-2xl py-4 absolute top-0 w-full">
+        <nav class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="/logo.svg" alt="logo" class="w-auto h-12" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <ul class="flex items-center font-semibold text-base gap-6">
+                        <li>
+                            <a href="#" class="text-white">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">About</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Parking</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Updates</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Events</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Contact</a>
+                        </li>
+                    </ul>
+                    <hr class="w-px h-10 bg-white" />
+                    <button class="flex gap-2 items-center text-white">
+                        <img src="/world.svg" alt="world" class="w-6 h-6" />
+                        <span>English</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="space-y-28">
+        <!-- Hero section -->
+        <section class="object-center bg-no-repeat bg-cover h-220 grid items-center"
+            style="background-image: url('/hero.svg')">
+            <div class="backdrop-brightness-80 size-full" />
+            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-end gap-24 mt-48">
+                <div>
+                    <h1 class="text-[96px] font-semibold text-white mb-4 leading-25.5">
+                        Exposition Park Parking Rates
+                    </h1>
+                    <p class="text-white text-lg mb-8 w-8/12 animate__delay-1s">
+                        Find convenient parking options, rates, accessibility information,
+                        and event-day guidelines all in one place
+                    </p>
+                    <a href="#" class="py-4 px-6 bg-button text-white font-bold text-base rounded-lg">
+                        View Parking Map
+                    </a>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white rounded-lg p-6 flex items-center justify-between w-103.5 ml-auto">
+                        <div class="flex flex-col justify-between">
+                            <span class="text-text-secondary text-basea font-normal">
+                                Daily Parking
+                            </span>
+                            <h4 class="font-bold text-[28px]">$20.00</h4>
+                        </div>
+                        <img src="/parking.svg" alt="parking" class="size-12" />
+                    </div>
+                    <div class="bg-white rounded-lg p-6 flex items-center justify-between w-103.5 ml-auto">
+                        <div class="flex flex-col justify-between">
+                            <span class="text-text-secondary text-basea font-normal">
+                                Special Event & After Hours
+                            </span>
+                            <h4 class="font-bold text-[28px]">$24.00</h4>
+                        </div>
+                        <img src="/calendar.svg" alt="calendar" class="size-12" />
+                    </div>
+                    <div class="bg-white rounded-lg p-6 flex items-center justify-between w-103.5 ml-auto">
+                        <div class="flex flex-col justify-between">
+                            <span class="text-text-secondary text-basea font-normal">
+                                School Buses
+                            </span>
+                            <h4 class="font-bold text-[28px]">$20.00</h4>
+                        </div>
+                        <img src="/bus.svg" alt="bus" class="size-12" />
+                    </div>
+                    <div class="bg-white rounded-lg p-6 flex items-center justify-between w-103.5 ml-auto">
+                        <div class="flex flex-col justify-between">
+                            <span class="text-text-secondary text-basea font-normal">
+                                Oversized Vehicles
+                            </span>
+                            <h4 class="font-bold text-[28px]">$42.00</h4>
+                        </div>
+                        <img src="/car.svg" alt="bus" class="size-12" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto">
+            <h2 class="font-semibold text-5xl mb-4 text-center">
+                Event Parking Information
+            </h2>
+            <p class="text-xl font-normal text-center">
+                Parking rates, availability, and rules may change during special events.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+                <div class="p-5 space-y-4">
+                    <img src="/parking-1.svg" alt="parking-1" class="h-auto w-full" />
+                    <div class="">
+                        <h4 class="font-bold text-[28px]">Special Event Rates</h4>
+                        <ul class="pt-5 mb-6">
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Event rates vary by type and are on the organizer’s website.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Minimum rate for special event parking after 5pm is $24.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    The parking fee is a flat rate, regardless of the duration of
+                                    stay.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    All parking payments are non-refundable.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    NO in and out allowed.
+                                </p>
+                            </li>
+                        </ul>
+                        <a href="#" class="py-4 px-6 bg-button text-white font-bold text-base rounded-lg">
+                            View Parking Map
+                        </a>
+                    </div>
+                </div>
+                <div class="p-5 space-y-4">
+                    <img src="/parking-1.svg" alt="parking-1" class="h-auto w-full" />
+                    <div class="">
+                        <h4 class="font-bold text-[28px]">Oversized Vehicle Parking</h4>
+                        <ul class="pt-5 mb-6">
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Oversized parking is subject to availability.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Oversized parking will be charged at the event rate per space
+                                    occupied.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Guests should pre-purchase oversized parking from the
+                                    organizer.
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-base">
+                                    Vehicles requiring multiple spaces must purchase multiple
+                                    parking passes.
+                                </p>
+                            </li>
+                        </ul>
+                        <a href="#" class="py-4 px-6 bg-button text-white font-bold text-base rounded-lg">
+                            View Parking Map
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="object-bottom bg-no-repeat bg-cover bg-bottom h-151.5 flex justify-center items-center"
+            style="background-image: url('/bg-2.svg')">
+            <div class="container mx-auto">
+                <div class="bg-white relative w-10/12 mx-auto flex justify-between items-center">
+                    <div class="p-16">
+                        <h2 class="font-semibold text-5xl mb-2">
+                            Third-Party Parking Requests
+                        </h2>
+                        <p class="text-lg mb-4">
+                            Organizations, vendors, and event partners can request parking
+                            arrangements in advance.
+                        </p>
+                        <div class="space-y-2 mb-10">
+                            <div class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-lg">
+                                    Vehicles requiring multiple spaces must purchase multiple
+                                    parking passes.
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="/list-pointer.svg" alt="list-pointer" class="w-5 h-5" />
+                                <p class="text-text-secondary text-lg">
+                                    Authorized activities only
+                                </p>
+                            </div>
+                        </div>
+                        <a href="#" class="py-4 px-6 bg-button text-white font-bold text-base rounded-lg">
+                            View Parking Map
+                        </a>
+                    </div>
+                    <img src="/card-side.svg" alt="card-side" class="w-32 h-full" />
+                </div>
+            </div>
+        </section>
+        <section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="font-semibold text-5xl leading-[57.6px] mb-4">
+                    Parking Office
+                    Hours & Contact
+                </h2>
+                <p class="text-text-secondary text-xl">
+                    For questions related to parking operations, rates, or permits.
+                </p>
+                <img src="/contact-image.svg" alt="contact-image" class="w-full h-auto mt-12 rounded-lg">
+            </div>
+            <div class="space-y-6">
+                <div class="p-6 space-y-3">
+                    <img src="/clock-icon.svg" alt="clock-icon" class="size-12">
+                    <p class="font-bold text-3xl">
+                        Office Hours
+                    </p>
+                    <p class="text-base">
+                        Monday – Friday: <b>8:00 AM – 5:00 PM </b>
+                    </p>
+                    <p class="text-base">
+                        Saturday – Sunday: <b>9:00 AM – 3:00 PM</b>
+                    </p>
+                    <p class="text-base">
+                        Event Days: <b>Extended hours</b>
+                    </p>
+                </div>
+                <div class="p-6 space-y-3">
+                    <img src="/email-icon.svg" alt="email-icon" class="size-12">
+                    <p class="font-bold text-3xl">
+                        Contact Information
+                    </p>
+                    <p class="text-base">
+                        Phone: <b>(213) 744-2119</b>
+                    </p>
+                    <p class="text-base">
+                        Email: <b>parking@expositionpark.ca.gov</b>
+                    </p>
+                </div>
+                <div class="p-6 space-y-3">
+                    <img src="/map-icon.svg" alt="map-icon" class="size-12">
+                    <p class="font-bold text-3xl">
+                        Location
+                    </p>
+                    <p class="text-base">
+                        Office of Exposition Park Management • 700 Exposition Park Drive • Los Angeles, CA 90037 •
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto">
+            <h2 class="font-bold text-5xl leading-[57.6px] text-center mb-4">Parking Office Hours & Contact</h2>
+            <p class="text-xl text-text-secondary text-center">For questions related to parking operations, rates, or
+                permits.</p>
+            <div class="mt-12 flex flex-col justify-self-center items-center w-6/12 mx-auto">
+                <div x-data="{open:true}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            What types of payments are accepted?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Is there bus and oversized parking during events?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Is in-and-out parking access allowed?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Is there bus parking for museum visitors?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Where is ADA parking located?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Are there electric vehicle (EV) charging stations?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+
+                <div x-data="{open:false}" class="w-full p-6">
+                    <button x-on:click="open = !open" class="flex justify-between items-center w-full cursor-pointer">
+                        <p class="block text-lg font-semibold">
+                            Are there height restrictions in the Blue Parking Structure?
+                        </p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x-icon lucide-x">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                    <p x-cloak x-show="open" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        class="bg-white text-text-secondary text-lg py-4 rounded-md shadow-lg transform origin-top transition-opacity">
+                        Cash and all major credit cards, except American Express, are accepted at Exposition Park. For
+                        cash payments in the Blue Parking Structure, guests should use the Pay Station located on the
+                        northwest corner of Level A.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-[#1F1F1F] p-16">
+            <section class="container mx-auto grid grid-cols-1 lg:grid-cols-2 pb-16 border-b border-[#2F2F2F]">
+                <div>
+                    <img src="/logo.svg" alt="logo" class="w-auto h-12 mb-6" />
+                    <p class="text-white text-lg mb-6">A California state park in the south region of Los Angeles.</p>
+                    <p class="text-white text-lg mb-5">Follow us on</p>
+                    <div class="flex space-x-6">
+                        <a href="#"><img src="/facebook-icon.svg" alt="facebook-icon" class="w-6 h-6" /></a>
+                        <a href="#"><img src="/x-icon.svg" alt="x-icon" class="w-6 h-6" /></a>
+                        <a href="#"><img src="/instagram-icon.svg" alt="instagram-icon" class="w-6 h-6" /></a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4">
+                    <div>
+                        <h5 class="font-semibold text-base text-white mb-3">
+                            Visit
+                        </h5>
+                        <ul class="space-y-2 text-sm text-[#717171]">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Hours & Directions</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-base text-white mb-3">
+                            Parking
+                        </h5>
+                        <ul class="space-y-2 text-sm text-[#717171]">
+                            <li><a href="#">Parking Locations</a></li>
+                            <li><a href="#">Bus Parking</a></li>
+                            <li><a href="#">ADA Parking</a></li>
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">EV Charging</a></li>
+                            <li><a href="#">Event Parking</a></li>
+                            <li><a href="#">Parking Request</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-base text-white mb-3">
+                            Events
+                        </h5>
+                        <ul class="space-y-2 text-sm text-[#717171]">
+                            <li><a href="#">Event Calendar</a></li>
+                            <li><a href="#">Venue Rentals</a></li>
+                            <li><a href="#">Permits</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-base text-white mb-3">
+                            About
+                        </h5>
+                        <ul class="space-y-2 text-sm text-[#717171]">
+                            <li><a href="#">Park History</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Employment</a></li>
+                            <li><a href="#">Media</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <div class="container mx-auto py-4 flex justify-between items-center">
+                <p class="text-[#717171] text-sm"> © 2026 California Science Center. All rights reserved.</p>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-[#717171] text-sm">Privacy Policy</a>
+                    <a href="#" class="text-[#717171] text-sm">Terms of Use</a>
+                    <a href="#" class="text-[#717171] text-sm">Accessibility</a>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+    <script src="/src/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --container-8xl: 110rem;
+  --container-padding: 80px;
+  --font-sans: 'Source Sans 3', sans-serif;
+  --color-button: #036b99;
+  --color-text-secondary: #454545;
+}
+
+/* @utility container {
+  margin-inline: var(--container-padding);
+  width: 100%;
+  max-width: 100%;
+
+  @media (min-width: 768px) {
+    max-width: var(--container-8xl);
+  }
+} */
