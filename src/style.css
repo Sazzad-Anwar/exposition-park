@@ -5,18 +5,19 @@
   --container-padding: 80px;
   --font-sans: 'Source Sans 3', sans-serif;
   --color-button: #036b99;
+  --color-brand: #036b99;
   --color-text-secondary: #454545;
 }
 
-/* @utility container {
+@utility container {
   margin-inline: var(--container-padding);
   width: 100%;
   max-width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     max-width: var(--container-8xl);
   }
-} */
+}
 
 /* Google Translate Overrides */
 .goog-te-banner-frame.skiptranslate,
@@ -33,9 +34,9 @@ body {
 }
 
 /* Hide the new Google Translate top bar structure if present */
-.VIpgJd-ZVi9od-ORHb-OEVmcd {
+/* .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;
-}
+} */
 
 .goog-te-gadget-simple {
   background-color: transparent !important;
@@ -45,7 +46,9 @@ body {
   line-height: 1.5 !important;
   font-family: inherit !important;
   display: flex !important;
+  font-size: 14px !important;
   align-items: center !important;
+  color: white !important;
 }
 
 .goog-te-gadget-simple .goog-te-menu-value {
@@ -60,6 +63,7 @@ body {
   color: white !important;
   border-left: none !important;
   font-weight: 600 !important;
+  font-size: 14px;
   text-decoration: none !important;
 }
 
