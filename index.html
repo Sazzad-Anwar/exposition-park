@@ -16,11 +16,11 @@
 </head>
 
 <body class="relative font-sans">
-    <header x-data="{ mobileMenuOpen: false, isScrolled: false }"
+    <header x-cloak x-data="{ mobileMenuOpen: false, isScrolled: false }"
         @scroll.window="isScrolled = (window.pageYOffset > 20)"
         class="fixed top-0 w-full z-50 transition-all duration-300">
         <nav>
-            <div class="bg-brand shadow-lg py-2">
+            <div id="top-header" class="bg-brand shadow-lg py-2">
                 <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
                     <div class="flex items-center gap-3.5">
                         <a href="/">
@@ -136,9 +136,9 @@
         </nav>
     </header>
 
-    <main class="space-y-28 bg-[#FAFAFA]">
+    <main class="bg-[#FAFAFA]">
         <!-- Hero section -->
-        <section class=" object-center bg-no-repeat bg-cover min-h-screen lg:h-220 grid items-center py-20 lg:py-0"
+        <section class=" object-center bg-no-repeat bg-cover min-h-screen lg:h-220 grid items-center py-20"
             style="background-image: url('/hero-bg.svg')">
             <div
                 class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-12 lg:gap-24 mt-20 lg:mt-10 xl:mt-48 relative z-10">
@@ -212,7 +212,7 @@
             </div>
         </section>
         <!-- Pay Stations and Guidelines Section -->
-        <section class="container mx-auto px-4 md:px-8">
+        <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2 class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-center">
                 Pay Stations and Guidelines
             </h2>
@@ -296,7 +296,7 @@
                 </div>
                 <div x-show="selectedTab === 'credit-card'" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                     <div class="w-full flex justify-center items-center bg-white rounded-lg">
-                        <div class="flex flex-col justify-center items-center py-8 lg:py-12 px-3 lg:px-44">
+                        <div class="flex flex-col justify-center items-center py-8 xl:py-12 px-3 xl:px-44">
                             <img src="/scan-qr-code.svg" alt="scan-qr-code" class="w-16.5 h-auto" />
                             <div class="mt-5 md:mt-8 lg:mt-12 text-center">
                                 <h3 class="font-semibold lg:font-bold text-lg md:text-xl lg:text-3xl mb-2">
@@ -309,7 +309,7 @@
                         </div>
                     </div>
                     <div class="w-full flex justify-center items-center bg-white rounded-lg">
-                        <div class="flex flex-col justify-center items-center py-8 lg:py-12 px-3 lg:px-44">
+                        <div class="flex flex-col justify-center items-center py-8 xl:py-12 px-3 xl:px-44">
                             <img src="/parking-area.svg" alt="parking-area" class="w-16.5 h-auto" />
                             <div class="mt-5 md:mt-8 lg:mt-12 text-center">
                                 <h3 class="font-semibold lg:font-bold text-lg md:text-xl lg:text-3xl mb-2">
@@ -324,7 +324,7 @@
                 </div>
                 <div x-show="selectedTab === 'cash'" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                     <div class="w-full flex justify-center items-center bg-white rounded-lg">
-                        <div class="flex flex-col justify-center items-center py-8 lg:py-12 px-3 lg:px-44">
+                        <div class="flex flex-col justify-center items-center py-8 xl:py-12 px-3 xl:px-44">
                             <img src="/cash.svg" alt="cash" class="w-16.5 h-auto" />
                             <div class="mt-5 md:mt-8 lg:mt-12 text-center">
                                 <h3 class="font-semibold lg:font-bold text-xl lg:text-3xl mb-2">
@@ -338,7 +338,7 @@
                         </div>
                     </div>
                     <div class="w-full flex justify-center items-center bg-white rounded-lg">
-                        <div class="flex flex-col justify-center items-center py-8 lg:py-12 px-3 lg:px-44">
+                        <div class="flex flex-col justify-center items-center py-8 xl:py-12 px-3 xl:px-44">
                             <img src="/parking-area.svg" alt="parking-area" class="w-16.5 h-auto" />
                             <div class="mt-5 md:mt-8 lg:mt-12 text-center">
                                 <h3 class="font-semibold lg:font-bold text-xl lg:text-3xl mb-2">
@@ -439,7 +439,7 @@
         </section>
 
         <!-- Direction to Parking -->
-        <section class="container mx-auto px-4 md:px-8 py-16 lg:py-24.5">
+        <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2
                 class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                 Directions to Parking Structures and Parking Lots
@@ -447,17 +447,17 @@
             <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                 Click any lot to see details, availability, rates, and accessibility features.
             </p>
-            <div x-data="directions" class="mt-12 p-6 rounded-lg bg-white">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div x-cloak x-data="directions" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <template x-for="item in data">
                             <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)"
                                 :class="hoveredItem?.initials === 'B' && hoveredItem?.name === item.name ? 'border-blue-500' : hoveredItem?.initials === 'O' && hoveredItem?.name === item.name ? 'border-orange-500' : hoveredItem?.initials === 'P' && hoveredItem?.name === item.name ? 'border-pink-500' : hoveredItem?.initials === 'Y' && hoveredItem?.name === item.name ? 'border-yellow-500' : hoveredItem?.initials === 'G' && hoveredItem?.name === item.name ? 'border-green-500' : hoveredItem?.initials === 'S' && hoveredItem?.name === item.name ? 'border-blue-500' : 'border-transparent'"
-                                class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                                class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                 <div class="space-y-3">
                                     <div class="flex items-center gap-2">
                                         <div :class="hoveredItem?.initials === 'B' && hoveredItem?.name === item.name ? 'bg-blue-500' : hoveredItem?.initials === 'O' && hoveredItem?.name === item.name ? 'bg-orange-500' : hoveredItem?.initials === 'P' && hoveredItem?.name === item.name ? 'bg-pink-500' : hoveredItem?.initials === 'Y' && hoveredItem?.name === item.name ? 'bg-yellow-500' : hoveredItem?.initials === 'G' && hoveredItem?.name === item.name ? 'bg-green-500' : hoveredItem?.initials === 'S' && hoveredItem?.name === item.name ? 'bg-blue-500' : 'bg-[#869395]'"
-                                            class="size-8 rounded-full flex items-center justify-center">
+                                            class="size-8 rounded-full flex items-center justify-center transition-colors duration-300 ease-in-out">
                                             <p class="text-white font-semibold text-xl" x-text="item.initials"></p>
                                         </div>
                                         <h6 class="font-semibold text-xl" x-text="item.name"></h6>
@@ -469,26 +469,153 @@
                                 </a>
                             </div>
                         </template>
+                        <div
+                            class="w-full bg-[#FDF9EE] rounded-lg py-3 px-4 flex justify-center items-center gap-2 md:col-span-2">
+                            <img src="/info-icon.svg" alt="info-icon" class="size-4 invert">
+                            <p class="text-text-secondary italic text-sm">
+                                Click any lot to see details, availability, rates, and
+                                accessibility features.
+                            </p>
+                        </div>
                     </div>
-                    <div class="rounded-lg overflow-hidden">
-                        <img x-bind:src="hoveredItem ? hoveredItem.image : '/direction-parking-all.svg'"
-                            alt="direction-parking-all" class="w-full object-cover h-[576px]">
+                    <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
+                        <img x-bind:src="hoveredItem ? hoveredItem.image : '/direction-parking-all.png'"
+                            alt="direction-parking-all"
+                            class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="container mx-auto px-4 md:px-8">
+        <!-- Bus drop off and pickup -->
+        <section x-cloak x-data="dropOffPickup" class="bg-white px-4 md:px-8 pt-12 md:py-16 xl:pt-24.5">
+            <div class="container mx-auto">
+                <h2
+                    class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
+                    Bus Drop-off and Pickup
+                </h2>
+                <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                    Click any lot to see details, availability, rates, and accessibility features.
+                </p>
+                <div class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <template x-for="item in data">
+                                <div
+                                    class="bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                                    <div class="space-y-3">
+                                        <div class="flex items-center gap-2">
+                                            <img x-bind:src="item.icon" x-bind:alt="item.title" class="size-5">
+                                            <h6 class="font-semibold text-xl" x-text="item.title"></h6>
+                                        </div>
+                                        <p class="text-base text-text-secondary" x-text="item.description"></p>
+                                    </div>
+                                    <a x-show="item.link" x-bind:href="item.link"
+                                        class="text-brand font-semibold text-base underline">
+                                        Get Directions
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
+                            <img src="/drop-off-pickup-image.svg" alt="drop-off-pickup-image"
+                                class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADA Accessible Parking -->
+        <section x-cloak x-data="accessibleParking" class="px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+            <div class="container mx-auto">
+                <h2
+                    class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
+                    ADA Accessible Parking
+                </h2>
+                <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                    Click any lot to see details, availability, rates, and accessibility features.
+                </p>
+                <div class="mt-12 bg-white border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <template x-for="item in data">
+                                <div
+                                    class="bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                                    <div class="space-y-3">
+                                        <div class="flex items-center gap-2">
+                                            <div :class="item.color === 'blue' ? 'bg-blue-500' : item.color === 'orange' ? 'bg-orange-500' : item.color === 'pink' ? 'bg-pink-500' : item.color === 'green' ? 'bg-green-500' : ''"
+                                                class="size-6 rounded-sm"></div>
+                                            <h6 class="font-semibold text-xl" x-text="item.title"></h6>
+                                        </div>
+                                        <p class="text-base text-text-secondary" x-text="item.description"></p>
+                                    </div>
+                                    <a x-show="item.link" x-bind:href="item.link"
+                                        class="text-brand font-semibold text-base underline">
+                                        Get Directions
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
+                            <img src="/ada-accessible-parking.svg" alt="ada-accessible-parking"
+                                class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EV charging & guideline -->
+        <section class="bg-white px-4 md:px-8 py-12 md:py-16 lg:py-24.5">
+            <div class="container mx-auto">
+                <h2
+                    class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
+                    EV Charging & Guideline
+                </h2>
+                <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                    Click any lot to see details, availability, rates, and accessibility features.
+                </p>
+                <div class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div
+                            class="bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="size-6 rounded-sm bg-blue-500"></div>
+                                    <h6 class="font-semibold text-xl">Blue Structure</h6>
+                                </div>
+                                <p class="text-base text-text-secondary">
+                                    Level A: 2 Dual Chargers
+                                    Level B: 2 Single Chargers, 11 Dual Chargers
+                                    Address: 3855 S Figueroa St, Los Angeles, CA 90037
+                                </p>
+                            </div>
+                            <a href="/" class="text-brand font-semibold text-base underline">
+                                Get Directions
+                            </a>
+                        </div>
+                        <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
+                            <img src="/ev-charging-guideline.svg" alt="ev-charging-guideline"
+                                class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event parking information -->
+        <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2 class="font-semibold text-3xl md:text-5xl mb-4 text-center">
                 Event Parking Information
             </h2>
             <p class="text-lg md:text-xl font-normal text-center max-w-2xl mx-auto">
                 Parking rates, availability, and rules may change during special events.
             </p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 xl:gap-8 mt-12">
-                <div class="p-0 md:p-5 space-y-4">
-                    <img src="/parking-1.svg" alt="Parking lot view during an event" class="h-auto w-full rounded-xl" />
-                    <div class="">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-12">
+                <div class="p-4 md:p-5 space-y-4 bg-white rounded-lg">
+                    <img src="/parking-1.svg" alt="Parking lot view during an event" class="size-20 md:size-32" />
+                    <div class="relative">
                         <h3 class="font-bold text-2xl md:text-[28px]">Special Event Rates</h3>
                         <ul class="pt-5 mb-6 space-y-3">
                             <li class="flex items-start gap-4">
@@ -524,13 +651,13 @@
                             </li>
                         </ul>
                         <a href="#" aria-label="View Parking Map for Special Events"
-                            class="inline-block py-4 px-6 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
-                            View Parking Map
+                            class="mx-auto w-full md:w-auto text-center md:text-left md:ml-auto inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                            Click here for special event rates
                         </a>
                     </div>
                 </div>
-                <div class="p-0 md:p-5 space-y-4">
-                    <img src="/parking-1.svg" alt="Oversized vehicle parking area" class="h-auto w-full rounded-xl" />
+                <div class="p-4 md:p-5 space-y-4 bg-white rounded-lg">
+                    <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-32" />
                     <div class="">
                         <h3 class="font-bold text-2xl md:text-[28px]">Oversized Vehicle Parking</h3>
                         <ul class="pt-5 mb-6 space-y-3">
@@ -562,339 +689,240 @@
                                 </p>
                             </li>
                         </ul>
-                        <a href="#" aria-label="View Parking Map for Oversized Vehicles"
-                            class="inline-block py-4 px-6 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
-                            View Parking Map
+                        <a href="#" aria-label="View Parking Map for Special Events"
+                            class="mx-auto w-full md:w-auto text-center md:text-left md:ml-auto inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                            Click here for oversized vehicles
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="relative object-center bg-no-repeat bg-cover py-16 md:py-24"
-            style="background-image: url('/bg-2.svg')">
-            <div class="container mx-auto px-4 md:px-8">
-                <div style="background-image: url('/card-bg.svg')"
-                    class="bg-white relative bg-cover bg-right object-right bg-no-repeat w-full lg:w-11/12 xl:w-10/12 mx-auto flex flex-col md:flex-row justify-between items-stretch overflow-hidden rounded-2xl shadow-2xl">
-                    <div class="p-8 md:p-10 lg:p-16 flex-1 w-10/12 lg:w-full">
-                        <h2 class="font-semibold text-3xl md:text-[32px] lg:text-5xl mb-4 leading-tight">
-                            Third-Party Parking Requests
-                        </h2>
-                        <p class="text-base md:text-lg mb-6 text-text-secondary">
-                            Organizations, vendors, and event partners can request parking
-                            arrangements in advance.
-                        </p>
-                        <div class="space-y-4 mb-8 md:mb-10">
-                            <div class="flex items-start gap-3 md:gap-4">
-                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
-                                <p class="text-text-secondary text-base lg:text-lg">
-                                    Vehicles requiring multiple spaces must purchase multiple
-                                    parking passes.
+        <!-- Parking Office Hours & Contact -->
+        <section class="px-4 md:px-8 py-12 md:py-16 xl:py-24.5 bg-white">
+            <div class="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-12">
+                <div>
+                    <h2
+                        class="font-semibold text-center xl:text-left text-3xl w-full xl:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
+                        Parking Office
+                        Hours & Contact
+                    </h2>
+                    <p class="text-text-secondary text-center xl:text-left text-lg md:text-lg xl:text-xl">
+                        For questions related to parking operations, rates, or permits.
+                    </p>
+                    <img src="/contact-image.svg" alt="Parking office exterior"
+                        class=" w-full md:h-[356px] lg:h-auto xl:hidden object-bottom mt-8 md:mt-12 rounded-lg">
+                    <img src="/contact-image-large.png" alt="Parking office exterior"
+                        class="hidden xl:block w-full md:h-full object-bottom lg:h-[400px] xl:h-[572px] mt-8 md:mt-12 rounded-lg">
+                </div>
+                <div
+                    class="space-y-6 lg:space-x-px xl:space-x-0 h-full flex flex-col lg:flex-row lg:flex-wrap xl:flex-1 xl:flex-col justify-between">
+                    <div
+                        class="p-4.5 md:p-6 gap-4 flex flex-row md:flex-col bg-[rgba(247,247,247,1)] rounded-lg w-full lg:w-[49%] xl:w-full">
+                        <img src="/clock-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                        <div class="space-y-3 w-full">
+                            <h3 class="font-semibold text-2xl md:text-3xl">
+                                Office Hours
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-base">
+                                    Monday – Friday: <b class="inline">8:00 AM – 5:00 PM </b>
                                 </p>
-                            </div>
-                            <div class="flex items-start gap-3 md:gap-4">
-                                <img src="/list-pointer.svg" alt="" aria-hidden="true" class="w-5 h-5 mt-1 shrink-0" />
-                                <p class="text-text-secondary text-base lg:text-lg">
-                                    Authorized activities only
+                                <p class="text-base">
+                                    Saturday – Sunday: <b class="inline">9:00 AM – 3:00 PM</b>
+                                </p>
+                                <p class="text-base">
+                                    Event Days: <b class="inline">Extended hours</b>
                                 </p>
                             </div>
                         </div>
-                        <a href="#" aria-label="Request Third-Party Parking"
-                            class="inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
-                            Request Parking
+
+                    </div>
+                    <div
+                        class="p-4.5 md:p-6 gap-4 flex flex-row md:flex-col bg-[rgba(247,247,247,1)] rounded-lg w-full lg:w-[49%] xl:w-full">
+                        <img src="/email-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                        <div class="space-y-3 w-full">
+                            <h3 class="font-semibold text-2xl md:text-3xl">
+                                Contact Information
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-base">
+                                    Phone: <b class="inline">(213) 744-2119</b>
+                                </p>
+                                <p class="text-base">
+                                    Email: <b class="inline">parking@expositionpark.ca.gov</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4.5 md:p-6 gap-4 flex flex-row md:flex-col bg-[rgba(247,247,247,1)] rounded-lg w-full">
+                        <img src="/map-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
+                        <div class="space-y-3 w-full">
+                            <h3 class="font-semibold text-2xl md:text-3xl">
+                                Location
+                            </h3>
+                            <p class="text-base leading-relaxed">
+                                The Parking Office is located inside the Blue Structure on Level B . Enter the Blue
+                                Structure, proceed to Level B, and look for the “B1” column on the south side
+                            </p>
+                            <a href="/" class="text-brand font-semibold text-base underline">
+                                Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+
+        <!-- Third party parking request -->
+        <section class="relative object-center bg-no-repeat bg-cover my-16 md:my-24"
+            style="background-image: url('/third-party-parking-bg.png')">
+            <!-- <div class="h-full w-full z-0 brightness-50 absolute inset-0"></div> -->
+            <div
+                class="py-12 md:py-28 lg:py-52 backdrop-brightness-50 h-full px-4 md:px-8 flex justify-center items-center">
+                <div
+                    class="p-6 md:p-10 bg-white flex flex-col lg:flex-row lg:justify-between lg:items-end gap-3 rounded-lg">
+                    <div class="w-full lg:w-2/3">
+                        <h6 class="font-semibold text-3xl md:text-[40px] mb-2">Third-Party Parking Requests</h6>
+                        <p class="text-text-secondary text-base md:text-lg mb-6">
+                            Organizations, vendors, and event partners can request
+                            parking arrangements in advance.
+                        </p>
+                        <p class="space-x-3 flex items-center">
+                            <span class="size-3.5 block rounded-full bg-[rgba(144,235,211,1)]"></span>
+                            <span class="text-base md:text-lg text-text-secondary">Submit requests before the event
+                                date.</span>
+                        </p>
+                        <p class="space-x-3 flex items-center">
+                            <span class="size-3.5 block rounded-full bg-[rgba(144,235,211,1)]"></span>
+                            <span class="text-base md:text-lg text-text-secondary">Authorized activities only</span>
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-1/3">
+                        <a href="#"
+                            class="px-6 py-4 hover:bg-button/75 transition-colors ease-linear duration-200 md:text-left text-center lg:text-center md:w-auto w-full lg:w-full inline-block bg-button rounded-lg text-white font-bold text-base">
+                            Submit a
+                            Parking Request
                         </a>
                     </div>
-                    <div class="w-1/12" />
                 </div>
             </div>
         </section>
 
-        <section class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- FAQ -->
+        <section class="container grid grid-cols-1 lg:grid-cols-2 mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <div>
-                <h2 class="font-semibold text-3xl md:text-5xl leading-tight mb-4">
-                    Parking Office
-                    Hours & Contact
+                <h2
+                    class="font-semibold text-center lg:text-left text-3xl w-full lg:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
+                    Frequently Asked Questions
                 </h2>
-                <p class="text-text-secondary text-lg md:text-xl">
+                <p class="text-text-secondary text-center lg:text-left text-lg md:text-lg xl:text-xl">
                     For questions related to parking operations, rates, or permits.
                 </p>
-                <img src="/contact-image.svg" alt="Parking office exterior"
-                    class="w-full h-auto mt-8 md:mt-12 rounded-2xl shadow-lg">
             </div>
-            <div class="space-y-6">
-                <div class="p-0 md:p-6 space-y-4">
-                    <img src="/clock-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
-                    <h3 class="font-bold text-2xl md:text-3xl">
-                        Office Hours
-                    </h3>
-                    <div class="space-y-2">
-                        <p class="text-base">
-                            Monday – Friday: <b class="block md:inline">8:00 AM – 5:00 PM </b>
-                        </p>
-                        <p class="text-base">
-                            Saturday – Sunday: <b class="block md:inline">9:00 AM – 3:00 PM</b>
-                        </p>
-                        <p class="text-base">
-                            Event Days: <b class="block md:inline">Extended hours</b>
-                        </p>
+
+            <div class="space-y-4 items-center w-full mt-6 md:mt-12 lg:mt-0 mx-auto divide-y divide-gray-100"
+                x-data="faq">
+                <template x-for="item in data">
+                    <div class="w-full p-4 md:p-6 bg-white">
+                        <button x-on:click="toggle(item)" :aria-expanded="item.isOpen"
+                            :aria-controls="'faq-answer-' + item.id"
+                            class="flex justify-between items-center w-full cursor-pointer text-left group">
+                            <h3 x-text="item.title"
+                                class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
+                            </h3>
+                            <div class="ml-4 transition-transform duration-300" :class="item.isOpen ? 'rotate-45' : ''">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                    <path d="M5 12h14" />
+                                    <path d="M12 5v14" />
+                                </svg>
+                            </div>
+                        </button>
+                        <div x-show="item.isOpen" :id="'faq-answer-' + item.id" x-cloak x-collapse>
+                            <p x-text="item.description"
+                                class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="p-0 md:p-6 space-y-4">
-                    <img src="/email-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
-                    <h3 class="font-bold text-2xl md:text-3xl">
-                        Contact Information
-                    </h3>
-                    <div class="space-y-2">
-                        <p class="text-base">
-                            Phone: <b class="block md:inline">(213) 744-2119</b>
-                        </p>
-                        <p class="text-base">
-                            Email: <b class="block md:inline">parking@expositionpark.ca.gov</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="p-0 md:p-6 space-y-4">
-                    <img src="/map-icon.svg" alt="" aria-hidden="true" class="size-10 md:size-12">
-                    <h3 class="font-bold text-2xl md:text-3xl">
-                        Location
-                    </h3>
-                    <p class="text-base leading-relaxed">
-                        Office of Exposition Park Management • 700 Exposition Park Drive • Los Angeles, CA 90037
-                    </p>
-                </div>
+                </template>
             </div>
         </section>
 
-        <section class="container mx-auto px-4 md:px-8">
-            <h2 class="font-bold text-3xl md:text-5xl leading-tight text-center mb-4">Frequently Asked Questions</h2>
-            <p class="text-lg md:text-xl text-text-secondary text-center max-w-2xl mx-auto">For questions related to
-                parking operations, rates, or permits.</p>
-            <div class="mt-12 flex flex-col items-center w-full lg:w-8/12 mx-auto divide-y divide-gray-100">
-                <div x-data="{open:true}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-1"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            What types of payments are accepted?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-1">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            Cash and all major credit cards, except American Express, are accepted at Exposition Park.
-                            For
-                            cash payments in the Blue Parking Structure, guests should use the Pay Station located on
-                            the
-                            northwest corner of Level A.
+        <footer class="bg-[#3B5E68] px-4 md:px-16 pt-10 pb-8">
+            <section
+                class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 pb-16 border-b border-[#FFFAE6] text-[#FFFAE6]">
+                <div class="flex flex-col md:flex-row md:justify-between lg:justify-start lg:items-start lg:flex-col">
+                    <div>
+                        <img src="/logo.svg" alt="Exposition Park Logo" class="w-auto h-12 mb-3 lg:mb-6" />
+                        <p class="text-lg font-normal mb-6">A California state park in the south region of Los Angeles.
                         </p>
                     </div>
-                </div>
-
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-2"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Is there bus and oversized parking during events?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
+                    <div class="flex flex-row justify-between md:justify-start md:items-start md:flex-col">
+                        <p class="text-lg mb-4">Follow us on</p>
+                        <div class="flex space-x-6">
+                            <a href="#" class="hover:opacity-80 transition-opacity"
+                                aria-label="Follow us on Facebook"><img src="/facebook-icon.svg" alt=""
+                                    aria-hidden="true" class="h-8 w-8" /></a>
+                            <a href="#" class="hover:opacity-80 transition-opacity"
+                                aria-label="Follow us on X (Twitter)"><img src="/x-icon.svg" alt="" aria-hidden="true"
+                                    class="h-8 w-8" /></a>
+                            <a href="#" class="hover:opacity-80 transition-opacity"
+                                aria-label="Follow us on Instagram"><img src="/instagram-icon.svg" alt=""
+                                    aria-hidden="true" class="h-9 w-9" /></a>
                         </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-2">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            Yes, but availability may be limited. We recommend booking in advance through event
-                            organizers.
-                        </p>
                     </div>
-                </div>
 
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-3"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Is in-and-out parking access allowed?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-3">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            No, in-and-out parking is not permitted once you have exited the facility.
-                        </p>
-                    </div>
-                </div>
-
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-4"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Is there bus parking for museum visitors?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-4">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            Dedicated museum bus parking is available on specific lots. Please check our map for
-                            details.
-                        </p>
-                    </div>
-                </div>
-
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-5"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Where is ADA parking located?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-5">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            ADA accessible parking is available in all lots and structures, typically located closest to
-                            venue entrances.
-                        </p>
-                    </div>
-                </div>
-
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-6"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Are there electric vehicle (EV) charging stations?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-6">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            Yes, EV charging stations are located on Level A of the Blue Parking Structure.
-                        </p>
-                    </div>
-                </div>
-
-                <div x-data="{open:false}" class="w-full py-6">
-                    <button x-on:click="open = !open" :aria-expanded="open" aria-controls="faq-answer-7"
-                        class="flex justify-between items-center w-full cursor-pointer text-left group">
-                        <h3 class="block text-lg md:text-xl font-semibold group-hover:text-button transition-colors">
-                            Are there height restrictions in the Blue Parking Structure?
-                        </h3>
-                        <div class="ml-4 transition-transform duration-300" :class="open ? 'rotate-45' : ''">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div x-show="open" id="faq-answer-7">
-                        <p class="text-text-secondary text-base md:text-lg pt-4 leading-relaxed">
-                            The clearance height is 8'2". Oversized vehicles should use the open lots.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-[#1F1F1F] px-4 md:px-16 pt-16 pb-8">
-            <section class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 pb-16 border-b border-[#2F2F2F]">
-                <div>
-                    <img src="/logo.svg" alt="Exposition Park Logo" class="w-auto h-12 mb-6" />
-                    <p class="text-white text-lg mb-6">A California state park in the south region of Los Angeles.</p>
-                    <p class="text-white text-lg mb-4">Follow us on</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="hover:opacity-80 transition-opacity" aria-label="Follow us on Facebook"><img
-                                src="/facebook-icon.svg" alt="" aria-hidden="true" class="w-6 h-6" /></a>
-                        <a href="#" class="hover:opacity-80 transition-opacity"
-                            aria-label="Follow us on X (Twitter)"><img src="/x-icon.svg" alt="" aria-hidden="true"
-                                class="w-6 h-6" /></a>
-                        <a href="#" class="hover:opacity-80 transition-opacity" aria-label="Follow us on Instagram"><img
-                                src="/instagram-icon.svg" alt="" aria-hidden="true" class="w-6 h-6" /></a>
-                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="space-y-4">
-                        <h2 class="font-semibold text-base text-white">Visit</h2>
-                        <ul class="space-y-2 text-sm text-[#717171]">
-                            <li><a href="#" class="hover:text-white transition-colors">Plan Your Visit</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Hours & Directions</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Accessibility</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <h2 class="font-semibold text-base">Visit</h2>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Hours & Directions</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h2 class="font-semibold text-base text-white">Parking</h2>
-                        <ul class="space-y-2 text-sm text-[#717171]">
-                            <li><a href="#" class="hover:text-white transition-colors">Locations</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Bus Parking</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">ADA Parking</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">EV Charging</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Event Parking</a></li>
+                        <h2 class="font-semibold text-base ">Parking</h2>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#">Locations</a></li>
+                            <li><a href="#">Bus Parking</a></li>
+                            <li><a href="#">ADA Parking</a></li>
+                            <li><a href="#">EV Charging</a></li>
+                            <li><a href="#">Event Parking</a></li>
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h2 class="font-semibold text-base text-white">Events</h2>
-                        <ul class="space-y-2 text-sm text-[#717171]">
-                            <li><a href="#" class="hover:text-white transition-colors">Calendar</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Rentals</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Permits</a></li>
+                        <h2 class="font-semibold text-base ">Events</h2>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#">Calendar</a></li>
+                            <li><a href="#">Rentals</a></li>
+                            <li><a href="#">Permits</a></li>
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h2 class="font-semibold text-base text-white">About</h2>
-                        <ul class="space-y-2 text-sm text-[#717171]">
-                            <li><a href="#" class="hover:text-white transition-colors">History</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Employment</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Media</a></li>
+                        <h2 class="font-semibold text-base ">About</h2>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Employment</a></li>
+                            <li><a href="#">Media</a></li>
                         </ul>
                     </div>
                 </div>
             </section>
-            <div class="container mx-auto py-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-[#717171] text-sm text-center md:text-left">© 2026 California Science Center. All rights
+            <div
+                class="container mx-auto py-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[#FFFAE6]">
+                <p class="text-sm text-center md:text-left">© 2026 California Science Center. All rights
                     reserved.</p>
                 <div class="flex flex-wrap justify-center items-center gap-6">
-                    <a href="#" class="text-[#717171] text-sm hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-[#717171] text-sm hover:text-white transition-colors">Terms of Use</a>
-                    <a href="#" class="text-[#717171] text-sm hover:text-white transition-colors">Accessibility</a>
+                    <a href="#" class="text-sm">Privacy Policy</a>
+                    <a href="#" class="text-sm">Terms of Use</a>
+                    <a href="#" class="text-sm">Accessibility</a>
                 </div>
             </div>
         </footer>

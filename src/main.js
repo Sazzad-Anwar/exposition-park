@@ -49,4 +49,132 @@ document.addEventListener('alpine:init', () => {
       this.hoveredItem = item
     },
   }))
+
+  Alpine.data('dropOffPickup', () => ({
+    data: [
+      {
+        title: 'Drop-Off and Pick-Up',
+        icon: '/location-icon.svg',
+        description:
+          'Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.',
+        link: '/',
+      },
+      {
+        title: 'Bus Parking',
+        icon: '/bus-parking-icon.svg',
+        description:
+          'Bus Parking available in the Green Lot, subject to availability and event reservations.',
+        link: '/',
+      },
+      {
+        title: 'Oversize Vehicles',
+        icon: '/bus-parking-icon.svg',
+        description:
+          'Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.',
+        link: '/',
+      },
+      {
+        title: 'Location',
+        icon: '/location-icon.svg',
+        description:
+          'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',
+        link: null,
+      },
+    ],
+  }))
+
+  Alpine.data('accessibleParking', () => ({
+    data: [
+      {
+        title: 'Blue Structure',
+        color: 'blue',
+        description: `
+        3855 S Figueroa St, Los Angeles, CA 90037:
+        Level A: 43 ADA Spaces
+        Level B: 9 ADA Spaces
+        Level C: 11 ADA Spaces`,
+        link: '/',
+      },
+      {
+        title: 'Orange Structure',
+        color: 'orange',
+        description: `
+        3975 Bill Robertson Ln, Los Angeles, CA 90037:
+        P1 Level: 25 ADA Spaces`,
+        link: '/',
+      },
+      {
+        title: 'Pink Lot',
+        color: 'pink',
+        description: `
+        899 S Park Dr, Los Angeles, CA 90037:
+        Lot: 10 ADA Spaces`,
+        link: '/',
+      },
+      {
+        title: 'Green Lot',
+        color: 'green',
+        description: `
+        3986 Hoover St, Los Angeles, CA 90037:
+        20 ADA Spaces`,
+        link: '/',
+      },
+    ],
+  }))
+
+  Alpine.data('faq', () => ({
+    data: [
+      {
+        title: 'What types of payments are accepted?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: true,
+      },
+      {
+        title: 'Is there bus and oversized parking during events?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+      {
+        title: 'Is there bus and oversized parking during events?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+      {
+        title: 'Is there bus parking for museum visitors?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+      {
+        title: 'Where is ADA parking located?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+      {
+        title: 'Are there electric vehicle (EV) charging stations?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+      {
+        title: 'Are there height restrictions in the Blue Parking Structure?',
+        description:
+          'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        isOpen: false,
+      },
+    ],
+    toggle(item) {
+      this.data.forEach((i) => {
+        if (i === item) {
+          i.isOpen = !i.isOpen
+        } else {
+          i.isOpen = false
+        }
+      })
+    },
+  }))
 })

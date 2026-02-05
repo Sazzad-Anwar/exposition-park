@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --container-8xl: 110rem;
+  --container-8xl: 90rem;
   --container-padding: 80px;
   --font-sans: 'Source Sans 3', sans-serif;
   --color-button: #036b99;
@@ -107,4 +107,8 @@ body {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+[x-cloak] {
+  display: none !important;
 }
