@@ -79,8 +79,8 @@
             background-color: white !important;
         }
     </style>
-  <script type="module" crossorigin src="/exposition-park/assets/index-CGaCWFLE.js"></script>
-  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-DFgco5VD.css">
+  <script type="module" crossorigin src="/exposition-park/assets/index-DQ1xKw8i.js"></script>
+  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-B9KBRvY-.css">
 </head>
 
 <body class="relative font-sans">
@@ -146,12 +146,13 @@
 
                             <!-- Settings Dropdown -->
                             <div id="accessibility-settings-dropdown" x-show="settingsOpen"
-                                @click.outside="settingsOpen = false" x-transition role="menu"
-                                aria-label="Accessibility settings menu"
+                                @click.outside="settingsOpen = false" x-transition role="dialog"
+                                aria-labelledby="settings-dialog-title" aria-modal="false"
                                 class="fixed md:absolute left-4 right-4 md:left-auto md:right-0 top-16 md:top-full mt-2 md:w-72 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-xl py-4 z-50 text-gray-800 border border-gray-100">
                                 <div class="px-4 pb-2 mb-2 border-b border-gray-100 flex justify-between items-center">
-                                    <h3 class="font-bold text-lg">Settings</h3>
-                                    <button @click="settingsOpen = false" class="text-gray-500 hover:text-gray-700">
+                                    <h3 id="settings-dialog-title" class="font-bold text-lg">Settings</h3>
+                                    <button @click="settingsOpen = false" class="text-gray-500 hover:text-gray-700"
+                                        aria-label="Close settings">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path fill-rule="evenodd"
@@ -195,7 +196,8 @@
                                         <div class="flex items-center justify-between mb-2 px-1">
                                             <span class="text-sm font-semibold text-gray-600">Text Size</span>
                                             <button @click="$store.accessibility.reset()"
-                                                class="text-xs text-brand hover:underline">Reset</button>
+                                                class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
+                                                aria-label="Reset font size">Reset</button>
                                         </div>
                                         <div class="flex gap-2">
                                             <button @click="$store.accessibility.decreaseFont()"
@@ -275,15 +277,21 @@
             <div id="mobile-navigation-menu" x-show="mobileMenuOpen"
                 x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                role="menu" aria-label="Mobile navigation menu"
+                role="navigation" aria-label="Mobile navigation menu"
                 class="lg:hidden bg-brand/80 absolute top-full left-0 w-full p-6 space-y-4 shadow-xl backdrop-blur-lg">
-                <ul class="flex flex-col font-semibold text-lg gap-4" role="none">
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">Home</a></li>
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">About</a></li>
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">Parking</a></li>
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">Updates</a></li>
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">Events</a></li>
-                    <li><a href="#" class="text-white block py-2 border-b border-white/10">Contact</a></li>
+                <ul class="flex flex-col font-semibold text-lg gap-4">
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">Home</a></li>
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">About</a></li>
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">Parking</a></li>
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">Updates</a></li>
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">Events</a></li>
+                    <li role="none"><a href="#" role="menuitem"
+                            class="text-white block py-2 border-b border-white/10">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -380,21 +388,26 @@
             <div x-data="{selectedTab:'credit-card'}" class="mt-12">
                 <div class=" w-auto bg-white rounded-xl p-4 lg:p-6">
                     <div class="flex justify-center">
-                        <div class="relative flex justify-center bg-[#EEEEEE] rounded-lg p-1">
+                        <div class="relative flex justify-center bg-[#EEEEEE] rounded-lg p-1" role="tablist"
+                            aria-label="Payment methods">
                             <!-- Animated background slider -->
                             <div class="absolute top-1 bottom-1 bg-white rounded-sm shadow-md transition-all duration-300 ease-in-out"
-                                :class="selectedTab === 'credit-card' ? 'left-1 w-[calc(50%-2px)]' : 'left-[calc(50%+1px)] w-[calc(50%-5px)] right-1'">
+                                :class="selectedTab === 'credit-card' ? 'left-1 w-[calc(50%-2px)]' : 'left-[calc(50%+1px)] w-[calc(50%-5px)] right-1'"
+                                aria-hidden="true">
                             </div>
-                            <button @click="selectedTab = 'credit-card'"
+                            <button @click="selectedTab = 'credit-card'" role="tab"
+                                :aria-selected="selectedTab === 'credit-card'" aria-controls="tabpanel-credit-card"
+                                id="tab-credit-card"
                                 class="relative z-10 lg:py-4 py-3 px-4 md:px-5 lg:px-6 rounded-sm text-sm md:text-xl flex items-center gap-3 font-semibold focus:outline-none transition-colors duration-300">
-                                <img src="/exposition-park/credit-card.svg" alt="Credit card icon" class="size-6" />
+                                <img src="/exposition-park/credit-card.svg" alt="" aria-hidden="true" class="size-6" />
                                 <span>
                                     Credit card only
                                 </span>
                             </button>
-                            <button @click="selectedTab = 'cash'"
+                            <button @click="selectedTab = 'cash'" role="tab" :aria-selected="selectedTab === 'cash'"
+                                aria-controls="tabpanel-cash" id="tab-cash"
                                 class="relative z-10 lg:py-4 py-3  px-4 md:px-5 lg:px-6 rounded-sm text-sm md:text-xl flex items-center gap-3 font-semibold focus:outline-none transition-colors duration-300">
-                                <img src="/exposition-park/wallet.svg" alt="Cash icon" class="size-6" />
+                                <img src="/exposition-park/wallet.svg" alt="" aria-hidden="true" class="size-6" />
                                 <span>
                                     Cash & credit card
                                 </span>
@@ -402,7 +415,8 @@
                         </div>
                     </div>
                     <div class="mt-4 lg:mt-8">
-                        <div x-show="selectedTab === 'credit-card'"
+                        <div x-show="selectedTab === 'credit-card'" role="tabpanel" id="tabpanel-credit-card"
+                            aria-labelledby="tab-credit-card"
                             class="space-y-4 grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-6">
                             <div
                                 class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
@@ -427,7 +441,8 @@
                             <img class="rounded-lg object-cover object-bottom w-full h-70 md:h-125"
                                 src="/exposition-park/credit-card-tab-image.svg" alt="credit-card-tab-image" />
                         </div>
-                        <div x-show="selectedTab === 'cash'"
+                        <div x-show="selectedTab === 'cash'" role="tabpanel" id="tabpanel-cash"
+                            aria-labelledby="tab-cash"
                             class="space-y-4 grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-6">
                             <div
                                 class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
