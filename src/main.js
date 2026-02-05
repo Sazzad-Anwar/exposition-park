@@ -177,4 +177,58 @@ document.addEventListener('alpine:init', () => {
       })
     },
   }))
+  Alpine.store('accessibility', {
+    highContrast: localStorage.getItem('highContrast') === 'true',
+    fontSize: parseInt(localStorage.getItem('fontSize')) || 100,
+
+    toggleHighContrast() {
+      this.highContrast = !this.highContrast
+      localStorage.setItem('highContrast', this.highContrast)
+      this.applySettings()
+    },
+
+    increaseFont() {
+      if (this.fontSize < 150) {
+        this.fontSize += 10
+        localStorage.setItem('fontSize', this.fontSize)
+        this.applySettings()
+      }
+    },
+
+    decreaseFont() {
+      if (this.fontSize > 100) {
+        this.fontSize -= 10
+        localStorage.setItem('fontSize', this.fontSize)
+        this.applySettings()
+      }
+    },
+
+    reset() {
+      this.fontSize = 100
+      localStorage.setItem('fontSize', this.fontSize)
+      this.applySettings()
+    },
+
+    setDefaults() {
+      this.highContrast = false
+      this.fontSize = 100
+      localStorage.setItem('highContrast', this.highContrast)
+      localStorage.setItem('fontSize', this.fontSize)
+      this.applySettings()
+    },
+
+    applySettings() {
+      const html = document.documentElement
+      if (this.highContrast) {
+        html.classList.add('high-contrast')
+      } else {
+        html.classList.remove('high-contrast')
+      }
+      html.style.fontSize = `${this.fontSize}%`
+    },
+
+    init() {
+      this.applySettings()
+    },
+  })
 })
