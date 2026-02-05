@@ -11,7 +11,6 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="/src/style.css" rel="stylesheet" />
-    <script src="//unpkg.com/alpinejs" defer></script>
     <title>exposition-park</title>
     <style>
         html.high-contrast {
@@ -84,10 +83,16 @@
 </head>
 
 <body class="relative font-sans">
+    <!-- Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-white focus:text-brand focus:px-4 focus:py-2 focus:rounded focus:font-bold">
+        Skip to main content
+    </a>
+
     <header x-cloak x-data="{ mobileMenuOpen: false, isScrolled: false }"
         @scroll.window="isScrolled = (window.pageYOffset > 20)"
-        class="fixed top-0 w-full z-50 transition-all duration-300">
-        <nav>
+        class="fixed top-0 w-full z-50 transition-all duration-300" role="banner">
+        <nav aria-label="Main navigation">
             <div id="top-header" class="bg-brand shadow-lg py-2">
                 <div
                     class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-y-2 md:gap-y-0">
@@ -278,7 +283,7 @@
         </nav>
     </header>
 
-    <main class="bg-[#FAFAFA]">
+    <main id="main-content" role="main" class="bg-[#FAFAFA]">
         <!-- Hero section -->
         <section class=" object-center bg-no-repeat bg-cover min-h-screen lg:h-220 grid items-center py-20"
             style="background-image: url('/hero-bg.svg')">
@@ -626,8 +631,7 @@
                         </div>
                     </div>
                     <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                        <img x-bind:src="hoveredItem ? hoveredItem.image : '/direction-parking-all.png'"
-                            alt="direction-parking-all"
+                        <img x-bind:src="hoveredItem ? hoveredItem.image : defaultImage" alt="direction-parking-all"
                             class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out">
                     </div>
                 </div>
@@ -998,7 +1002,7 @@
             </div>
         </section>
 
-        <footer class="bg-[#3B5E68] px-4 md:px-16 pt-10 pb-8">
+        <footer role="contentinfo" class="bg-[#3B5E68] px-4 md:px-16 pt-10 pb-8">
             <section
                 class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 pb-16 border-b border-[#FFFAE6] text-[#FFFAE6]">
                 <div class="flex flex-col md:flex-row md:justify-between lg:justify-start lg:items-start lg:flex-col">
@@ -1076,7 +1080,7 @@
     </main>
 
 
-    <script src="/src/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
     <script type="text/javascript">
         function googleTranslateElementInitMobile() {
             new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element_mobile');
