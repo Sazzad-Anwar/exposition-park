@@ -94,6 +94,7 @@ Alpine.data('accessibleParking', () => ({
   data: [
     {
       title: 'Blue Structure',
+      initials: 'B',
       color: 'blue',
       description: `
         3855 S Figueroa St, Los Angeles, CA 90037:
@@ -105,6 +106,7 @@ Alpine.data('accessibleParking', () => ({
     {
       title: 'Orange Structure',
       color: 'orange',
+      initials: 'O',
       description: `
         3975 Bill Robertson Ln, Los Angeles, CA 90037:
         P1 Level: 25 ADA Spaces`,
@@ -113,6 +115,7 @@ Alpine.data('accessibleParking', () => ({
     {
       title: 'Pink Lot',
       color: 'pink',
+      initials: 'P',
       description: `
         899 S Park Dr, Los Angeles, CA 90037:
         Lot: 10 ADA Spaces`,
@@ -121,6 +124,7 @@ Alpine.data('accessibleParking', () => ({
     {
       title: 'Green Lot',
       color: 'green',
+      initials: 'G',
       description: `
         3986 Hoover St, Los Angeles, CA 90037:
         20 ADA Spaces`,
