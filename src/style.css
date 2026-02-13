@@ -31,6 +31,7 @@ iframe.goog-te-banner-frame,
 body {
   top: 0px !important;
   position: static !important; /* Forces body back to normal flow */
+  color: #333333;
 }
 
 /* Hide the new Google Translate top bar structure if present */
