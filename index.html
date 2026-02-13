@@ -91,7 +91,7 @@
 
     <header x-cloak x-data="{ mobileMenuOpen: false, isScrolled: false }"
         @scroll.window="isScrolled = (window.pageYOffset > 20)"
-        class="fixed top-0 w-full z-50 transition-all duration-300" role="banner">
+        class="relative md:fixed top-0 w-full z-50 transition-all duration-300" role="banner">
         <nav aria-label="Main navigation">
             <div id="top-header" class="bg-brand shadow-lg py-2">
                 <div
@@ -310,16 +310,17 @@
 
     <main id="main-content" role="main" class="bg-[#FAFAFA]">
         <!-- Hero section -->
-        <section class=" object-center bg-no-repeat bg-cover min-h-screen lg:h-220 grid items-center py-20"
-            style="background-image: url('/hero-bg.svg')">
+        <section
+            class="object-center bg-no-repeat bg-bottom md:bg-center bg-cover min-h-screen lg:h-220 grid items-center py-20"
+            style="background-image: url('/hero-bg.png')">
             <div
-                class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-12 lg:gap-28 mt-20 lg:mt-10 xl:mt-28 relative z-10">
+                class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-12  mt-20 lg:mt-10 xl:mt-28 relative z-10">
                 <div class="text-left">
                     <h1
                         class="text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-white mb-4 leading-[96%] lg:leading-25.5">
                         Exposition Park Parking Rates
                     </h1>
-                    <p class="text-white text-base md:text-lg mb-8 w-full md:w-10/12 lg:w-8/12">
+                    <p class="text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
                         Find convenient parking options, rates, accessibility information,
                         and event-day guidelines all in one place
                     </p>
@@ -331,7 +332,7 @@
                 <!-- Pricing Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4" role="list">
                     <div role="listitem"
-                        class="bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
+                        class="lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
                             <h2 class="text-text-secondary text-base font-normal">
                                 Daily Parking
@@ -341,7 +342,7 @@
                         <img src="/parking.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
                     </div>
                     <div role="listitem"
-                        class="md:order-4 md:col-span-3 lg:col-span-1 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
+                        class="order-4 md:order-2 md:col-span-3 lg:col-span-1 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg gap-3">
                         <div class="flex flex-col space-y-3 md:space-y-0 justify-between w-full">
                             <h2 class="text-text-secondary text-base font-normal">
                                 Special Event & After Hours
@@ -356,7 +357,7 @@
                         <img src="/calendar.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
                     </div>
                     <div role="listitem"
-                        class="md:order-2 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
+                        class="md:order-3 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                         <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
                             <h2 class="text-text-secondary text-base font-normal">
                                 School Buses
@@ -365,7 +366,7 @@
                         </div>
                         <img src="/bus.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
                     </div>
-                    <div class="md:order-3 lg:order-0 w-full lg:w-103.5 lg:ml-auto lg:col-span-1">
+                    <div class="md:order-4 lg:order-0 w-full lg:w-103.5 lg:ml-auto lg:col-span-1">
                         <div role="listitem"
                             class="bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
                             <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
@@ -382,14 +383,13 @@
                         </div>
                     </div>
                     <div
-                        class="md:order-5 md:col-span-3 lg:col-span-1 lg:order-0 lg:w-103.5 lg:ml-auto flex items-start gap-x-2 mt-1">
+                        class="order-5 md:order-5 md:col-span-3 lg:col-span-1 lg:order-0 lg:w-103.5 lg:ml-auto flex items-start gap-x-2 mt-1">
                         <img src="/info-icon.svg" alt="Information icon" class="size-2.5 md:size-2.5 mt-1" />
                         <p class="text-sm font-normal text-white leading-5.25 italic">
                             Special event rates vary. Oversized vehicles charged per spaces occupied. Advance
                             booking recommended for oversized vehicles.
                         </p>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -435,9 +435,10 @@
                         <div x-show="selectedTab === 'cash'" role="tabpanel" id="tabpanel-cash"
                             aria-labelledby="tab-cash"
                             class="space-y-4 grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-6">
-                            <div class="p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
+                            <div
+                                class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
                                 <div class="lg:p-4 h-full w-10/12">
-                                    <img src="/tab-1-icon.svg" class="size-9 md:size-22" alt="tab-1-icon" loading="lazy"
+                                    <img src="/tab-icon-1.png" class="size-9 md:size-22" alt="tab-1-icon" loading="lazy"
                                         decoding="async" />
                                     <h3
                                         class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-4">
@@ -455,16 +456,17 @@
                                     class="lg:px-4 text-brand order-1 lg:order-2 font-semibold text-base underline">Get
                                     Directions</a>
                             </div>
-                            <img class="rounded-lg object-cover object-bottom w-full h-70 md:h-125"
+                            <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
                                 src="/credit-card-tab-image.svg" alt="credit-card-tab-image" loading="lazy"
                                 decoding="async" />
                         </div>
                         <div x-show="selectedTab === 'credit-card'" role="tabpanel" id="tabpanel-credit-card"
                             aria-labelledby="tab-credit-card"
                             class="space-y-4 grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-6">
-                            <div class="p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
+                            <div
+                                class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
                                 <div class="lg:p-4 h-full w-10/12">
-                                    <img src="/tab-2-icon.svg" class="size-9 md:size-22" alt="tab-2-icon" loading="lazy"
+                                    <img src="/tab-icon-2.png" class="size-9 md:size-22" alt="tab-2-icon" loading="lazy"
                                         decoding="async" />
                                     <h3
                                         class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-4">
@@ -481,7 +483,7 @@
                                 <a href="https://www.google.com/maps/search/34.014637,+-118.285349?entry=tts&g_ep=EgoyMDI0MTIxMS4wIPu8ASoASAFQAw%3D%3D"
                                     class="text-brand p-4 font-semibold text-base underline">Get Directions</a>
                             </div>
-                            <img class="rounded-lg object-cover object-bottom w-full h-70 md:h-125"
+                            <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
                                 src="/cash-credit-card-tab-image.svg" alt="credit-card-tab-image" loading="lazy"
                                 decoding="async" />
                         </div>
@@ -561,7 +563,8 @@
                     accessibility features.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 md:mt-13 lg:mt-20">
-                    <div class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
+                    <div x-data="{ showModal: false }"
+                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
                         <img src="/tortor_icon_1.svg" alt="tortor_icon_1" class="size-8 mb-4" loading="lazy"
                             decoding="async">
                         <h3 class="font-semibold text-xl mb-3">Non-automated Parking Process During event days</h3>
@@ -569,9 +572,45 @@
                             During events, payments are due upfront at kiosks while
                             automation is paused.
                         </p>
-                        <a href="/" class="text-brand font-semibold text-base underline">
+                        <button @click="showModal = true"
+                            class="text-brand font-semibold text-base underline cursor-pointer">
                             Click here (Blue Structure)
-                        </a>
+                        </button>
+                        <!-- Modal -->
+                        <div x-show="showModal" x-cloak x-transition.opacity
+                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                            @keydown.escape.window="showModal = false">
+                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
+                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
+                                @click.stop>
+                                <button @click="showModal = false"
+                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                                    aria-label="Close modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                                <img src="/direction-parking-state.png" alt="direction-parking-state"
+                                    class="h-auto w-full" loading="lazy" decoding="async">
+                                <div class="flex items-center gap-3 mt-5 mb-4">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-semibold text-lg">S</p>
+                                    </div>
+                                    <h3 class="font-bold text-xl md:text-2xl">State Dr.</h3>
+                                </div>
+                                <p class="text-text-secondary text-base mb-10">
+                                    723-873 State Dr, Los Angeles, CA 90037
+                                </p>
+
+                                <a href="https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D'"
+                                    target="_blank" class="text-brand font-semibold text-base underline">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="hidden lg:block"></div>
                     <div class="hidden lg:block"></div>
@@ -642,7 +681,8 @@
         </section>
 
         <!-- Direction to Parking -->
-        <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+        <section id="direction-parking"
+            class="container scroll-mt-[100px] mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2
                 class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                 Directions to Parking Structures and Parking Lots
@@ -653,13 +693,14 @@
             <div x-cloak x-data="directions" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <template x-for="item in data">
+                        <template x-for="(item, index) in data">
                             <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)"
-                                :class="hoveredItem?.initials === 'B' && hoveredItem?.name === item.name ? 'border-blue-500' : hoveredItem?.initials === 'O' && hoveredItem?.name === item.name ? 'border-orange-500' : hoveredItem?.initials === 'P' && hoveredItem?.name === item.name ? 'border-pink-500' : hoveredItem?.initials === 'Y' && hoveredItem?.name === item.name ? 'border-yellow-500' : hoveredItem?.initials === 'G' && hoveredItem?.name === item.name ? 'border-green-500' : hoveredItem?.initials === 'S' && hoveredItem?.name === item.name ? 'border-blue-500' : 'border-transparent'"
+                                :data-direction-card="index"
+                                :class="(() => { const m = (hoveredItem?.name === item.name && hoveredItem) || (activeItem?.name === item.name && activeItem); return m?.initials === 'B' ? 'border-blue-500' : m?.initials === 'O' ? 'border-orange-500' : m?.initials === 'P' ? 'border-pink-500' : m?.initials === 'Y' ? 'border-yellow-500' : m?.initials === 'G' ? 'border-green-500' : m?.initials === 'S' ? 'border-blue-500' : 'border-transparent' })()"
                                 class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                 <div class="space-y-3">
                                     <div class="flex items-center gap-2">
-                                        <div :class="hoveredItem?.initials === 'B' && hoveredItem?.name === item.name ? 'bg-blue-500' : hoveredItem?.initials === 'O' && hoveredItem?.name === item.name ? 'bg-orange-500' : hoveredItem?.initials === 'P' && hoveredItem?.name === item.name ? 'bg-pink-500' : hoveredItem?.initials === 'Y' && hoveredItem?.name === item.name ? 'bg-yellow-500' : hoveredItem?.initials === 'G' && hoveredItem?.name === item.name ? 'bg-green-500' : hoveredItem?.initials === 'S' && hoveredItem?.name === item.name ? 'bg-blue-500' : 'bg-[#869395]'"
+                                        <div :class="item.initials === 'B' ? 'bg-blue-500' : item.initials === 'O' ? 'bg-orange-500' : item.initials === 'P' ? 'bg-pink-500' : item.initials === 'Y' ? 'bg-yellow-500' : item.initials === 'G' ? 'bg-green-500' : item.initials === 'S' ? 'bg-blue-500' : 'bg-[#869395]'"
                                             class="size-8 rounded-full flex items-center justify-center transition-colors duration-300 ease-in-out">
                                             <p class="text-white font-semibold text-xl" x-text="item.initials"></p>
                                         </div>
@@ -681,8 +722,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                        <img x-bind:src="hoveredItem ? hoveredItem.image : defaultImage" alt="direction-parking-all"
+                    <div class="order-1 xl:order-1 sticky top-2 xl:relative rounded-lg overflow-hidden z-10">
+                        <img x-bind:src="currentImage" alt="direction-parking-all"
                             class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                             loading="lazy" decoding="async">
                     </div>
@@ -691,7 +732,8 @@
         </section>
 
         <!-- Bus drop off and pickup -->
-        <section x-cloak x-data="dropOffPickup" class="bg-white px-4 md:px-8 pt-12 md:py-16 xl:pt-24.5">
+        <section id="bus-parking" x-cloak x-data="dropOffPickup"
+            class="bg-white scroll-mt-28 px-4 md:px-8 pt-12 md:py-16 xl:pt-24.5">
             <div class="container mx-auto">
                 <h2
                     class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
@@ -704,7 +746,7 @@
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="item in data">
-                                <div
+                                <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)"
                                     class="bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
@@ -722,7 +764,7 @@
                             </template>
                         </div>
                         <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                            <img src="/drop-off-pickup-image.svg" alt="drop-off-pickup-image"
+                            <img x-bind:src="hoveredItem ? hoveredItem.image : defaultImage" alt="drop-off-pickup-image"
                                 class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                                 loading="lazy" decoding="async">
                         </div>
@@ -732,7 +774,8 @@
         </section>
 
         <!-- ADA Accessible Parking -->
-        <section x-cloak x-data="accessibleParking" class="px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+        <section id="ada-parking" x-cloak x-data="accessibleParking"
+            class="px-4 scroll-mt-28 md:px-8 py-12 md:py-16 xl:py-24.5">
             <div class="container mx-auto">
                 <h2
                     class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
@@ -745,8 +788,9 @@
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="item in data">
-                                <div
-                                    class="bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                                <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)"
+                                    :class="hoveredItem?.initials === 'B' && hoveredItem?.title === item.title ? 'border-blue-500' : hoveredItem?.initials === 'O' && hoveredItem?.title === item.title ? 'border-orange-500' : hoveredItem?.initials === 'P' && hoveredItem?.title === item.title ? 'border-pink-500' : hoveredItem?.initials === 'G' && hoveredItem?.title === item.title ? 'border-green-500' : 'border-transparent'"
+                                    class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
                                             <div :class="item?.initials === 'B' ? 'bg-blue-500' : item?.initials === 'O' ? 'bg-orange-500' : item?.initials === 'P' ? 'bg-pink-500' : item?.initials === 'Y' ? 'bg-yellow-500' : item?.initials === 'G' ? 'bg-green-500' : item?.initials === 'S' ? 'bg-blue-500' : 'bg-[#869395]'"
@@ -775,7 +819,7 @@
         </section>
 
         <!-- EV charging & guideline -->
-        <section class="bg-white px-4 md:px-8 py-12 md:py-16 lg:py-24.5">
+        <section id="ev-charging" class="bg-white scroll-mt-28 px-4 md:px-8 py-12 md:py-16 lg:py-24.5">
             <div class="container mx-auto">
                 <h2
                     class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
@@ -817,7 +861,7 @@
         </section>
 
         <!-- Event parking information -->
-        <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+        <section id="event-parking" class="container scroll-mt-28 mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2 class="font-semibold text-3xl md:text-5xl mb-4 text-center">
                 Event Parking Information
             </h2>
@@ -825,10 +869,10 @@
                 Parking rates, availability, and rules may change during special events.
             </p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-12">
-                <div class="p-4 md:p-5 space-y-4 bg-white rounded-lg">
-                    <img src="/parking-1.svg" alt="Parking lot view during an event" class="size-20 md:size-32"
+                <div class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+                    <img src="/parking-1.svg" alt="Parking lot view during an event" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
-                    <div class="relative">
+                    <div class="relative flex-1 flex flex-col">
                         <h3 class="font-bold text-2xl md:text-[28px]">Special Event Rates</h3>
                         <ul class="pt-5 mb-6 space-y-3">
                             <li class="flex items-start gap-4">
@@ -863,16 +907,16 @@
                                 </p>
                             </li>
                         </ul>
-                        <a href="#" aria-label="View Parking Map for Special Events"
-                            class="mx-auto w-full md:w-auto text-center md:text-left md:ml-auto inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                        <a href="#direction-parking" aria-label="View Parking Map for Special Events"
+                            class="mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
                             Click here for special event rates
                         </a>
                     </div>
                 </div>
-                <div class="p-4 md:p-5 space-y-4 bg-white rounded-lg">
-                    <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-32"
+                <div class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+                    <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
-                    <div class="">
+                    <div class="flex-1 flex flex-col">
                         <h3 class="font-bold text-2xl md:text-[28px]">Oversized Vehicle Parking</h3>
                         <ul class="pt-5 mb-6 space-y-3">
                             <li class="flex items-start gap-4">
@@ -905,7 +949,7 @@
                         </ul>
                         <a href="https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D"
                             aria-label="View Parking Map for Special Events"
-                            class="mx-auto w-full md:w-auto text-center md:text-left md:ml-auto inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                            class="mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
                             Click here for oversized vehicles
                         </a>
                     </div>
@@ -914,7 +958,7 @@
         </section>
 
         <!-- Parking Office Hours & Contact -->
-        <section class="px-4 md:px-8 py-12 md:py-16 xl:py-24.5 bg-white">
+        <section id="office-address" class="px-4 scroll-mt-28 md:px-8 py-12 md:py-16 xl:py-24.5 bg-white">
             <div class="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-12">
                 <div>
                     <h2
@@ -983,7 +1027,8 @@
                                 The Parking Office is located inside the Blue Structure on Level B . Enter the Blue
                                 Structure, proceed to Level B, and look for the “B1” column on the south side
                             </p>
-                            <a href="/" class="text-brand font-semibold text-base underline">
+                            <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8"
+                                class="text-brand font-semibold text-base underline">
                                 Get Directions
                             </a>
                         </div>
@@ -1017,7 +1062,7 @@
                         </p>
                     </div>
                     <div class="w-full lg:w-1/3">
-                        <a href="#"
+                        <a href=""
                             class="px-6 py-4 hover:bg-button/75 transition-colors ease-linear duration-200 md:text-left text-center lg:text-center md:w-auto w-full lg:w-full inline-block bg-button rounded-lg text-white font-bold text-base">
                             Submit a
                             Parking Request
@@ -1028,7 +1073,8 @@
         </section>
 
         <!-- FAQ -->
-        <section class="container grid grid-cols-1 lg:grid-cols-2 mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+        <section id="faq"
+            class="container scroll-mt-28 grid grid-cols-1 lg:grid-cols-2 mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <div>
                 <h2
                     class="font-semibold text-center lg:text-left text-3xl w-full lg:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
@@ -1099,20 +1145,20 @@
                 <div class="space-y-4">
                     <h2 class="font-semibold text-base">Visit</h2>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#">Plan Your Visit</a></li>
-                        <li><a href="#">Hours & Directions</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#office-address">Plan Your Visit</a></li>
+                        <li><a href="#office-address">Hours & Directions</a></li>
+                        <li><a href="https://expositionpark.ca.gov/accessibility/">Accessibility</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="space-y-4">
                     <h2 class="font-semibold text-base ">Parking</h2>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">Bus Parking</a></li>
-                        <li><a href="#">ADA Parking</a></li>
-                        <li><a href="#">EV Charging</a></li>
-                        <li><a href="#">Event Parking</a></li>
+                        <li><a href="#direction-parking">Locations</a></li>
+                        <li><a href="#bus-parking">Bus Parking</a></li>
+                        <li><a href="#ada-parking">ADA Parking</a></li>
+                        <li><a href="#ev-charging">EV Charging</a></li>
+                        <li><a href="#event-parking">Event Parking</a></li>
                     </ul>
                 </div>
                 <div class="space-y-4">
@@ -1127,7 +1173,7 @@
                     <h2 class="font-semibold text-base ">About</h2>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#">History</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="https://expositionpark.ca.gov/contact-us/">Contact</a></li>
                         <li><a href="#">Employment</a></li>
                         <li><a href="#">Media</a></li>
                     </ul>
@@ -1135,12 +1181,13 @@
             </div>
         </section>
         <div class="container mx-auto py-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[#FFFAE6]">
-            <p class="text-sm text-center md:text-left">© 2026 California Science Center. All rights
+            <p class="text-sm text-center md:text-left">© <span id="current-year"></span> California Science Center. All
+                rights
                 reserved.</p>
             <div class="flex flex-wrap justify-center items-center gap-6">
-                <a href="#" class="text-sm">Privacy Policy</a>
-                <a href="#" class="text-sm">Terms of Use</a>
-                <a href="#" class="text-sm">Accessibility</a>
+                <a href="https://expositionpark.ca.gov/privacy" class="text-sm">Privacy Policy</a>
+                <a href="https://expositionpark.ca.gov/conditions-of-use/" class="text-sm">Terms of Use</a>
+                <a href="https://expositionpark.ca.gov/accessibility/" class="text-sm">Accessibility</a>
             </div>
         </div>
     </footer>
