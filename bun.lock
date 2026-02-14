@@ -5,6 +5,7 @@
     "": {
       "name": "exposition-park",
       "dependencies": {
+        "@alpinejs/collapse": "^3.15.8",
         "@tailwindcss/vite": "^4.1.18",
         "alpinejs": "^3.15.8",
         "tailwindcss": "^4.1.18",
@@ -19,6 +20,8 @@
     "vite": "npm:rolldown-vite@7.2.5",
   },
   "packages": {
+    "@alpinejs/collapse": ["@alpinejs/collapse@3.15.8", "", {}, "sha512-zZhD8DHdHuzGFe8+cHNH99K//oFutzKwcy6vagydb3KFlTzmqxTnHZo5sSV81lAazhV7qKsYCKtNV14tR9QkJw=="],
+
     "@emnapi/core": ["@emnapi/core@1.8.1", "", { "dependencies": { "@emnapi/wasi-threads": "1.1.0", "tslib": "^2.4.0" } }, "sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg=="],
 
     "@emnapi/runtime": ["@emnapi/runtime@1.8.1", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg=="],

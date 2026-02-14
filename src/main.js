@@ -1,5 +1,7 @@
 import Alpine from 'alpinejs'
+import collapse from '@alpinejs/collapse'
 
+Alpine.plugin(collapse)
 window.Alpine = Alpine
 
 // Get base URL for assets (handles GitHub Pages deployment)
