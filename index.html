@@ -312,7 +312,7 @@
         <!-- Hero section -->
         <section
             class="object-center bg-no-repeat bg-bottom md:bg-center bg-cover min-h-screen lg:h-220 grid items-center py-20"
-            style="background-image: url('/hero-bg.png')">
+            style="background-image: url('/hero-bg.webp')">
             <div
                 class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-12  mt-20 lg:mt-10 xl:mt-28 relative z-10">
                 <div class="text-left">
@@ -457,7 +457,7 @@
                                     Directions</a>
                             </div>
                             <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
-                                src="/cash-credit-card-tab-image.png" alt="credit-card-tab-image" loading="lazy"
+                                src="/cash-credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
                                 decoding="async" />
                         </div>
                         <div x-show="selectedTab === 'credit-card'" role="tabpanel" id="tabpanel-credit-card"
@@ -484,7 +484,7 @@
                                     class="text-brand p-4 font-semibold text-base underline">Get Directions</a>
                             </div>
                             <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
-                                src="/credit-card-tab-image.png" alt="credit-card-tab-image" loading="lazy"
+                                src="/credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
                                 decoding="async" />
                         </div>
                     </div>
@@ -593,7 +593,7 @@
                                         <path d="m6 6 12 12" />
                                     </svg>
                                 </button>
-                                <img src="/direction-parking-state.png" alt="direction-parking-state"
+                                <img src="/direction-parking-state.webp" alt="direction-parking-state"
                                     class="h-auto w-full" loading="lazy" decoding="async">
                                 <div class="flex items-center gap-3 mt-5 mb-4">
                                     <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
@@ -681,15 +681,17 @@
         </section>
 
         <!-- Direction to Parking -->
-        <section id="direction-parking"
-            class="container scroll-mt-[100px] mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
+        <section id="direction-parking" class="container scroll-mt-[100px] mx-auto  md:px-8 py-12 md:py-16 xl:py-24.5">
             <h2
-                class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
+                class="font-semibold text-3xl px-4 md:px-0 md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                 Directions to Parking Structures and Parking Lots
             </h2>
-            <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+            <p class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
                 Click any lot to see details, availability, rates, and accessibility features.
             </p>
+            <div class="px-4 md:px-0">
+
+            </div>
             <div x-cloak x-data="directions" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -722,7 +724,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="order-1 xl:order-1 sticky top-2 xl:relative rounded-lg overflow-hidden z-10">
+                    <div
+                        class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10">
                         <img x-bind:src="currentImage" alt="direction-parking-all"
                             class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                             loading="lazy" decoding="async">
@@ -809,7 +812,7 @@
                             </template>
                         </div>
                         <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                            <img src="/ada-accessible-parking.svg" alt="ada-accessible-parking"
+                            <img src="/ada-accessible-parking.webp" alt="ada-accessible-parking"
                                 class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                                 loading="lazy" decoding="async">
                         </div>
@@ -851,7 +854,7 @@
                             </a>
                         </div>
                         <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                            <img src="/ev-charging-guideline.svg" alt="ev-charging-guideline"
+                            <img src="/ev-charging-guideline.webp" alt="ev-charging-guideline"
                                 class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                                 loading="lazy" decoding="async">
                         </div>
@@ -972,7 +975,7 @@
                     <img src="/contact-image.svg" alt="Parking office exterior"
                         class=" w-full md:h-[356px] lg:h-auto xl:hidden object-bottom mt-8 md:mt-12 rounded-lg"
                         loading="lazy" decoding="async">
-                    <img src="/contact-image-large.png" alt="Parking office exterior"
+                    <img src="/contact-image-large.webp" alt="Parking office exterior"
                         class="hidden xl:block w-full md:h-full object-bottom lg:h-[400px] xl:h-[572px] mt-8 md:mt-12 rounded-lg"
                         loading="lazy" decoding="async">
                 </div>
@@ -1039,7 +1042,7 @@
 
         <!-- Third-party parking request -->
         <section class="relative my-16 md:my-24 overflow-hidden">
-            <img src="/third-party-parking-bg.png" alt="" aria-hidden="true"
+            <img src="/third-party-parking-bg.webp" alt="" aria-hidden="true"
                 class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" decoding="async">
             <div
                 class="relative py-12 md:py-28 lg:py-52 backdrop-brightness-50 h-full px-4 md:px-8 flex justify-center items-center">

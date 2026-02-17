@@ -14,45 +14,45 @@ Alpine.data('directions', () => ({
       initials: 'B',
       description: '3855 S Figueroa St, Los Angeles, CA 90037 Get directions',
       link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
-      image: `${base}direction-parking-blue.png`,
+      image: `${base}direction-parking-blue.webp`,
     },
     {
       name: 'Orange Structure',
       initials: 'O',
       description: '3975 Bill Robertson Ln, Los Angeles, CA 90037',
       link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
-      image: `${base}direction-parking-orange.png`,
+      image: `${base}direction-parking-orange.webp`,
     },
     {
       name: 'Pink Lot',
       initials: 'P',
       description: '899 S Park Dr, Los Angeles, CA 90037',
       link: 'https://www.google.com/maps/dir//Pink+Lot',
-      image: `${base}direction-parking-pink.png`,
+      image: `${base}direction-parking-pink.webp`,
     },
     {
       name: 'Yellow Lot',
       initials: 'Y',
       description: '3991 Hoover St, Los Angeles, CA 90037',
       link: 'https://www.google.com/maps/place/Yellow+Lot/@34.0114957,-118.2904453,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c8061d305c0d:0xba6274dff4a364b2!8m2!3d34.0114913!4d-118.2878704!16s%2Fg%2F11q40j1sd5?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-yellow.png`,
+      image: `${base}direction-parking-yellow.webp`,
     },
     {
       name: 'Green Lot',
       initials: 'G',
       description: '3986 Hoover St, Los Angeles, CA 90037',
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.png`,
+      image: `${base}direction-parking-green.webp`,
     },
     {
       name: 'State Dr.',
       initials: 'S',
       description: '723-873 State Dr, Los Angeles, CA 90037',
       link: 'https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-state.png`,
+      image: `${base}direction-parking-state.webp`,
     },
   ],
-  defaultImage: `${base}direction-parking-all.png`,
+  defaultImage: `${base}direction-parking-all.webp`,
   hoveredItem: null,
   activeItem: null,
   _observer: null,
@@ -103,7 +103,7 @@ Alpine.data('dropOffPickup', () => ({
       description:
         'Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.',
       link: 'https://www.google.com/maps/place/631-693+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA/@34.0154501,-118.2901703,790m/data=!3m2!1e3!4b1!4m15!1m8!3m7!1s0x80c2c7e2aa25f9e9:0x9b567c4059f24b05!2s700+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA!3b1!8m2!3d34.0161726!4d-118.2874233!16s%2Fg%2F11ckqrv23x!3m5!1s0x80c2c807fd7ad3e9:0xe620e9f8b1e3b67b!8m2!3d34.0154457!4d-118.2875954!16s%2Fg%2F11rz5m8hkh?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}drop-off-pickup-image.png`,
+      image: `${base}drop-off-pickup-image.webp`,
     },
     {
       title: 'Bus Parking',
@@ -111,7 +111,7 @@ Alpine.data('dropOffPickup', () => ({
       description:
         'Bus Parking available in the Green Lot, subject to availability and event reservations.',
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.png`,
+      image: `${base}direction-parking-green.webp`,
     },
     {
       title: 'Oversize Vehicles',
@@ -119,7 +119,7 @@ Alpine.data('dropOffPickup', () => ({
       description:
         'Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.',
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.png`,
+      image: `${base}direction-parking-green.webp`,
     },
     {
       title: 'Location',
@@ -127,10 +127,10 @@ Alpine.data('dropOffPickup', () => ({
       description:
         'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',
       link: null,
-      image: `${base}drop-off-pickup-image.png`,
+      image: `${base}drop-off-pickup-image.webp`,
     },
   ],
-  defaultImage: `${base}drop-off-pickup-image.png`,
+  defaultImage: `${base}drop-off-pickup-image.webp`,
   hoveredItem: null,
   hover(item) {
     this.hoveredItem = item
