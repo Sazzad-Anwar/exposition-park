@@ -12,74 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="/src/style.css" rel="stylesheet" />
     <title>exposition-park</title>
-    <style>
-        html.high-contrast {
-            filter: contrast(1.5);
-        }
-
-        html.high-contrast body,
-        html.high-contrast nav,
-        html.high-contrast section,
-        html.high-contrast footer,
-        html.high-contrast div {
-            background-color: black !important;
-            color: white !important;
-            border-color: white !important;
-        }
-
-        html.high-contrast a,
-        html.high-contrast button,
-        html.high-contrast h1,
-        html.high-contrast h2,
-        html.high-contrast h3,
-        html.high-contrast h4,
-        html.high-contrast h5,
-        html.high-contrast h6,
-        html.high-contrast p,
-        html.high-contrast span,
-        html.high-contrast svg {
-            color: yellow !important;
-            fill: black !important;
-            background-color: black !important;
-        }
-
-        html.high-contrast img {
-            filter: grayscale(100%) contrast(1.2);
-        }
-
-        html.high-contrast .bg-brand {
-            background-color: #000 !important;
-            border-bottom: 2px solid white;
-        }
-
-        /* Fix hover states in High Contrast - Only for Settings Dropdown */
-        /* html.high-contrast #accessibility-settings-dropdown button:hover,
-        html.high-contrast #accessibility-settings-dropdown a:hover {
-            background-color: yellow !important;
-            color: black !important;
-            border-color: yellow !important;
-        } */
-
-        html.high-contrast #accessibility-settings-dropdown button:hover *,
-        html.high-contrast #accessibility-settings-dropdown a:hover * {
-            /* color: black !important; */
-            fill: black !important;
-        }
-
-        /* Preserve toggle switch visibility in High Contrast */
-        html.high-contrast #accessibility-settings-dropdown .toggle-track {
-            background-color: #555 !important;
-            border: 2px solid white !important;
-        }
-
-        html.high-contrast #accessibility-settings-dropdown .toggle-track.active {
-            background-color: yellow !important;
-        }
-
-        html.high-contrast #accessibility-settings-dropdown .toggle-knob {
-            background-color: white !important;
-        }
-    </style>
 </head>
 
 <body class="relative font-sans">
@@ -552,15 +484,14 @@
             </div>
         </section>
 
-        <!-- Gravida tortor -->
+        <!-- Key Parking Processes -->
         <section class="bg-white  bg-top-right object-contain bg-no-repeat" style="background-image: url('/bg-4.svg');">
             <div class="container mx-auto px-4 md:px-8 py-16 lg:py-24.5">
                 <h2 class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-left">
-                    A risus gravida tortor
+                    Key Parking Processes
                 </h2>
                 <p class="text-lg md:text-lg lg:text-xl font-normal text-left max-w-2xl mr-auto">
-                    Click any lot to see details, availability, rates, and
-                    accessibility features.
+                    Click links below for directions to specified areas
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 md:mt-13 lg:mt-20">
                     <div x-data="{ showModal: false }"
@@ -724,10 +655,14 @@
                             </p>
                         </div>
                     </div>
-                    <div
-                        class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10">
+                    <div class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10 reveal-container h-[280px] md:h-[364px] lg:h-[576px]"
+                        :class="{ 'animating': animating }">
+                        <!-- Previous Image Layer (stays at bottom) -->
+                        <img :src="previousImage" alt="" class="reveal-layer object-center">
+
+                        <!-- Current Image Layer (fades in on top) -->
                         <img x-bind:src="currentImage" alt="direction-parking-all"
-                            class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
+                            class="reveal-layer reveal-current object-center transition-opacity duration-300 ease-in-out"
                             loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -766,9 +701,14 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="order-1 xl:order-1 rounded-lg overflow-hidden">
-                            <img x-bind:src="hoveredItem ? hoveredItem.image : defaultImage" alt="drop-off-pickup-image"
-                                class="w-full  h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
+                        <div class="order-1 xl:order-1 rounded-lg overflow-hidden reveal-container relative h-[280px] md:h-[364px] lg:h-[576px]"
+                            :class="{ 'animating': animating }">
+                            <!-- Previous Image Layer -->
+                            <img :src="previousImage" alt="" class="reveal-layer object-center">
+
+                            <!-- Current Image Layer -->
+                            <img x-bind:src="currentImage" alt="drop-off-pickup-image"
+                                class="reveal-layer reveal-current object-center transition-opacity duration-300 ease-in-out"
                                 loading="lazy" decoding="async">
                         </div>
                     </div>

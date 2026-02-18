@@ -55,9 +55,21 @@ Alpine.data('directions', () => ({
   defaultImage: `${base}direction-parking-all.webp`,
   hoveredItem: null,
   activeItem: null,
+  previousImage: `${base}direction-parking-all.webp`,
+  animating: false,
   _observer: null,
   hover(item) {
+    if (this.hoveredItem === item) return
+
+    // Set previous image before changing
+    this.previousImage = this.currentImage
     this.hoveredItem = item
+
+    // Trigger animation
+    this.animating = false
+    this.$nextTick(() => {
+      this.animating = true
+    })
   },
   get currentImage() {
     if (this.hoveredItem) return this.hoveredItem.image
@@ -132,8 +144,21 @@ Alpine.data('dropOffPickup', () => ({
   ],
   defaultImage: `${base}drop-off-pickup-image.webp`,
   hoveredItem: null,
+  previousImage: `${base}drop-off-pickup-image.webp`,
+  animating: false,
   hover(item) {
+    if (this.hoveredItem === item) return
+
+    this.previousImage = this.currentImage
     this.hoveredItem = item
+
+    this.animating = false
+    this.$nextTick(() => {
+      this.animating = true
+    })
+  },
+  get currentImage() {
+    return this.hoveredItem ? this.hoveredItem.image : this.defaultImage
   },
 }))
 
@@ -178,9 +203,23 @@ Alpine.data('accessibleParking', () => ({
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
     },
   ],
+  defaultImage: `${base}direction-parking-all.webp`,
   hoveredItem: null,
+  previousImage: `${base}direction-parking-all.webp`,
+  animating: false,
   hover(item) {
+    if (this.hoveredItem === item) return
+
+    this.previousImage = this.currentImage
     this.hoveredItem = item
+
+    this.animating = false
+    this.$nextTick(() => {
+      this.animating = true
+    })
+  },
+  get currentImage() {
+    return this.defaultImage // The ADA section seems to only use the default map image for now but this keeps it consistent
   },
 }))
 
