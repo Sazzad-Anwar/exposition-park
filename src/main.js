@@ -155,6 +155,8 @@ Alpine.data('dropOffPickup', () => ({
   hoveredItem: null,
   previousImage: `${base}drop-off-pickup-image.webp`,
   animating: false,
+  _observer: null,
+  activeItem: null,
   hover(item) {
     if (this.hoveredItem === item) return
 
@@ -167,7 +169,47 @@ Alpine.data('dropOffPickup', () => ({
     })
   },
   get currentImage() {
-    return this.hoveredItem ? this.hoveredItem.image : this.defaultImage
+    if (this.hoveredItem) return this.hoveredItem.image
+    if (this.activeItem) return this.activeItem.image
+    return this.defaultImage
+  },
+  init() {
+    // Preload all images
+    this.data.forEach((item) => {
+      const img = new Image()
+      img.src = item.image
+    })
+    // Preload default image
+    const defaultImg = new Image()
+    defaultImg.src = this.defaultImage
+
+    this.$nextTick(() => {
+      const cards = this.$root.querySelectorAll('[data-bus-card]')
+      if (!cards.length) return
+
+      this._observer = new IntersectionObserver(
+        (entries) => {
+          if (window.innerWidth >= 1280) return
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = parseInt(entry.target.dataset.busCard)
+              this.activeItem = this.data[index]
+            }
+          })
+        },
+        {
+          rootMargin: '-280px 0px -60% 0px',
+          threshold: 0,
+        },
+      )
+
+      cards.forEach((card) => this._observer.observe(card))
+    })
+  },
+  destroy() {
+    if (this._observer) {
+      this._observer.disconnect()
+    }
   },
 }))
 
@@ -220,6 +262,8 @@ Alpine.data('accessibleParking', () => ({
   hoveredItem: null,
   previousImage: `${base}ada-accessible-parking.webp`,
   animating: false,
+  _observer: null,
+  activeItem: null,
   hover(item) {
     if (this.hoveredItem === item) return
 
@@ -232,7 +276,9 @@ Alpine.data('accessibleParking', () => ({
     })
   },
   get currentImage() {
-    return this.hoveredItem ? this.hoveredItem.image : this.defaultImage
+    if (this.hoveredItem) return this.hoveredItem.image
+    if (this.activeItem) return this.activeItem.image
+    return this.defaultImage
   },
   init() {
     // Preload images
@@ -242,6 +288,34 @@ Alpine.data('accessibleParking', () => ({
     })
     const defaultImg = new Image()
     defaultImg.src = this.defaultImage
+
+    this.$nextTick(() => {
+      const cards = this.$root.querySelectorAll('[data-ada-card]')
+      if (!cards.length) return
+
+      this._observer = new IntersectionObserver(
+        (entries) => {
+          if (window.innerWidth >= 1280) return
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = parseInt(entry.target.dataset.adaCard)
+              this.activeItem = this.data[index]
+            }
+          })
+        },
+        {
+          rootMargin: '-280px 0px -60% 0px',
+          threshold: 0,
+        },
+      )
+
+      cards.forEach((card) => this._observer.observe(card))
+    })
+  },
+  destroy() {
+    if (this._observer) {
+      this._observer.disconnect()
+    }
   },
 }))
 
