@@ -27,7 +27,7 @@ Alpine.data('directions', () => ({
       name: 'Pink Lot',
       initials: 'P',
       description: '899 S Park Dr, Los Angeles, CA 90037',
-      link: 'https://www.google.com/maps/dir//Pink+Lot',
+      link: 'https://www.google.com/maps/place/800-898+S+Park+Dr,+Los+Angeles,+CA+90037/@34.0119915,-118.2899569,1515m/data=!3m1!1e3!4m6!3m5!1s0x80c2c806206cf8bd:0x8fc4a3fd677d1e03!8m2!3d34.0122078!4d-118.287761!16s%2Fg%2F11df0qvxj2?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D',
       image: `${base}direction-parking-pink.webp`,
     },
     {
@@ -143,7 +143,7 @@ Alpine.data('dropOffPickup', () => ({
       image: `${base}direction-parking-green.webp`,
     },
     {
-      title: 'Location',
+      title: 'Route from Bus Drop-Off to Bus Parking',
       icon: `${base}location-icon.svg`,
       description:
         'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',

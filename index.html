@@ -256,7 +256,7 @@
                         Find convenient parking options, rates, accessibility information,
                         and event-day guidelines all in one place
                     </p>
-                    <a href="#" aria-label="View Parking Map"
+                    <a href="#direction-parking" aria-label="View Parking Map"
                         class="w-full text-center md:text-left md:w-auto inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
                         View Parking Map
                     </a>
@@ -384,7 +384,8 @@
                                         non-refundable. Lost ticket fee applies.
                                     </p>
                                 </div>
-                                <a href="https://maps.app.goo.gl/8CQJZeRXezZPihX36"
+                                <a target="_blank"
+                                    href="https://www.google.com/maps/place/South+Figueroa+Corridor,+Los+Angeles,+CA+90037/@34.0153362,-118.2901589,901m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x80c2c809c115ef39:0xf60597dd3906e107!2sExposition+Park!8m2!3d34.0153446!4d-118.2871848!16zL20vMDVicTc0!3m5!1s0x80c2c80836188093:0xdd2660a6a67d8263!8m2!3d34.0153318!4d-118.285288!16s%2Fg%2F11c88_b4k3?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
                                     class="lg:px-4 text-brand order-1 lg:order-2 font-semibold text-base underline">Get
                                     Directions</a>
                             </div>
@@ -412,7 +413,8 @@
                                         All parking payments are non-refundable. Lost ticket fee applies.
                                     </p>
                                 </div>
-                                <a href="https://www.google.com/maps/search/34.014637,+-118.285349?entry=tts&g_ep=EgoyMDI0MTIxMS4wIPu8ASoASAFQAw%3D%3D"
+                                <a target="_blank"
+                                    href="https://www.google.com/maps/place/Lockheed+A-12+%22Trainer%22,+600+State+Dr,+Los+Angeles,+CA+90037/@34.0153464,-118.2946275,3603m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c809b5fc8d1d:0xfcb08415b838e7a4!8m2!3d34.0153295!4d-118.2843278!16s%2Fg%2F11bvthnrsn?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
                                     class="text-brand p-4 font-semibold text-base underline">Get Directions</a>
                             </div>
                             <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
@@ -524,20 +526,20 @@
                                         <path d="m6 6 12 12" />
                                     </svg>
                                 </button>
-                                <img src="/direction-parking-state.webp" alt="direction-parking-state"
+                                <img src="/direction-parking-blue.webp" alt="direction-parking-state"
                                     class="h-auto w-full" loading="lazy" decoding="async">
                                 <div class="flex items-center gap-3 mt-5 mb-4">
                                     <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
-                                        <p class="text-white font-semibold text-lg">S</p>
+                                        <p class="text-white font-semibold text-lg">B</p>
                                     </div>
-                                    <h3 class="font-bold text-xl md:text-2xl">State Dr.</h3>
+                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure</h3>
                                 </div>
                                 <p class="text-text-secondary text-base mb-10">
-                                    723-873 State Dr, Los Angeles, CA 90037
+                                    3855 S Figueroa St, Los Angeles, CA 90037 Get directions
                                 </p>
 
-                                <a href="https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D'"
-                                    target="_blank" class="text-brand font-semibold text-base underline">
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
+                                    class="text-brand font-semibold text-base underline">
                                     Get Directions
                                 </a>
                             </div>
@@ -545,39 +547,114 @@
                     </div>
                     <div class="hidden lg:block"></div>
                     <div class="hidden lg:block"></div>
-                    <div class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
+                    <div x-data="{ showModal: false }"
+                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
                         <img src="/tortor_icon_2.svg" alt="tortor_icon_2" class="size-8 mb-4" loading="lazy"
                             decoding="async">
                         <h3 class="font-semibold text-xl mb-3">
-                            Blue Structure Pay Station
-                            – Cash & Credit Card Accepted
+                            Blue Structure South Elevator Location
                         </h3>
                         <p class="text-base text-text-secondary mb-11">
-                            Located on the northwest corner of Level A. Insert ticket first, pay with cash or credit
-                            card, and keep ticket for
+                            Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA
+                            90037
                         </p>
-                        <a href="https://www.google.com/maps/search/34.014637,+-118.285349?entry=tts&g_ep=EgoyMDI0MTIxMS4wIPu8ASoASAFQAw%3D%3D"
-                            class="text-brand font-semibold text-base underline">
+                        <button @click="showModal = true"
+                            class="text-brand font-semibold text-base underline cursor-pointer">
                             Click Here for directions
-                        </a>
+                        </button>
+                        <!-- Modal -->
+                        <div x-show="showModal" x-cloak x-transition.opacity
+                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                            @keydown.escape.window="showModal = false">
+                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
+                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
+                                @click.stop>
+                                <button @click="showModal = false"
+                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                                    aria-label="Close modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                                <img src="/south-elevator.webp" alt="south-elevator" class="h-auto w-full"
+                                    loading="lazy" decoding="async">
+                                <div class="flex items-center gap-3 mt-5 mb-4">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-semibold text-lg">E1</p>
+                                    </div>
+                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure South Elevator Location
+                                    </h3>
+                                </div>
+                                <p class="text-text-secondary text-base mb-10">
+                                    Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los
+                                    Angeles, CA
+                                    90037
+                                </p>
+
+                                <a href="https://www.google.com/maps/@34.0144994,-118.285494,3a,75y,57.4h,90t/data=!3m7!1e1!3m5!1skOHaD3gKKgk-GLg95KvWWQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DkOHaD3gKKgk-GLg95KvWWQ%26yaw%3D57.401665!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" class="text-brand font-semibold text-base underline">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
+                    <div x-data="{ showModal: false }"
+                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
                         <img src="/tortor_icon_3.svg" alt="tortor_icon_3" class="size-8 mb-4" loading="lazy"
                             decoding="async">
                         <h3 class="font-semibold text-xl mb-3">
-                            Blue Structure Pay Station 2
-                            – Credit Card Only
+                            Blue Structure North Elevator Location
                         </h3>
                         <p class="text-base text-text-secondary mb-11">
-                            Located on the northeast corner of Level A. Insert ticket first, pay with credit card, and
-                            keep ticket for exit.
+                            Located at 600 State Dr, near the California Science Center, Los Angeles, CA 90037
                         </p>
-                        <a href="https://maps.app.goo.gl/8CQJZeRXezZPihX36"
-                            class="text-brand font-semibold text-base underline">
+
+                        <button @click="showModal = true"
+                            class="text-brand font-semibold text-base underline cursor-pointer">
                             Click Here for directions
-                        </a>
+                        </button>
+                        <!-- Modal -->
+                        <div x-show="showModal" x-cloak x-transition.opacity
+                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                            @keydown.escape.window="showModal = false">
+                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
+                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
+                                @click.stop>
+                                <button @click="showModal = false"
+                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                                    aria-label="Close modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                                <img src="/direction-parking-blue.webp" alt="direction-parking-state"
+                                    class="h-auto w-full" loading="lazy" decoding="async">
+                                <div class="flex items-center gap-3 mt-5 mb-4">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-semibold text-lg">E2</p>
+                                    </div>
+                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure North Elevator Location
+                                    </h3>
+                                </div>
+                                <p class="text-text-secondary text-base mb-10">
+                                    Located at 600 State Dr, near the California Science Center, Los Angeles, CA 90037
+                                </p>
+
+                                <a href="https://www.google.com/maps/place/Lockheed+A-12+%22Trainer%22,+600+State+Dr,+Los+Angeles,+CA+90037/@34.0153464,-118.2946275,3603m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c809b5fc8d1d:0xfcb08415b838e7a4!8m2!3d34.0153295!4d-118.2843278!16s%2Fg%2F11bvthnrsn?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" class="text-brand font-semibold text-base underline">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
+                    <div x-data="{ showModal: false }"
+                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
                         <img src="/tortor_icon_4.svg" alt="tortor_icon_4" class="size-8 mb-4" loading="lazy"
                             decoding="async">
                         <h3 class="font-semibold text-xl mb-3">
@@ -587,10 +664,45 @@
                         <p class="text-base text-text-secondary mb-11">
                             Cash and credit cards are accepted at the pay station on Level A.
                         </p>
-                        <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8"
-                            class="text-brand font-semibold text-base underline">
+                        <button @click="showModal = true"
+                            class="text-brand font-semibold text-base underline cursor-pointer">
                             Click here (Blue Structure)
-                        </a>
+                        </button>
+                        <!-- Modal -->
+                        <div x-show="showModal" x-cloak x-transition.opacity
+                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                            @keydown.escape.window="showModal = false">
+                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
+                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
+                                @click.stop>
+                                <button @click="showModal = false"
+                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                                    aria-label="Close modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                                <img src="/direction-parking-blue.webp" alt="blue-structur" class="h-auto w-full"
+                                    loading="lazy" decoding="async">
+                                <div class="flex items-center gap-3 mt-5 mb-4">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-semibold text-lg">B</p>
+                                    </div>
+                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure</h3>
+                                </div>
+                                <p class="text-text-secondary text-base mb-10">
+                                    3855 S Figueroa St, Los Angeles, CA 90037 Get directions
+                                </p>
+
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
+                                    class="text-brand font-semibold text-base underline">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-6 md:mt-10">
@@ -641,7 +753,8 @@
                                     </div>
                                     <p class="text-base text-text-secondary" x-text="item.description"></p>
                                 </div>
-                                <a x-bind:href="item.link" class="text-brand font-semibold text-base underline">
+                                <a target="_blank" x-bind:href="item.link"
+                                    class="text-brand font-semibold text-base underline">
                                     Get Directions
                                 </a>
                             </div>
@@ -744,7 +857,7 @@
                                         </div>
                                         <p class="text-base text-text-secondary" x-text="item.description"></p>
                                     </div>
-                                    <a x-show="item.link" x-bind:href="item.link"
+                                    <a target="_blank" x-show="item.link" x-bind:href="item.link"
                                         class="text-brand font-semibold text-base underline">
                                         Get Directions
                                     </a>
@@ -768,6 +881,7 @@
                     class="font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     EV Charging & Guideline
                 </h2>
+
                 <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Click any lot to see details, availability, rates, and accessibility features.
                 </p>
@@ -783,9 +897,16 @@
                                     <h3 class="font-semibold text-xl">Blue Structure</h3>
                                 </div>
                                 <p class="text-base text-text-secondary">
+                                    EV charging stations are located in the Blue Structure at 3855 S Figueroa St, Los
+                                    Angeles, CA 90037, and are available on a first-come, first-served basis. Charger
+                                    availability is as follows:
+                                    <br>
                                     Level A: 2 Dual Chargers
-                                    Level B: 2 Single Chargers, 11 Dual Chargers
-                                    Address: 3855 S Figueroa St, Los Angeles, CA 90037
+                                    <br>
+                                    Level B: 2 Single Chargers and 11 Dual Chargers
+                                    <br>
+                                    To ensure access for all guests, please limit charging to a maximum of three (3)
+                                    hours and move your vehicle promptly once charging is complete.
                                 </p>
                             </div>
                             <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8"
@@ -856,7 +977,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+                <div x-data="{showModal: false}" class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
                     <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
                     <div class="flex-1 flex flex-col">
@@ -890,11 +1011,47 @@
                                 </p>
                             </li>
                         </ul>
-                        <a href="https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D"
-                            aria-label="View Parking Map for Special Events"
+
+                        <button @click="showModal = true"
                             class="mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
                             Click here for oversized vehicles
-                        </a>
+                        </button>
+                        <!-- Modal -->
+                        <div x-show="showModal" x-cloak x-transition.opacity
+                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                            @keydown.escape.window="showModal = false">
+                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
+                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
+                                @click.stop>
+                                <button @click="showModal = false"
+                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                                    aria-label="Close modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                                <img src="/direction-parking-green.webp" alt="green-lot" class="h-auto w-full"
+                                    loading="lazy" decoding="async">
+                                <div class="flex items-center gap-3 mt-5 mb-4">
+                                    <div class="size-10 rounded-full bg-green-500 flex items-center justify-center">
+                                        <p class="text-white font-semibold text-lg">G</p>
+                                    </div>
+                                    <h3 class="font-bold text-xl md:text-2xl">Green Lot
+                                    </h3>
+                                </div>
+                                <p class="text-text-secondary text-base mb-10">
+                                    3986 Hoover St, Los Angeles, CA 90037
+                                </p>
+
+                                <a href="https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" class="text-brand font-semibold text-base underline">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -981,7 +1138,7 @@
         </section>
 
         <!-- Third-party parking request -->
-        <section class="relative my-16 md:my-24 overflow-hidden">
+        <section hidden class="relative my-16 md:my-24 overflow-hidden">
             <img src="/third-party-parking-bg.webp" alt="" aria-hidden="true"
                 class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" decoding="async">
             <div
