@@ -183,6 +183,7 @@ Alpine.data('accessibleParking', () => ({
         Level B: 9 ADA Spaces
         Level C: 11 ADA Spaces`,
       link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
+      image: `${base}direction-parking-blue.webp`,
     },
     {
       title: 'Orange Structure',
@@ -192,6 +193,7 @@ Alpine.data('accessibleParking', () => ({
         3975 Bill Robertson Ln, Los Angeles, CA 90037:
         P1 Level: 25 ADA Spaces`,
       link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
+      image: `${base}direction-parking-orange.webp`,
     },
     {
       title: 'Pink Lot',
@@ -201,6 +203,7 @@ Alpine.data('accessibleParking', () => ({
         899 S Park Dr, Los Angeles, CA 90037:
         Lot: 10 ADA Spaces`,
       link: 'https://www.google.com/maps/dir//Pink+Lot',
+      image: `${base}direction-parking-pink.webp`,
     },
     {
       title: 'Green Lot',
@@ -210,11 +213,12 @@ Alpine.data('accessibleParking', () => ({
         3986 Hoover St, Los Angeles, CA 90037:
         20 ADA Spaces`,
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+      image: `${base}direction-parking-green.webp`,
     },
   ],
-  defaultImage: `${base}direction-parking-all.webp`,
+  defaultImage: `${base}ada-accessible-parking.webp`,
   hoveredItem: null,
-  previousImage: `${base}direction-parking-all.webp`,
+  previousImage: `${base}ada-accessible-parking.webp`,
   animating: false,
   hover(item) {
     if (this.hoveredItem === item) return
@@ -228,7 +232,16 @@ Alpine.data('accessibleParking', () => ({
     })
   },
   get currentImage() {
-    return this.defaultImage // The ADA section seems to only use the default map image for now but this keeps it consistent
+    return this.hoveredItem ? this.hoveredItem.image : this.defaultImage
+  },
+  init() {
+    // Preload images
+    this.data.forEach((item) => {
+      const img = new Image()
+      img.src = item.image
+    })
+    const defaultImg = new Image()
+    defaultImg.src = this.defaultImage
   },
 }))
 
