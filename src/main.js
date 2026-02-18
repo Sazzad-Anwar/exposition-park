@@ -77,6 +77,15 @@ Alpine.data('directions', () => ({
     return this.defaultImage
   },
   init() {
+    // Preload all images
+    this.data.forEach((item) => {
+      const img = new Image()
+      img.src = item.image
+    })
+    // Preload default image
+    const defaultImg = new Image()
+    defaultImg.src = this.defaultImage
+
     this.$nextTick(() => {
       const cards = this.$root.querySelectorAll('[data-direction-card]')
       if (!cards.length) return
