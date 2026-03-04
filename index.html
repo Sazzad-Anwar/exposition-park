@@ -195,7 +195,7 @@
 
                     <!-- Desktop Navigation -->
                     <div class="hidden lg:flex items-center gap-4">
-                        <ul class="flex items-center font-semibold text-base gap-6">
+                        <ul class="flex items-center font-bold text-base gap-6">
                             <li><a href="https://expositionpark.ca.gov/about-us/" class="text-white hover:text-gray-300"
                                     target="_blank" rel="noopener noreferrer">About Us</a></li>
                             <li><a href="https://expositionpark.ca.gov/governance/"
@@ -258,11 +258,10 @@
         <section
             class="object-center bg-no-repeat bg-bottom md:bg-center bg-cover min-h-screen lg:h-220 grid items-center py-20"
             style="background-image: url('/hero-bg.webp')">
-            <div
-                class="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-12  mt-20 lg:mt-10 xl:mt-28 relative z-10">
-                <div class="text-left">
+            <div class="container mx-auto px-4 md:px-8 space-y-12 relative z-10">
+                <div class="text-left md:max-w-[85%] lg:max-w-[50%] mt-20 lg:mt-10 xl:mt-[96px]">
                     <h1
-                        class="text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-white mb-4 leading-[96%] lg:leading-25.5">
+                        class="text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-[#FFFFFFE5] mb-4 leading-[100%] lg:leading-25.5">
                         Exposition Park Parking Rates
                     </h1>
                     <p class="text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
@@ -275,71 +274,45 @@
                     </a>
                 </div>
                 <!-- Pricing Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4" role="list">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[91.5px] w-full" role="list">
                     <div role="listitem"
-                        class="lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
-                        <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
-                            <h2 class="text-text-secondary text-base font-normal">
-                                Daily Parking
+                        class="bg-white rounded-lg p-4 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-3 md:h-[148px]">
+                        <img src="/parking.svg" alt="" aria-hidden="true"
+                            class="size-10 mt-2 md:size-12 md:mb-8 lg:mb-0" />
+                        <div class="flex flex-col items-start gap-3 space-y-3 md:space-y-0 justify-between w-full">
+                            <h2 class="text-text-secondary text-xl font-semibold">
+                                Daily Parking Rate
                             </h2>
-                            <p class="text-xs text-text-secondary">
-                                Daily rate is applicable only to guests with confirmed museum attendance or valid
-                                exhibit proof of purchase
-                            </p>
 
-                            </span>
-                            <p class="font-bold text-lg md:text-[28px]">$20.00</p>
+                            <button class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
                         </div>
-                        <img src="/parking.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
                     </div>
                     <div role="listitem"
-                        class="order-4 md:col-span-3 lg:col-span-1 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg gap-3">
-                        <div class="flex flex-col space-y-3 md:space-y-0 justify-between w-full">
-                            <h2 class="text-text-secondary text-base font-normal">
-                                Special Event & After Hours
+                        class="bg-white rounded-lg p-4 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-3 md:h-[148px]">
+                        <img src="/calendar.svg" alt="" aria-hidden="true"
+                            class="size-10 mt-2 md:size-12 md:mb-8 lg:mb-0" />
+                        <div class="flex flex-col items-start gap-3 space-y-3 md:space-y-0 justify-between w-full">
+                            <h2 class="text-text-secondary text-xl font-semibold">
+                                Special Event & After Hours Parking Rates
                             </h2>
-                            <p class="text-xs text-text-secondary">
-                                <span class="text-text-secondary/70">(after 5pm)</span> Special
-                                Event
-                                rates shown are minimums and may increase based on park activity.
-                            </p>
-                            <p class="font-bold text-lg md:text-[28px]">$24.00</p>
+
+                            <button class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
                         </div>
-                        <img src="/calendar.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
                     </div>
-                    <div role="listitem"
-                        class="md:order-3 lg:order-0 bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
-                        <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
-                            <h2 class="text-text-secondary text-base font-normal">
-                                School Buses
-                            </h2>
-                            <p class="font-bold text-lg md:text-[28px]">$20.00</p>
-                        </div>
-                        <img src="/bus.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
-                    </div>
-                    <div class="md:order-3 lg:order-0 w-full lg:w-103.5 lg:ml-auto lg:col-span-1">
+                    <div class=" w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
                         <div role="listitem"
-                            class="bg-white rounded-lg p-5 flex flex-row md:flex-col-reverse lg:flex-row items-center md:items-start lg:items-center justify-between w-full lg:w-103.5 lg:ml-auto shadow-lg">
-                            <div class="flex flex-col space-y-3 md:space-y-0 justify-between">
-                                <h2 class="text-text-secondary text-base font-normal">
-                                    Oversized Vehicles
+                            class="bg-white rounded-lg p-4 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-3 md:h-[148px]">
+                            <img src="/car.png" alt="" aria-hidden="true" class="w-auto h-9 mt-2 md:mb-8 lg:mb-0" />
+                            <div class="flex flex-col items-start gap-3 space-y-3 md:space-y-0 justify-between">
+                                <h2 class="text-text-secondary text-xl font-semibold">
+                                    Oversized Vehicle
+                                    Parking Rate
                                 </h2>
-                                <p class="text-xs text-text-secondary">
-                                    (charter bus, limo, RV,
-                                    etc.)
-                                </p>
-                                <p class="font-bold text-lg md:text-[28px]">$42.00</p>
+                                <button class="font-semibold text-sm md:text-base text-button underline">View
+                                    Rates</button>
                             </div>
-                            <img src="/car.svg" alt="" aria-hidden="true" class="size-10 md:size-12 md:mb-8 lg:mb-0" />
+
                         </div>
-                    </div>
-                    <div
-                        class="order-5 md:order-5 md:col-span-3 lg:col-span-1 lg:order-0 lg:w-103.5 lg:ml-auto flex items-start gap-x-2 mt-1">
-                        <img src="/info-icon.svg" alt="Information icon" class="size-2.5 md:size-2.5 mt-1" />
-                        <p class="text-sm font-normal text-white leading-5.25 italic">
-                            Special event rates vary. Oversized vehicles charged per spaces occupied. Advance
-                            booking recommended for oversized vehicles.
-                        </p>
                     </div>
                 </div>
             </div>
