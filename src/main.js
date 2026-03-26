@@ -44,13 +44,13 @@ Alpine.data('directions', () => ({
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
       image: `${base}direction-parking-green.webp`,
     },
-    {
-      name: 'State Dr.',
-      initials: 'S',
-      description: '723-873 State Dr, Los Angeles, CA 90037',
-      link: 'https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-state.webp`,
-    },
+    // {
+    //   name: 'State Dr.',
+    //   initials: 'S',
+    //   description: '723-873 State Dr, Los Angeles, CA 90037',
+    //   link: 'https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
+    //   image: `${base}direction-parking-state.webp`,
+    // },
   ],
   defaultImage: `${base}direction-parking-all.webp`,
   hoveredItem: null,
@@ -219,11 +219,12 @@ Alpine.data('accessibleParking', () => ({
       title: 'Blue Structure',
       initials: 'B',
       color: 'blue',
-      description: `
-        3855 S Figueroa St, Los Angeles, CA 90037:
-        Level A: 43 ADA Spaces
-        Level B: 9 ADA Spaces
-        Level C: 11 ADA Spaces`,
+      description: [
+        '3855 S Figueroa St, Los Angeles, CA 90037',
+        'Level A: 43 ADA Spaces',
+        'Level B: 9 ADA Spaces',
+        'Level C: 11 ADA Spaces',
+      ],
       link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
       image: `${base}direction-parking-blue.webp`,
     },
@@ -231,9 +232,10 @@ Alpine.data('accessibleParking', () => ({
       title: 'Orange Structure',
       color: 'orange',
       initials: 'O',
-      description: `
-        3975 Bill Robertson Ln, Los Angeles, CA 90037:
-        P1 Level: 25 ADA Spaces`,
+      description: [
+        '3975 Bill Robertson Ln, Los Angeles, CA 90037',
+        'P1 Level: 25 ADA Spaces',
+      ],
       link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
       image: `${base}direction-parking-orange.webp`,
     },
@@ -241,9 +243,10 @@ Alpine.data('accessibleParking', () => ({
       title: 'Pink Lot',
       color: 'pink',
       initials: 'P',
-      description: `
-        899 S Park Dr, Los Angeles, CA 90037:
-        Lot: 10 ADA Spaces`,
+      description: [
+        '899 S Park Dr, Los Angeles, CA 90037',
+        'Lot: 10 ADA Spaces',
+      ],
       link: 'https://www.google.com/maps/dir//Pink+Lot',
       image: `${base}direction-parking-pink.webp`,
     },
@@ -251,9 +254,7 @@ Alpine.data('accessibleParking', () => ({
       title: 'Green Lot',
       color: 'green',
       initials: 'G',
-      description: `
-        3986 Hoover St, Los Angeles, CA 90037:
-        20 ADA Spaces`,
+      description: ['3986 Hoover St, Los Angeles, CA 90037', '20 ADA Spaces'],
       link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
       image: `${base}direction-parking-green.webp`,
     },
@@ -392,7 +393,7 @@ Alpine.data('faq', () => ({
     {
       title: 'Is overnight parking allowed?',
       description:
-        'No, overnight parking is not permitted. Vehicles must vacate the premises within two hours after the event.',
+        'Overnight parking is not permitted. Vehicles must vacate the premises within two hours after the event. Violators will be towed by United Carriers Inc. (213-747-2868).',
       isOpen: false,
     },
   ],
