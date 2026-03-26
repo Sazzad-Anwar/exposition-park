@@ -11,8 +11,8 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Exposition Park</title>
-  <script type="module" crossorigin src="/exposition-park/assets/index-CA-w_RrU.js"></script>
-  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-HiNrPPEG.css">
+  <script type="module" crossorigin src="/exposition-park/assets/index-CRmv4eSs.js"></script>
+  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-CUEOHrEL.css">
 </head>
 
 <body class="relative font-sans">
@@ -610,11 +610,13 @@
                                         Northwest Corner of Level A
                                     </h3>
                                     <p class="text-text-secondary text-sm md:text-base">
-                                        Both Cash and credit card payments are accepted at the pay station located in
-                                        the
-                                        northwest corner of Level A. Payments are upfront at kiosks when the system is
-                                        down.
-                                        All parking payments are non-refundable. Lost ticket fee applies.
+                                        This pay-on-foot station accepts both cash and credit card payments. The pay
+                                        station is located in the northwest corner of Level A.
+
+                                        Depending on operational needs, payments may also be collected by an attendant
+                                        at the kiosk upon entry to the Blue Structure.
+
+
                                     </p>
                                 </div>
                                 <a target="_blank" rel="noopener noreferrer"
@@ -640,11 +642,9 @@
                                         Northeast Corner of Level A & Exit Terminals
                                     </h3>
                                     <p class="text-text-secondary text-sm md:text-base">
-                                        Credit card payments are accepted at the pay station located in the northeast
-                                        corner
-                                        of Level A.
-                                        Payments are upfront at kiosks when the system is down. All parking payments are
-                                        non-refundable. Lost ticket fee applies.
+                                        This pay station accepts credit card payments only and is located in the
+                                        northeast corner of Level A. A lost ticket fee applies. Payments may also be
+                                        collected at the entry kiosk based on operational needs.
                                     </p>
                                 </div>
                                 <a target="_blank" rel="noopener noreferrer"
@@ -967,7 +967,7 @@
                 Directions to Parking Structures and Parking Lots
             </h2>
             <p class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
-                Click any lot to see details, availability, rates, and accessibility features.
+                Click the directional links below to get GPS directions to bus drop-off, pick-up, and parking locations.
             </p>
             <div class="px-4 md:px-0">
 
@@ -1092,7 +1092,12 @@
                                             </div>
                                             <h3 class="font-semibold text-xl" x-text="item.title"></h3>
                                         </div>
-                                        <p class="text-base text-text-secondary" x-text="item.description"></p>
+                                        <template
+                                            x-for="(line, lineIndex) in (Array.isArray(item.description) ? item.description : [item.description])"
+                                            :key="line">
+                                            <p class="text-base text-text-secondary"
+                                                :class="lineIndex === 0 ? 'mb-2' : 'mb-0'" x-text="line"></p>
+                                        </template>
                                     </div>
                                     <a target="_blank" rel="noopener noreferrer" x-show="item.link"
                                         x-bind:href="item.link" class="text-brand font-semibold text-base underline">
@@ -1125,7 +1130,7 @@
                 </h2>
 
                 <p class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
-                    Click any lot to see details, availability, rates, and accessibility features.
+                    Please see below for EV charging details and terms of use
                 </p>
                 <div class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg md:p-6 ">
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
