@@ -7,318 +7,230 @@ window.Alpine = Alpine
 // Get base URL for assets (handles GitHub Pages deployment)
 const base = import.meta.env.BASE_URL || '/'
 
-Alpine.data('directions', () => ({
-  data: [
-    {
-      name: 'Blue Structure',
-      initials: 'B',
-      description: '3855 S Figueroa St, Los Angeles, CA 90037 Get directions',
-      link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
-      image: `${base}direction-parking-blue.webp`,
+// Shared factory for card-reveal components (directions, bus drop-off, ADA parking)
+function createCardReveal(items, defaultImg, attrName) {
+  const datasetKey = attrName.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+
+  return () => ({
+    data: items,
+    defaultImage: defaultImg,
+    hoveredItem: null,
+    activeItem: null,
+    _observer: null,
+    _preloaded: false,
+
+    _preloadImages() {
+      if (this._preloaded) return
+      this._preloaded = true
+      this.data.forEach((item) => {
+        const img = new Image()
+        img.src = item.image
+      })
     },
-    {
-      name: 'Orange Structure',
-      initials: 'O',
-      description: '3975 Bill Robertson Ln, Los Angeles, CA 90037',
-      link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
-      image: `${base}direction-parking-orange.webp`,
+
+    hover(item) {
+      if (this.hoveredItem === item) return
+      this._preloadImages()
+      this.hoveredItem = item
     },
-    {
-      name: 'Pink Lot',
-      initials: 'P',
-      description: '899 S Park Dr, Los Angeles, CA 90037',
-      link: 'https://www.google.com/maps/place/800-898+S+Park+Dr,+Los+Angeles,+CA+90037/@34.0119915,-118.2899569,1515m/data=!3m1!1e3!4m6!3m5!1s0x80c2c806206cf8bd:0x8fc4a3fd677d1e03!8m2!3d34.0122078!4d-118.287761!16s%2Fg%2F11df0qvxj2?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-pink.webp`,
+
+    get currentImage() {
+      if (this.hoveredItem) return this.hoveredItem.image
+      if (this.activeItem) return this.activeItem.image
+      return this.defaultImage
     },
-    {
-      name: 'Yellow Lot',
-      initials: 'Y',
-      description: '3991 Hoover St, Los Angeles, CA 90037',
-      link: 'https://www.google.com/maps/place/Yellow+Lot/@34.0114957,-118.2904453,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c8061d305c0d:0xba6274dff4a364b2!8m2!3d34.0114913!4d-118.2878704!16s%2Fg%2F11q40j1sd5?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-yellow.webp`,
+
+    init() {
+      // Preload only the default image; others load on first interaction
+      const defaultPreload = new Image()
+      defaultPreload.src = this.defaultImage
+
+      this.$nextTick(() => {
+        const cards = this.$root.querySelectorAll(`[data-${attrName}]`)
+        if (!cards.length) return
+
+        this._observer = new IntersectionObserver(
+          (entries) => {
+            if (window.innerWidth >= 1280) return
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                this._preloadImages()
+                const index = parseInt(entry.target.dataset[datasetKey])
+                this.activeItem = this.data[index]
+              }
+            })
+          },
+          {
+            rootMargin: '-280px 0px -60% 0px',
+            threshold: 0,
+          },
+        )
+
+        cards.forEach((card) => this._observer.observe(card))
+      })
     },
-    {
-      name: 'Green Lot',
-      initials: 'G',
-      description: '3986 Hoover St, Los Angeles, CA 90037',
-      link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.webp`,
+
+    destroy() {
+      if (this._observer) {
+        this._observer.disconnect()
+      }
     },
-    // {
-    //   name: 'State Dr.',
-    //   initials: 'S',
-    //   description: '723-873 State Dr, Los Angeles, CA 90037',
-    //   link: 'https://www.google.com/maps/place/723-873+State+Dr,+Los+Angeles,+CA+90037,+USA/@34.0164608,-118.2852314,927m/data=!3m1!1e3!4m6!3m5!1s0x80c2c8082833104d:0x151bec7ba49e0863!8m2!3d34.01652!4d-118.2850386!16s%2Fg%2F11qh2qb_tc?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
-    //   image: `${base}direction-parking-state.webp`,
-    // },
-  ],
-  defaultImage: `${base}direction-parking-all.webp`,
-  hoveredItem: null,
-  activeItem: null,
-  previousImage: `${base}direction-parking-all.webp`,
-  animating: false,
-  _observer: null,
-  hover(item) {
-    if (this.hoveredItem === item) return
+  })
+}
 
-    // Set previous image before changing
-    this.previousImage = this.currentImage
-    this.hoveredItem = item
+Alpine.data(
+  'directions',
+  createCardReveal(
+    [
+      {
+        name: 'Blue Structure',
+        initials: 'B',
+        bgColor: 'bg-blue-500',
+        borderColor: 'border-blue-500',
+        description: '3855 S Figueroa St, Los Angeles, CA 90037 Get directions',
+        link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
+        image: `${base}direction-parking-blue.webp`,
+      },
+      {
+        name: 'Orange Structure',
+        initials: 'O',
+        bgColor: 'bg-orange-500',
+        borderColor: 'border-orange-500',
+        description: '3975 Bill Robertson Ln, Los Angeles, CA 90037',
+        link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
+        image: `${base}direction-parking-orange.webp`,
+      },
+      {
+        name: 'Pink Lot',
+        initials: 'P',
+        bgColor: 'bg-pink-500',
+        borderColor: 'border-pink-500',
+        description: '899 S Park Dr, Los Angeles, CA 90037',
+        link: 'https://www.google.com/maps/place/800-898+S+Park+Dr,+Los+Angeles,+CA+90037/@34.0119915,-118.2899569,1515m/data=!3m1!1e3!4m6!3m5!1s0x80c2c806206cf8bd:0x8fc4a3fd677d1e03!8m2!3d34.0122078!4d-118.287761!16s%2Fg%2F11df0qvxj2?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-pink.webp`,
+      },
+      {
+        name: 'Yellow Lot',
+        initials: 'Y',
+        bgColor: 'bg-yellow-500',
+        borderColor: 'border-yellow-500',
+        description: '3991 Hoover St, Los Angeles, CA 90037',
+        link: 'https://www.google.com/maps/place/Yellow+Lot/@34.0114957,-118.2904453,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c8061d305c0d:0xba6274dff4a364b2!8m2!3d34.0114913!4d-118.2878704!16s%2Fg%2F11q40j1sd5?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-yellow.webp`,
+      },
+      {
+        name: 'Green Lot',
+        initials: 'G',
+        bgColor: 'bg-green-500',
+        borderColor: 'border-green-500',
+        description: '3986 Hoover St, Los Angeles, CA 90037',
+        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-green.webp`,
+      },
+    ],
+    `${base}direction-parking-all.webp`,
+    'direction-card',
+  ),
+)
 
-    // Trigger animation
-    this.animating = false
-    this.$nextTick(() => {
-      this.animating = true
-    })
-  },
-  get currentImage() {
-    if (this.hoveredItem) return this.hoveredItem.image
-    if (this.activeItem) return this.activeItem.image
-    return this.defaultImage
-  },
-  init() {
-    // Preload all images
-    this.data.forEach((item) => {
-      const img = new Image()
-      img.src = item.image
-    })
-    // Preload default image
-    const defaultImg = new Image()
-    defaultImg.src = this.defaultImage
+Alpine.data(
+  'dropOffPickup',
+  createCardReveal(
+    [
+      {
+        title: 'Drop-Off and Pick-Up',
+        icon: `${base}location-icon.svg`,
+        description:
+          'Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.',
+        link: 'https://www.google.com/maps/place/631-693+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA/@34.0154501,-118.2901703,790m/data=!3m2!1e3!4b1!4m15!1m8!3m7!1s0x80c2c7e2aa25f9e9:0x9b567c4059f24b05!2s700+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA!3b1!8m2!3d34.0161726!4d-118.2874233!16s%2Fg%2F11ckqrv23x!3m5!1s0x80c2c807fd7ad3e9:0xe620e9f8b1e3b67b!8m2!3d34.0154457!4d-118.2875954!16s%2Fg%2F11rz5m8hkh?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}drop-off-pickup-image.webp`,
+      },
+      {
+        title: 'Bus Parking',
+        icon: `${base}bus-parking-icon.svg`,
+        description:
+          'Bus Parking available in the Green Lot, subject to availability and event reservations.',
+        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-green.webp`,
+      },
+      {
+        title: 'Oversize Vehicles',
+        icon: `${base}bus-parking-icon.svg`,
+        description:
+          'Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.',
+        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-green.webp`,
+      },
+      {
+        title: 'Route from Bus Drop-Off to Bus Parking',
+        icon: `${base}location-icon.svg`,
+        description:
+          'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',
+        link: null,
+        image: `${base}drop-off-pickup-image.webp`,
+      },
+    ],
+    `${base}drop-off-pickup-image.webp`,
+    'bus-card',
+  ),
+)
 
-    this.$nextTick(() => {
-      const cards = this.$root.querySelectorAll('[data-direction-card]')
-      if (!cards.length) return
-
-      this._observer = new IntersectionObserver(
-        (entries) => {
-          if (window.innerWidth >= 1280) return
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = parseInt(entry.target.dataset.directionCard)
-              this.activeItem = this.data[index]
-            }
-          })
-        },
-        {
-          rootMargin: '-280px 0px -60% 0px',
-          threshold: 0,
-        },
-      )
-
-      cards.forEach((card) => this._observer.observe(card))
-    })
-  },
-  destroy() {
-    if (this._observer) {
-      this._observer.disconnect()
-    }
-  },
-}))
-
-Alpine.data('dropOffPickup', () => ({
-  data: [
-    {
-      title: 'Drop-Off and Pick-Up',
-      icon: `${base}location-icon.svg`,
-      description:
-        'Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.',
-      link: 'https://www.google.com/maps/place/631-693+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA/@34.0154501,-118.2901703,790m/data=!3m2!1e3!4b1!4m15!1m8!3m7!1s0x80c2c7e2aa25f9e9:0x9b567c4059f24b05!2s700+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA!3b1!8m2!3d34.0161726!4d-118.2874233!16s%2Fg%2F11ckqrv23x!3m5!1s0x80c2c807fd7ad3e9:0xe620e9f8b1e3b67b!8m2!3d34.0154457!4d-118.2875954!16s%2Fg%2F11rz5m8hkh?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}drop-off-pickup-image.webp`,
-    },
-    {
-      title: 'Bus Parking',
-      icon: `${base}bus-parking-icon.svg`,
-      description:
-        'Bus Parking available in the Green Lot, subject to availability and event reservations.',
-      link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.webp`,
-    },
-    {
-      title: 'Oversize Vehicles',
-      icon: `${base}bus-parking-icon.svg`,
-      description:
-        'Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.',
-      link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.webp`,
-    },
-    {
-      title: 'Route from Bus Drop-Off to Bus Parking',
-      icon: `${base}location-icon.svg`,
-      description:
-        'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',
-      link: null,
-      image: `${base}drop-off-pickup-image.webp`,
-    },
-  ],
-  defaultImage: `${base}drop-off-pickup-image.webp`,
-  hoveredItem: null,
-  previousImage: `${base}drop-off-pickup-image.webp`,
-  animating: false,
-  _observer: null,
-  activeItem: null,
-  hover(item) {
-    if (this.hoveredItem === item) return
-
-    this.previousImage = this.currentImage
-    this.hoveredItem = item
-
-    this.animating = false
-    this.$nextTick(() => {
-      this.animating = true
-    })
-  },
-  get currentImage() {
-    if (this.hoveredItem) return this.hoveredItem.image
-    if (this.activeItem) return this.activeItem.image
-    return this.defaultImage
-  },
-  init() {
-    // Preload all images
-    this.data.forEach((item) => {
-      const img = new Image()
-      img.src = item.image
-    })
-    // Preload default image
-    const defaultImg = new Image()
-    defaultImg.src = this.defaultImage
-
-    this.$nextTick(() => {
-      const cards = this.$root.querySelectorAll('[data-bus-card]')
-      if (!cards.length) return
-
-      this._observer = new IntersectionObserver(
-        (entries) => {
-          if (window.innerWidth >= 1280) return
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = parseInt(entry.target.dataset.busCard)
-              this.activeItem = this.data[index]
-            }
-          })
-        },
-        {
-          rootMargin: '-280px 0px -60% 0px',
-          threshold: 0,
-        },
-      )
-
-      cards.forEach((card) => this._observer.observe(card))
-    })
-  },
-  destroy() {
-    if (this._observer) {
-      this._observer.disconnect()
-    }
-  },
-}))
-
-Alpine.data('accessibleParking', () => ({
-  data: [
-    {
-      title: 'Blue Structure',
-      initials: 'B',
-      color: 'blue',
-      description: [
-        '3855 S Figueroa St, Los Angeles, CA 90037',
-        'Level A: 43 ADA Spaces',
-        'Level B: 9 ADA Spaces',
-        'Level C: 11 ADA Spaces',
-      ],
-      link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
-      image: `${base}direction-parking-blue.webp`,
-    },
-    {
-      title: 'Orange Structure',
-      color: 'orange',
-      initials: 'O',
-      description: [
-        '3975 Bill Robertson Ln, Los Angeles, CA 90037',
-        'P1 Level: 25 ADA Spaces',
-      ],
-      link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
-      image: `${base}direction-parking-orange.webp`,
-    },
-    {
-      title: 'Pink Lot',
-      color: 'pink',
-      initials: 'P',
-      description: [
-        '899 S Park Dr, Los Angeles, CA 90037',
-        'Lot: 10 ADA Spaces',
-      ],
-      link: 'https://www.google.com/maps/dir//Pink+Lot',
-      image: `${base}direction-parking-pink.webp`,
-    },
-    {
-      title: 'Green Lot',
-      color: 'green',
-      initials: 'G',
-      description: ['3986 Hoover St, Los Angeles, CA 90037', '20 ADA Spaces'],
-      link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
-      image: `${base}direction-parking-green.webp`,
-    },
-  ],
-  defaultImage: `${base}ada-accessible-parking.webp`,
-  hoveredItem: null,
-  previousImage: `${base}ada-accessible-parking.webp`,
-  animating: false,
-  _observer: null,
-  activeItem: null,
-  hover(item) {
-    if (this.hoveredItem === item) return
-
-    this.previousImage = this.currentImage
-    this.hoveredItem = item
-
-    this.animating = false
-    this.$nextTick(() => {
-      this.animating = true
-    })
-  },
-  get currentImage() {
-    if (this.hoveredItem) return this.hoveredItem.image
-    if (this.activeItem) return this.activeItem.image
-    return this.defaultImage
-  },
-  init() {
-    // Preload images
-    this.data.forEach((item) => {
-      const img = new Image()
-      img.src = item.image
-    })
-    const defaultImg = new Image()
-    defaultImg.src = this.defaultImage
-
-    this.$nextTick(() => {
-      const cards = this.$root.querySelectorAll('[data-ada-card]')
-      if (!cards.length) return
-
-      this._observer = new IntersectionObserver(
-        (entries) => {
-          if (window.innerWidth >= 1280) return
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = parseInt(entry.target.dataset.adaCard)
-              this.activeItem = this.data[index]
-            }
-          })
-        },
-        {
-          rootMargin: '-280px 0px -60% 0px',
-          threshold: 0,
-        },
-      )
-
-      cards.forEach((card) => this._observer.observe(card))
-    })
-  },
-  destroy() {
-    if (this._observer) {
-      this._observer.disconnect()
-    }
-  },
-}))
+Alpine.data(
+  'accessibleParking',
+  createCardReveal(
+    [
+      {
+        title: 'Blue Structure',
+        initials: 'B',
+        bgColor: 'bg-blue-500',
+        borderColor: 'border-blue-500',
+        description: [
+          '3855 S Figueroa St, Los Angeles, CA 90037',
+          'Level A: 43 ADA Spaces',
+          'Level B: 9 ADA Spaces',
+          'Level C: 11 ADA Spaces',
+        ],
+        link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
+        image: `${base}direction-parking-blue.webp`,
+      },
+      {
+        title: 'Orange Structure',
+        initials: 'O',
+        bgColor: 'bg-orange-500',
+        borderColor: 'border-orange-500',
+        description: [
+          '3975 Bill Robertson Ln, Los Angeles, CA 90037',
+          'P1 Level: 25 ADA Spaces',
+        ],
+        link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
+        image: `${base}direction-parking-orange.webp`,
+      },
+      {
+        title: 'Pink Lot',
+        initials: 'P',
+        bgColor: 'bg-pink-500',
+        borderColor: 'border-pink-500',
+        description: [
+          '899 S Park Dr, Los Angeles, CA 90037',
+          'Lot: 10 ADA Spaces',
+        ],
+        link: 'https://www.google.com/maps/dir//Pink+Lot',
+        image: `${base}direction-parking-pink.webp`,
+      },
+      {
+        title: 'Green Lot',
+        initials: 'G',
+        bgColor: 'bg-green-500',
+        borderColor: 'border-green-500',
+        description: ['3986 Hoover St, Los Angeles, CA 90037', '20 ADA Spaces'],
+        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        image: `${base}direction-parking-green.webp`,
+      },
+    ],
+    `${base}ada-accessible-parking.webp`,
+    'ada-card',
+  ),
+)
 
 Alpine.data('faq', () => ({
   data: [
@@ -407,6 +319,7 @@ Alpine.data('faq', () => ({
     })
   },
 }))
+
 Alpine.store('accessibility', {
   highContrast: localStorage.getItem('highContrast') === 'true',
   fontSize: parseInt(localStorage.getItem('fontSize')) || 100,
@@ -465,4 +378,35 @@ Alpine.store('accessibility', {
 Alpine.start()
 
 const currentYear = document.getElementById('current-year')
-currentYear.textContent = new Date().getFullYear()
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear()
+}
+
+// Scroll reveal observer
+function initScrollReveal() {
+  const targets = document.querySelectorAll('[data-reveal], [data-reveal-children]')
+  if (!targets.length) return
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px',
+    },
+  )
+
+  targets.forEach((el) => observer.observe(el))
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScrollReveal)
+} else {
+  initScrollReveal()
+}

@@ -9,9 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preload" as="image" href="/hero-bg.webp" />
     <link href="/src/style.css" rel="stylesheet" />
-    <title>Exposition Park</title>
+    <title>Exposition Park - Parking Rates & Information</title>
+    <meta name="description" content="Parking rates, locations, and guidelines for Exposition Park, Los Angeles. Find ADA parking, EV charging, bus drop-off, and event parking information." />
+    <meta property="og:title" content="Exposition Park - Parking Rates & Information" />
+    <meta property="og:description" content="Find convenient parking options, rates, accessibility information, and event-day guidelines all in one place." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/hero-bg.webp" />
 </head>
 
 <body class="relative font-sans">
@@ -23,9 +28,10 @@
 
     <header x-cloak x-data="{ mobileMenuOpen: false, isScrolled: false }"
         @scroll.window="isScrolled = (window.pageYOffset > 20)"
-        class="relative md:fixed top-0 w-full z-40 transition-all duration-300" role="banner">
+        class="sticky top-0 w-full z-40 transition-all duration-300" role="banner">
         <nav aria-label="Main navigation">
-            <div id="top-header" class="bg-brand shadow-lg py-2">
+            <div id="top-header" class="bg-brand shadow-lg py-2 transition-all duration-300"
+                :class="isScrolled ? 'max-lg:max-h-0 max-lg:py-0 max-lg:overflow-hidden' : 'max-lg:max-h-20 max-lg:py-2'">
                 <div
                     class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-y-2 md:gap-y-0">
                     <div class="flex items-center gap-3.5">
@@ -156,20 +162,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex gap-2 items-center text-white">
-                            <div id="google_translate_element"></div>
-                        </div>
-                        <script type="text/javascript">
-                            function googleTranslateElementInit() {
-                                new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-                            }
-                        </script>
-                        <script type="text/javascript"
-                            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                     </div>
                 </div>
             </div>
-            <div class="bg-[#1F1F1F]/60 backdrop-blur-2xl shadow-lg py-3 md:py-4">
+            <div class="bg-[#1F1F1F]/60 backdrop-blur-2xl shadow-lg py-3 md:py-4 transition-colors duration-300"
+                :class="mobileMenuOpen && 'max-lg:!bg-brand/80'">
                 <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
                     <div class="flex items-center">
                         <a href="https://expositionpark.ca.gov/" target="_blank" rel="noopener noreferrer">
@@ -225,7 +222,7 @@
                 x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
                 role="navigation" aria-label="Mobile navigation menu"
-                class="lg:hidden bg-brand/80 absolute top-full left-0 w-full p-6 space-y-4 shadow-xl backdrop-blur-lg">
+                class="lg:hidden bg-brand/80 absolute top-full left-0 w-full p-6 space-y-4 shadow-xl backdrop-blur-lg z-50">
                 <ul class="flex flex-col font-semibold text-lg gap-4">
                     <li role="none"><a href="https://expositionpark.ca.gov/about-us/" role="menuitem"
                             class="text-white block py-2 border-b border-white/10" target="_blank"
@@ -256,27 +253,29 @@
     <main id="main-content" role="main" class="bg-[#FAFAFA]">
         <!-- Hero section -->
         <section
-            class="object-center bg-no-repeat bg-bottom md:bg-center bg-cover min-h-screen lg:h-220 grid items-center py-20"
-            style="background-image: url('/hero-bg.webp')">
+            class="relative overflow-hidden min-h-[75vh] md:min-h-screen lg:h-220 grid items-center py-20">
+            <div class="absolute inset-0 bg-no-repeat bg-bottom md:bg-center bg-cover hero-bg-zoom"
+                style="background-image: url('/hero-bg.webp')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
             <div class="container mx-auto px-4 md:px-8 space-y-12 relative z-10">
                 <div class="text-left md:max-w-[85%] lg:max-w-[50%] mt-20 lg:mt-10 xl:mt-[100px]">
                     <h1
-                        class="text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-[#FFFFFFE5] mb-4 leading-[100%] lg:leading-25.5">
+                        class="hero-title text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-[#FFFFFFE5] mb-4 leading-[100%] lg:leading-25.5">
                         Exposition Park Parking Rates
                     </h1>
-                    <p class="text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
+                    <p class="hero-subtitle text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
                         Find convenient parking options, rates, accessibility information,
                         and event-day guidelines all in one place
                     </p>
                     <a href="#direction-parking" aria-label="View Parking Map"
-                        class="w-full text-center md:text-left md:w-auto inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90 transition-colors">
+                        class="hero-cta btn-hover w-full text-center md:text-left md:w-auto inline-block py-4 px-8 bg-button text-white font-bold text-base rounded-lg hover:bg-button/90">
                         View Parking Map
                     </a>
                 </div>
                 <!-- Pricing Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full" role="list">
-                    <div role="listitem" x-data="{ showPopup1: false }"
-                        class="bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
+                <div x-data="{ activePopup: null }" class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full" role="list">
+                    <div role="listitem"
+                        class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
                         <img src="/parking.svg" alt="" aria-hidden="true"
                             class="size-10 md:mt-2 md:size-12 md:mb-8 lg:mb-0" />
                         <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between w-full">
@@ -284,17 +283,17 @@
                                 Daily Parking Rate
                             </h2>
 
-                            <button @click="showPopup1 = true"
+                            <button @click="activePopup = 'museum'"
                                 class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
                         </div>
 
                         <!-- Modal 1 -->
                         <template x-teleport="body">
-                            <div x-show="showPopup1" x-cloak x-transition.opacity
-                                x-effect="document.body.style.overflow = showPopup1 ? 'hidden' : ''"
+                            <div x-show="activePopup === 'museum'" x-cloak x-transition.opacity
+                                x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
                                 class="fixed inset-0 z-100 flex items-center justify-center p-4"
-                                @keydown.escape.window="showPopup1 = false">
-                                <div class="fixed inset-0 bg-black/50" @click="showPopup1 = false"></div>
+                                @keydown.escape.window="activePopup = null">
+                                <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
                                 <div class="relative z-10 popup-custom" @click.stop>
                                     <div class="popup-head">
                                         <div class="popup-head-left">
@@ -310,7 +309,7 @@
                                                 <div class="popup-head-sub">Daily parking for museum visitors</div>
                                             </div>
                                         </div>
-                                        <button class="close-btn" @click="showPopup1 = false" aria-label="Close popup">
+                                        <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
                                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18L18 6M6 6l12 12" />
@@ -348,14 +347,13 @@
                                         </div>
                                     </div>
                                     <div class="popup-foot">
-                                        <button class="btn-primary" @click="showPopup1 = false">Got It</button>
+                                        <button class="btn-primary" @click="activePopup = null">Got It</button>
                                     </div>
                                 </div>
                             </div>
                         </template>
                     </div>
-                    <div role="listitem" x-data="{ showPopup2: false }"
-                        class="bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
+                    <div role="listitem"                         class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
                         <img src="/calendar.svg" alt="" aria-hidden="true"
                             class="size-10 md:mt-2 md:size-12 md:mb-8 lg:mb-0" />
                         <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between w-full">
@@ -363,17 +361,17 @@
                                 Special Event & After Hours Parking Rates
                             </h2>
 
-                            <button @click="showPopup2 = true"
+                            <button @click="activePopup = 'event'"
                                 class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
                         </div>
 
                         <!-- Modal 2 -->
                         <template x-teleport="body">
-                            <div x-show="showPopup2" x-cloak x-transition.opacity
-                                x-effect="document.body.style.overflow = showPopup2 ? 'hidden' : ''"
+                            <div x-show="activePopup === 'event'" x-cloak x-transition.opacity
+                                x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
                                 class="fixed inset-0 z-100 flex items-center justify-center p-4"
-                                @keydown.escape.window="showPopup2 = false">
-                                <div class="fixed inset-0 bg-black/50" @click="showPopup2 = false"></div>
+                                @keydown.escape.window="activePopup = null">
+                                <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
                                 <div class="relative z-10 popup-custom" @click.stop>
                                     <div class="popup-head">
                                         <div class="popup-head-left">
@@ -389,7 +387,7 @@
                                                 <div class="popup-head-sub">After 5:00 PM event parking rates</div>
                                             </div>
                                         </div>
-                                        <button class="close-btn" @click="showPopup2 = false" aria-label="Close popup">
+                                        <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
                                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18L18 6M6 6l12 12" />
@@ -448,33 +446,32 @@
                                         </div>
                                     </div>
                                     <div class="popup-foot">
-                                        <button class="btn-primary" @click="showPopup2 = false">Got It</button>
+                                        <button class="btn-primary" @click="activePopup = null">Got It</button>
                                     </div>
                                 </div>
                             </div>
                         </template>
                     </div>
                     <div class=" w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
-                        <div role="listitem" x-data="{ showPopup3: false }"
-                            class="bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
+                        <div role="listitem"                             class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
                             <img src="/car.png" alt="" aria-hidden="true" class="w-auto h-9 md:mt-2 md:mb-8 lg:mb-0" />
                             <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between">
                                 <h2 class="text-text-secondary text-xl font-semibold">
                                     Oversized Vehicle
                                     Parking Rate
                                 </h2>
-                                <button @click="showPopup3 = true"
+                                <button @click="activePopup = 'bus'"
                                     class="font-semibold text-sm md:text-base text-button underline">View
                                     Rates</button>
                             </div>
 
                             <!-- Modal 3 -->
                             <template x-teleport="body">
-                                <div x-show="showPopup3" x-cloak x-transition.opacity
-                                    x-effect="document.body.style.overflow = showPopup3 ? 'hidden' : ''"
+                                <div x-show="activePopup === 'bus'" x-cloak x-transition.opacity
+                                    x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
                                     class="fixed inset-0 z-100 flex items-center justify-center p-4"
-                                    @keydown.escape.window="showPopup3 = false">
-                                    <div class="fixed inset-0 bg-black/50" @click="showPopup3 = false"></div>
+                                    @keydown.escape.window="activePopup = null">
+                                    <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
                                     <div class="relative z-10 popup-custom" @click.stop>
                                         <div class="popup-head">
                                             <div class="popup-head-left">
@@ -492,7 +489,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="close-btn" @click="showPopup3 = false"
+                                            <button class="close-btn" @click="activePopup = null"
                                                 aria-label="Close popup">
                                                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
@@ -543,7 +540,7 @@
                                         </div>
                                         <div class="popup-foot">
                                             <button class="btn-primary"
-                                                @click="showPopup3 = false; document.getElementById('bus-parking').scrollIntoView({behavior: 'smooth'})">View
+                                                @click="activePopup = null; document.getElementById('bus-parking').scrollIntoView({behavior: 'smooth'})">View
                                                 Bus Drop-off Locations</button>
                                             <a href="https://expositionpark.ca.gov/contact-us/" target="_blank"
                                                 rel="noopener noreferrer" class="btn-secondary-link">Contact Parking
@@ -559,13 +556,13 @@
         </section>
         <!-- Pay Stations and Guidelines Section -->
         <section class="container mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
-            <h2 class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-center">
+            <h2 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-center">
                 Blue Structure Pay Stations and Guidelines
             </h2>
-            <p class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+            <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                 Payment methods, parking rules, and important information for visitors.
             </p>
-            <div x-data="{selectedTab:'cash'}" class="mt-12">
+            <div x-data="{selectedTab:'cash'}" data-reveal data-delay="200" class="mt-12">
                 <div class=" w-auto bg-white rounded-xl p-4 lg:p-6">
                     <div class="flex justify-center">
                         <div class="relative flex justify-center bg-[#EEEEEE] rounded-lg p-1" role="tablist"
@@ -602,13 +599,13 @@
                             <div
                                 class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
                                 <div class="lg:p-4 h-full w-10/12">
-                                    <img src="/tab-icon-1.png" class="size-9 md:size-22" alt="tab-1-icon" loading="lazy"
+                                    <img src="/tab-icon-1.png" class="size-9 md:size-14" alt="tab-1-icon" loading="lazy"
                                         decoding="async" />
                                     <h3
-                                        class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-4">
+                                        class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-3 md:mt-4">
                                         Northwest Corner of Level A
                                     </h3>
-                                    <p class="text-text-secondary text-sm md:text-base">
+                                    <p class="text-text-secondary text-sm md:text-base mt-2">
                                         This pay-on-foot station accepts both cash and credit card payments. The pay
                                         station is located in the northwest corner of Level A.
 
@@ -623,9 +620,11 @@
                                     class="lg:px-4 text-brand order-1 lg:order-2 font-semibold text-base underline">Get
                                     Directions</a>
                             </div>
-                            <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
-                                src="/cash-credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
-                                decoding="async" />
+                            <div class="order-1 lg:order-2 rounded-lg img-hover-zoom">
+                                <img class="rounded-lg object-cover object-bottom w-full h-70 md:h-125"
+                                    src="/cash-credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
+                                    decoding="async" />
+                            </div>
                         </div>
                         <div x-show="selectedTab === 'credit-card'" role="tabpanel" id="tabpanel-credit-card"
                             aria-labelledby="tab-credit-card"
@@ -633,14 +632,13 @@
                             <div
                                 class="order-2 lg:order-1 p-4 md:p-5 lg:p-6 h-full bg-[#F7F7F7] rounded-lg flex flex-col justify-between">
                                 <div class="lg:p-4 h-full w-10/12">
-                                    <img src="/tab-icon-2.png" class="size-9 md:size-22" alt="tab-2-icon" loading="lazy"
+                                    <img src="/tab-icon-2.png" class="size-9 md:size-14" alt="tab-2-icon" loading="lazy"
                                         decoding="async" />
-
                                     <h3
-                                        class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-4">
+                                        class="font-bold text-base md:text-[28px] lg:text-3xl leading-6 md:leading-8 mt-3 md:mt-4">
                                         Northeast Corner of Level A & Exit Terminals
                                     </h3>
-                                    <p class="text-text-secondary text-sm md:text-base">
+                                    <p class="text-text-secondary text-sm md:text-base mt-2">
                                         This pay station accepts credit card payments only and is located in the
                                         northeast corner of Level A. A lost ticket fee applies. Payments may also be
                                         collected at the entry kiosk based on operational needs.
@@ -651,9 +649,11 @@
                                     class="text-brand p-4 font-semibold text-base underline"
                                     rel="noopener noreferrer">Get Directions</a>
                             </div>
-                            <img class="order-1 lg:order-2 rounded-lg object-cover object-bottom w-full h-70 md:h-125"
-                                src="/credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
-                                decoding="async" />
+                            <div class="order-1 lg:order-2 rounded-lg img-hover-zoom">
+                                <img class="rounded-lg object-cover object-bottom w-full h-70 md:h-125"
+                                    src="/credit-card-tab-image.webp" alt="credit-card-tab-image" loading="lazy"
+                                    decoding="async" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -721,220 +721,407 @@
         </section>
 
         <!-- Key Parking Processes -->
-        <section class="bg-white  bg-top-right object-contain bg-no-repeat" style="background-image: url('/bg-4.svg');">
+        <section class="bg-white">
             <div class="container mx-auto px-4 md:px-8 py-16 lg:py-24.5">
-                <h2 class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-left">
+                <h2 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-left">
                     Key Parking Processes
                 </h2>
-                <p class="text-lg md:text-lg lg:text-xl font-normal text-left max-w-2xl mr-auto">
+                <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl font-normal text-left max-w-2xl mr-auto">
                     Click links below for directions to specified areas
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 md:mt-13 lg:mt-20">
-                    <div x-data="{ showModal: false }"
-                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
-                        <img src="/tortor_icon_1.svg" alt="tortor_icon_1" class="size-8 mb-4" loading="lazy"
-                            decoding="async">
-                        <h3 class="font-semibold text-xl mb-3">Non-automated Parking Process During event days</h3>
-                        <p class="text-base text-text-secondary mb-11">
-                            During events, payments are due upfront at kiosks while
-                            automation is paused.
-                        </p>
-                        <button @click="showModal = true"
-                            class="text-brand font-semibold text-base underline cursor-pointer">
-                            Click here (Blue Structure)
-                        </button>
-                        <!-- Modal -->
-                        <div x-show="showModal" x-cloak x-transition.opacity
-                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
-                            @keydown.escape.window="showModal = false">
-                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
-                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
-                                @click.stop>
-                                <button @click="showModal = false"
-                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-                                    aria-label="Close modal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 6 6 18" />
-                                        <path d="m6 6 12 12" />
-                                    </svg>
-                                </button>
-                                <img src="/non-automated.webp" alt="non-automated-parking-process" class="h-auto w-full"
-                                    loading="lazy" decoding="async">
-                                <div class="flex items-center gap-3 mt-5 mb-4">
-                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
-                                        <p class="text-white font-semibold text-lg">B</p>
+                <div x-data="{ activeModal: null }" data-reveal-children>
+                    <!-- Parking Process Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 md:mt-13 lg:mt-20">
+                        <!-- Non-automated Parking -->
+                        <div @click="activeModal = 'non-automated'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/non-automated.webp" alt="Blue Structure parking" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">B</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Non-automated Parking Process During Event Days</h3>
                                     </div>
-                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure</h3>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        During events, payments are due upfront at kiosks while automation is paused.
+                                    </p>
                                 </div>
-                                <p class="text-text-secondary text-base mb-10">
-                                    3855 S Figueroa St, Los Angeles, CA 90037 Get directions
-                                </p>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
 
-                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
-                                    class="text-brand font-semibold text-base underline" rel="noopener noreferrer">
+                        <!-- Automated Parking -->
+                        <div @click="activeModal = 'automated'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/automated.webp" alt="Blue Structure automated parking" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">B</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Automated Parking Process During Non-Event Days</h3>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Cash and credit cards are accepted at the pay station on Level A.
+                                    </p>
+                                </div>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parking Process Modals (outside grid to avoid transform containment) -->
+                    <!-- Non-automated Modal -->
+                    <div x-show="activeModal === 'non-automated'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/non-automated.webp" alt="Non-automated parking process" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-bold text-sm">B</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-xl">Non-automated Parking</h3>
+                                        <p class="text-sm text-text-secondary">Blue Structure - Event Days</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-text-secondary mt-4 mb-5">During events, payments are due upfront at kiosks while automation is paused.</p>
+                                <div class="flex items-start gap-2 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">3855 S Figueroa St, Los Angeles, CA 90037</p>
+                                </div>
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
                                     Get Directions
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="hidden lg:block"></div>
-                    <div class="hidden lg:block"></div>
-                    <div x-data="{ showModal: false }"
-                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
-                        <img src="/tortor_icon_2.svg" alt="tortor_icon_2" class="size-8 mb-4" loading="lazy"
-                            decoding="async">
-                        <h3 class="font-semibold text-xl mb-3">
-                            Blue Structure South Elevator Location
-                        </h3>
-                        <p class="text-base text-text-secondary mb-11">
-                            Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA
-                            90037
-                        </p>
-                        <button @click="showModal = true"
-                            class="text-brand font-semibold text-base underline cursor-pointer">
-                            Click Here for directions
-                        </button>
-                        <!-- Modal -->
-                        <div x-show="showModal" x-cloak x-transition.opacity
-                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
-                            @keydown.escape.window="showModal = false">
-                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
-                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
-                                @click.stop>
-                                <button @click="showModal = false"
-                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-                                    aria-label="Close modal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 6 6 18" />
-                                        <path d="m6 6 12 12" />
-                                    </svg>
-                                </button>
-                                <img src="/south-elevator.webp" alt="south-elevator" class="h-auto w-full"
-                                    loading="lazy" decoding="async">
-                                <div class="flex items-center gap-3 mt-5 mb-4">
-                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
-                                        <p class="text-white font-semibold text-lg">E1</p>
-                                    </div>
-                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure South Elevator Location
-                                    </h3>
-                                </div>
-                                <p class="text-text-secondary text-base mb-10">
-                                    Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los
-                                    Angeles, CA
-                                    90037
-                                </p>
 
+                    <!-- Automated Modal -->
+                    <div x-show="activeModal === 'automated'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/automated.webp" alt="Automated parking process" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-bold text-sm">B</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-xl">Automated Parking</h3>
+                                        <p class="text-sm text-text-secondary">Blue Structure - Non-Event Days</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-text-secondary mt-4 mb-5">Cash and credit cards are accepted at the pay station on Level A.</p>
+                                <div class="flex items-start gap-2 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">3855 S Figueroa St, Los Angeles, CA 90037</p>
+                                </div>
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direction to Elevators Sub-section -->
+                    <h3 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mt-16 md:mt-20 lg:mt-24 mb-4 text-left">
+                        Direction to Elevators
+                    </h3>
+                    <p data-reveal data-delay="100" class="text-lg font-normal text-left text-text-secondary max-w-2xl mr-auto mb-8 md:mb-10">
+                        Click links below for directions to elevators
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Blue Structure South Elevator -->
+                        <div @click="activeModal = 'south-elevator'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">E1</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator Location</h3>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA 90037
+                                    </p>
+                                </div>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Blue Structure North Elevator -->
+                        <div @click="activeModal = 'north-elevator'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">E2</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator Location</h3>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Located Near Lockheed A-12 "Trainer"
+                                    </p>
+                                </div>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Orange Structure North Elevator -->
+                        <div @click="activeModal = 'orange-north'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/orange-north-elevator.png" alt="Orange Structure North Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">O1</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator</h3>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Located at 3924-14 Bill Robertson Ln, Los Angeles, CA 90037
+                                    </p>
+                                </div>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Orange Structure South Elevator -->
+                        <div @click="activeModal = 'orange-south'"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
+                                <img src="/orange-south-elevator.png" alt="Orange Structure South Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                            </div>
+                            <div class="p-3 sm:p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-start gap-2.5 mb-1.5">
+                                        <div class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
+                                            <p class="text-white font-semibold text-[10px] sm:text-xs">O2</p>
+                                        </div>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator</h3>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Located at 3983 Bill Robertson Ln, Los Angeles, CA 90037
+                                    </p>
+                                </div>
+                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Elevator Modals (outside grid to avoid transform containment) -->
+                    <!-- South Elevator Modal -->
+                    <div x-show="activeModal === 'south-elevator'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                        <p class="text-white font-bold text-sm">E1</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-xl">South Elevator Location</h3>
+                                        <p class="text-sm text-text-secondary">Blue Structure</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA 90037</p>
+                                </div>
                                 <a href="https://www.google.com/maps/@34.0144994,-118.285494,3a,75y,57.4h,90t/data=!3m7!1e1!3m5!1skOHaD3gKKgk-GLg95KvWWQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DkOHaD3gKKgk-GLg95KvWWQ%26yaw%3D57.401665!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
-                                    target="_blank" class="text-brand font-semibold text-base underline"
-                                    rel="noopener noreferrer">
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
                                     Get Directions
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div x-data="{ showModal: false }"
-                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
-                        <img src="/tortor_icon_3.svg" alt="tortor_icon_3" class="size-8 mb-4" loading="lazy"
-                            decoding="async">
-                        <h3 class="font-semibold text-xl mb-3">
-                            Blue Structure North Elevator Location
-                        </h3>
-                        <p class="text-base text-text-secondary mb-11">
-                            Located at 600 State Dr, near the California Science Center, Los Angeles, CA 90037
-                        </p>
 
-                        <button @click="showModal = true"
-                            class="text-brand font-semibold text-base underline cursor-pointer">
-                            Click Here for directions
-                        </button>
-                        <!-- Modal -->
-                        <div x-show="showModal" x-cloak x-transition.opacity
-                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
-                            @keydown.escape.window="showModal = false">
-                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
-                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
-                                @click.stop>
-                                <button @click="showModal = false"
-                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-                                    aria-label="Close modal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 6 6 18" />
-                                        <path d="m6 6 12 12" />
-                                    </svg>
-                                </button>
-                                <img src="/north-elevator.webp" alt="north-elevator" class="h-auto w-full"
-                                    loading="lazy" decoding="async">
-                                <div class="flex items-center gap-3 mt-5 mb-4">
+                    <!-- North Elevator Modal -->
+                    <div x-show="activeModal === 'north-elevator'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
                                     <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
-                                        <p class="text-white font-semibold text-lg">E2</p>
+                                        <p class="text-white font-bold text-sm">E2</p>
                                     </div>
-                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure North Elevator Location
-                                    </h3>
+                                    <div>
+                                        <h3 class="font-bold text-xl">North Elevator Location</h3>
+                                        <p class="text-sm text-text-secondary">Blue Structure</p>
+                                    </div>
                                 </div>
-                                <p class="text-text-secondary text-base mb-10">
-                                    Located at 600 State Dr, near the California Science Center, Los Angeles, CA 90037
-                                </p>
-
+                                <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">Located Near Lockheed A-12 "Trainer"</p>
+                                </div>
                                 <a href="https://www.google.com/maps/place/Lockheed+A-12+%22Trainer%22,+600+State+Dr,+Los+Angeles,+CA+90037/@34.0153464,-118.2946275,3603m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c809b5fc8d1d:0xfcb08415b838e7a4!8m2!3d34.0153295!4d-118.2843278!16s%2Fg%2F11bvthnrsn?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
-                                    target="_blank" class="text-brand font-semibold text-base underline"
-                                    rel="noopener noreferrer">
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
                                     Get Directions
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div x-data="{ showModal: false }"
-                        class="p-8 border rounded-lg border-[rgba(0,0,0,0.04)] shadow-xs bg-white">
-                        <img src="/tortor_icon_4.svg" alt="tortor_icon_4" class="size-8 mb-4" loading="lazy"
-                            decoding="async">
-                        <h3 class="font-semibold text-xl mb-3">
-                            Automated Parking
-                            Process During non-event days
-                        </h3>
-                        <p class="text-base text-text-secondary mb-11">
-                            Cash and credit cards are accepted at the pay station on Level A.
-                        </p>
-                        <button @click="showModal = true"
-                            class="text-brand font-semibold text-base underline cursor-pointer">
-                            Click here (Blue Structure)
-                        </button>
-                        <!-- Modal -->
-                        <div x-show="showModal" x-cloak x-transition.opacity
-                            class="fixed inset-0 z-50 flex items-center justify-center p-4"
-                            @keydown.escape.window="showModal = false">
-                            <div class="fixed inset-0 bg-black/50" @click="showModal = false"></div>
-                            <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-6 z-10"
-                                @click.stop>
-                                <button @click="showModal = false"
-                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-                                    aria-label="Close modal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 6 6 18" />
-                                        <path d="m6 6 12 12" />
-                                    </svg>
-                                </button>
-                                <img src="/automated.webp" alt="automated-parking-process" class="h-auto w-full"
-                                    loading="lazy" decoding="async">
-                                <div class="flex items-center gap-3 mt-5 mb-4">
-                                    <div class="size-10 rounded-full bg-blue-500 flex items-center justify-center">
-                                        <p class="text-white font-semibold text-lg">B</p>
-                                    </div>
-                                    <h3 class="font-bold text-xl md:text-2xl">Blue Structure</h3>
-                                </div>
-                                <p class="text-text-secondary text-base mb-10">
-                                    3855 S Figueroa St, Los Angeles, CA 90037 Get directions
-                                </p>
 
-                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
-                                    class="text-brand font-semibold text-base underline" rel="noopener noreferrer">
+                    <!-- Orange North Elevator Modal -->
+                    <div x-show="activeModal === 'orange-north'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/orange-north-elevator.png" alt="Orange Structure North Elevator" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="size-10 rounded-full bg-orange-500 flex items-center justify-center">
+                                        <p class="text-white font-bold text-sm">O1</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-xl">North Elevator</h3>
+                                        <p class="text-sm text-text-secondary">Orange Structure</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">3924-14 Bill Robertson Ln, Los Angeles, CA 90037</p>
+                                </div>
+                                <a href="https://www.google.com/maps/place/3924-14+Bill+Robertson+Ln,+Los+Angeles,+CA+90037/@34.01385,-118.2927036,1802m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x80c2c809c115ef39:0xf60597dd3906e107!2sExposition+Park!8m2!3d34.0153446!4d-118.2871848!16zL20vMDVicTc0!3m5!1s0x80c2c807a39e5503:0xaedcaf1b8d60795e!8m2!3d34.0138456!4d-118.2901287!16s%2Fg%2F11yhfc6bpv?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orange South Elevator Modal -->
+                    <div x-show="activeModal === 'orange-south'" x-cloak x-transition.opacity
+                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        @keydown.escape.window="activeModal = null">
+                        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="/orange-south-elevator.png" alt="Orange Structure South Elevator" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="size-10 rounded-full bg-orange-500 flex items-center justify-center">
+                                        <p class="text-white font-bold text-sm">O2</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-xl">South Elevator</h3>
+                                        <p class="text-sm text-text-secondary">Orange Structure</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <p class="text-sm">3983 Bill Robertson Ln, Los Angeles, CA 90037</p>
+                                </div>
+                                <a href="https://www.google.com/maps/place/3983+Bill+Robertson+Ln,+Los+Angeles,+CA+90037/@34.0130916,-118.2922943,1802m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c807ac32f823:0x7b4ffdc537d46a17!8m2!3d34.0130879!4d-118.2901291!16s%2Fg%2F11xtysgltc?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -961,27 +1148,27 @@
 
         <!-- Direction to Parking -->
         <section id="direction-parking" class="container scroll-mt-[60px] mx-auto  md:px-8 py-12 md:py-16 xl:py-24.5">
-            <h2
+            <h2 data-reveal
                 class="font-semibold text-3xl px-4 md:px-0 md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                 Directions to Parking Structures and Parking Lots
             </h2>
-            <p class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
+            <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
                 Click the directional links below to get GPS directions to bus drop-off, pick-up, and parking locations.
             </p>
             <div class="px-4 md:px-0">
 
             </div>
-            <div x-cloak x-data="directions" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div x-cloak x-data="directions" data-reveal="scale-up" data-delay="200" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6" x-on:mouseleave="hoveredItem = null">
                     <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <template x-for="(item, index) in data">
-                            <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)"
+                            <div x-on:mouseenter="hover(item)"
                                 :data-direction-card="index"
-                                :class="(() => { const m = (hoveredItem?.name === item.name && hoveredItem) || (activeItem?.name === item.name && activeItem); return m?.initials === 'B' ? 'border-blue-500' : m?.initials === 'O' ? 'border-orange-500' : m?.initials === 'P' ? 'border-pink-500' : m?.initials === 'Y' ? 'border-yellow-500' : m?.initials === 'G' ? 'border-green-500' : m?.initials === 'S' ? 'border-blue-500' : 'border-transparent' })()"
+                                :class="(hoveredItem?.name === item.name || activeItem?.name === item.name) ? item.borderColor : 'border-transparent'"
                                 class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                 <div class="space-y-3">
                                     <div class="flex items-center gap-2">
-                                        <div :class="item.initials === 'B' ? 'bg-blue-500' : item.initials === 'O' ? 'bg-orange-500' : item.initials === 'P' ? 'bg-pink-500' : item.initials === 'Y' ? 'bg-yellow-500' : item.initials === 'G' ? 'bg-green-500' : item.initials === 'S' ? 'bg-blue-500' : 'bg-[#869395]'"
+                                        <div :class="item.bgColor || 'bg-[#869395]'"
                                             class="size-8 rounded-full flex items-center justify-center transition-colors duration-300 ease-in-out">
                                             <p class="text-white font-semibold text-xl" x-text="item.initials"></p>
                                         </div>
@@ -1004,15 +1191,18 @@
                             </p>
                         </div>
                     </div>
-                    <div class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10 reveal-container h-[280px] md:h-[364px] lg:h-[576px]"
-                        :class="{ 'animating': animating }">
-                        <!-- Previous Image Layer (stays at bottom) -->
-                        <img :src="previousImage" alt="" class="reveal-layer object-center">
+                    <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                        <!-- Default image always visible underneath -->
+                        <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
-                        <!-- Current Image Layer (fades in on top) -->
-                        <img x-bind:src="currentImage" alt="direction-parking-all"
-                            class="reveal-layer reveal-current object-center transition-opacity duration-300 ease-in-out"
-                            loading="lazy" decoding="async">
+                        <!-- Hover image crossfades on top -->
+                        <template x-for="(item, index) in data" :key="index">
+                            <img :src="item.image"
+                                :alt="item.name || item.title || ''"
+                                class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
+                                :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
+                                loading="lazy" decoding="async">
+                        </template>
                     </div>
                 </div>
             </div>
@@ -1022,19 +1212,19 @@
         <section id="bus-parking" x-cloak x-data="dropOffPickup"
             class="bg-white scroll-mt-[60px] md:px-8 pt-12 md:py-16 xl:pt-24.5">
             <div class="container mx-auto">
-                <h2
+                <h2 data-reveal
                     class="px-4 md:px-0 font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     Bus Drop-off and Pickup
                 </h2>
-                <p class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100" class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Click the directional links below to get GPS directions to bus drop-off, pick-up, and parking
                     locations
                 </p>
-                <div class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
-                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div data-reveal="scale-up" class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6" x-on:mouseleave="hoveredItem = null">
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="(item, index) in data">
-                                <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)" :data-bus-card="index"
+                                <div x-on:mouseenter="hover(item)" :data-bus-card="index"
                                     class="bg-[#FAFAFA] mx-4 md:mx-0 border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
@@ -1051,15 +1241,18 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10 reveal-container h-[280px] md:h-[364px] lg:h-[576px]"
-                            :class="{ 'animating': animating }">
-                            <!-- Previous Image Layer -->
-                            <img :src="previousImage" alt="" class="reveal-layer object-center">
+                        <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                            <!-- Default image always visible underneath -->
+                            <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
-                            <!-- Current Image Layer -->
-                            <img x-bind:src="currentImage" alt="drop-off-pickup-image"
-                                class="reveal-layer reveal-current object-center transition-opacity duration-300 ease-in-out"
-                                loading="lazy" decoding="async">
+                            <!-- Hover image crossfades on top -->
+                            <template x-for="(item, index) in data" :key="index">
+                                <img :src="item.image"
+                                    :alt="item.title || item.name || ''"
+                                    class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
+                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
+                                    loading="lazy" decoding="async">
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -1070,23 +1263,23 @@
         <section id="ada-parking" x-cloak x-data="accessibleParking"
             class="scroll-mt-[60px] md:px-8 py-12 md:py-16 xl:py-24.5">
             <div class="container mx-auto">
-                <h2
+                <h2 data-reveal
                     class="px-4 md:px-0 font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     ADA Accessible Parking
                 </h2>
-                <p class=" px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100" class=" px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Click any lot to see details, availability, rates, and accessibility features.
                 </p>
-                <div class="mt-12 bg-white border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
-                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div data-reveal="scale-up" class="mt-12 bg-white border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6" x-on:mouseleave="hoveredItem = null">
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="(item, index) in data">
-                                <div x-on:mouseenter="hover(item)" x-on:mouseleave="hover(null)" :data-ada-card="index"
-                                    :class="(() => { const m = (hoveredItem?.title === item.title && hoveredItem) || (activeItem?.title === item.title && activeItem); return m?.initials === 'B' ? 'border-blue-500' : m?.initials === 'O' ? 'border-orange-500' : m?.initials === 'P' ? 'border-pink-500' : m?.initials === 'G' ? 'border-green-500' : 'border-transparent' })()"
+                                <div x-on:mouseenter="hover(item)" :data-ada-card="index"
+                                    :class="(hoveredItem?.title === item.title || activeItem?.title === item.title) ? item.borderColor : 'border-transparent'"
                                     class="bg-[#FAFAFA] border-2 rounded-lg mx-4 md:mx-0 p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
-                                            <div :class="item?.initials === 'B' ? 'bg-blue-500' : item?.initials === 'O' ? 'bg-orange-500' : item?.initials === 'P' ? 'bg-pink-500' : item?.initials === 'Y' ? 'bg-yellow-500' : item?.initials === 'G' ? 'bg-green-500' : item?.initials === 'S' ? 'bg-blue-500' : 'bg-[#869395]'"
+                                            <div :class="item.bgColor || 'bg-[#869395]'"
                                                 class="size-8 my-auto rounded-full flex items-center justify-center transition-colors duration-300 ease-in-out">
                                                 <p class="text-white font-semibold text-xl" x-text="item.initials"></p>
                                             </div>
@@ -1106,15 +1299,18 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="order-1 xl:order-1 sticky top-0 left-0 right-0 xl:relative w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden z-10 reveal-container h-[280px] md:h-[364px] lg:h-[576px]"
-                            :class="{ 'animating': animating }">
-                            <!-- Previous Image Layer -->
-                            <img :src="previousImage" alt="" class="reveal-layer object-center">
+                        <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                            <!-- Default image always visible underneath -->
+                            <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
-                            <!-- Current Image Layer -->
-                            <img x-bind:src="currentImage" alt="ada-accessible-parking"
-                                class="reveal-layer reveal-current object-center transition-opacity duration-300 ease-in-out"
-                                loading="lazy" decoding="async">
+                            <!-- Hover image crossfades on top -->
+                            <template x-for="(item, index) in data" :key="index">
+                                <img :src="item.image"
+                                    :alt="item.title || item.name || ''"
+                                    class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
+                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
+                                    loading="lazy" decoding="async">
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -1124,15 +1320,15 @@
         <!-- EV charging & guideline -->
         <section id="ev-charging" class="bg-white scroll-mt-[60px] md:px-8 py-12 md:py-16 lg:py-24.5">
             <div class="container mx-auto">
-                <h2
+                <h2 data-reveal
                     class="px-4 md:px-0 font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     EV Charging & Guideline
                 </h2>
 
-                <p class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100" class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Please see below for EV charging details and terms of use
                 </p>
-                <div class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg md:p-6 ">
+                <div data-reveal="scale-up" class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg md:p-6 ">
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
                         <div
                             class="mx-4 md:mx-0 order-2 xl:order-0 bg-[#FAFAFA] border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
@@ -1162,7 +1358,7 @@
                                 Get Directions
                             </a>
                         </div>
-                        <div class="order-1 xl:order-0 rounded-lg overflow-hidden">
+                        <div class="order-1 xl:order-0 rounded-lg overflow-hidden img-hover-zoom">
                             <img src="/ev-charging-guideline.webp" alt="ev-charging-guideline"
                                 class="w-full h-[280px] md:h-[364px] lg:h-[576px] object-center object-cover transition-opacity duration-300 ease-in-out"
                                 loading="lazy" decoding="async">
@@ -1174,14 +1370,14 @@
 
         <!-- Event parking information -->
         <section id="event-parking" class="container scroll-mt-[60px] mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
-            <h2 class="font-semibold text-3xl md:text-5xl mb-4 text-center">
+            <h2 data-reveal class="font-semibold text-3xl md:text-5xl mb-4 text-center">
                 Event Parking Information
             </h2>
-            <p class="text-lg md:text-xl font-normal text-center max-w-2xl mx-auto">
+            <p data-reveal data-delay="100" class="text-lg md:text-xl font-normal text-center max-w-2xl mx-auto">
                 Parking rates, availability, and rules may change during special events.
             </p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-12">
-                <div class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+            <div data-reveal-children class="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-12">
+                <div class="card-hover p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
                     <img src="/parking-1.svg" alt="Parking lot view during an event" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
                     <div class="relative flex-1 flex flex-col">
@@ -1219,13 +1415,14 @@
                                 </p>
                             </li>
                         </ul>
-                        <a href="#" aria-label="View Parking Map for Special Events"
-                            class="mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                        <a href="https://expositionpark.ca.gov/events-2/" target="_blank" rel="noopener noreferrer"
+                            aria-label="View Special Event Parking Rates"
+                            class="btn-outline-hover mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button">
                             Click here for special event rates
                         </a>
                     </div>
                 </div>
-                <div x-data="{showModal: false}" class="p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+                <div x-data="{showModal: false}" class="card-hover p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
                     <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
                     <div class="flex-1 flex flex-col">
@@ -1261,7 +1458,7 @@
                         </ul>
 
                         <button @click="showModal = true"
-                            class="mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button transition-colors">
+                            class="btn-outline-hover mt-auto self-start w-full md:w-auto text-center md:text-left inline-block py-4 px-6 bg-transparent border-2 border-brand text-brand hover:text-white font-bold text-base rounded-lg hover:bg-button">
                             Click here for oversized vehicles
                         </button>
                         <!-- Modal -->
@@ -1310,22 +1507,22 @@
         <section id="office-address" class="px-4 scroll-mt-[60px] md:px-8 py-12 md:py-16 xl:py-24.5 bg-white">
             <div class="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-12">
                 <div>
-                    <h2
+                    <h2 data-reveal
                         class="font-semibold text-center xl:text-left text-3xl w-full xl:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
                         Parking Office
                         Hours & Contact
                     </h2>
-                    <p class="text-text-secondary text-center xl:text-left text-lg md:text-lg xl:text-xl">
+                    <p data-reveal data-delay="100" class="text-text-secondary text-center xl:text-left text-lg md:text-lg xl:text-xl">
                         For questions related to parking operations, rates, or permits.
                     </p>
                     <img src="/contact-image.svg" alt="Parking office exterior"
                         class=" w-full md:h-[356px] lg:h-auto xl:hidden object-bottom mt-8 md:mt-12 rounded-lg"
                         loading="lazy" decoding="async">
-                    <img src="/contact-image-large.webp" alt="Parking office exterior"
+                    <img data-reveal="fade-left" src="/contact-image-large.webp" alt="Parking office exterior"
                         class="hidden xl:block w-full md:h-full object-bottom lg:h-[400px] xl:h-[572px] mt-8 md:mt-12 rounded-lg"
                         loading="lazy" decoding="async">
                 </div>
-                <div
+                <div data-reveal-children
                     class="space-y-6 lg:space-x-px xl:space-x-0 h-full flex flex-col lg:flex-row lg:flex-wrap xl:flex-1 xl:flex-col justify-between">
                     <div
                         class="p-4.5 md:p-6 gap-4 flex flex-row md:flex-col bg-[rgba(247,247,247,1)] rounded-lg w-full lg:w-[49%] xl:w-full">
@@ -1384,41 +1581,6 @@
                         </div>
                     </div>
                 </div>
-
-        </section>
-
-        <!-- Third-party parking request -->
-        <section hidden class="relative my-16 md:my-24 overflow-hidden">
-            <img src="/third-party-parking-bg.webp" alt="" aria-hidden="true"
-                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" decoding="async">
-            <div
-                class="relative py-12 md:py-28 lg:py-52 backdrop-brightness-50 h-full px-4 md:px-8 flex justify-center items-center">
-                <div
-                    class="p-6 md:p-10 bg-white flex flex-col lg:flex-row lg:justify-between lg:items-end gap-3 rounded-lg">
-                    <div class="w-full lg:w-2/3">
-                        <h3 class="font-semibold text-3xl md:text-[40px] mb-2">Third-Party Parking Requests</h3>
-                        <p class="text-text-secondary text-base md:text-lg mb-6">
-                            Organizations, vendors, and event partners can request
-                            parking arrangements in advance.
-                        </p>
-                        <p class="space-x-3 flex items-center">
-                            <span class="size-3.5 block rounded-full bg-[rgba(144,235,211,1)]"></span>
-                            <span class="text-base md:text-lg text-text-secondary">Submit requests before the event
-                                date.</span>
-                        </p>
-                        <p class="space-x-3 flex items-center">
-                            <span class="size-3.5 block rounded-full bg-[rgba(144,235,211,1)]"></span>
-                            <span class="text-base md:text-lg text-text-secondary">Authorized activities only</span>
-                        </p>
-                    </div>
-                    <div class="w-full lg:w-1/3">
-                        <a href=""
-                            class="px-6 py-4 hover:bg-button/75 transition-colors ease-linear duration-200 md:text-left text-center lg:text-center md:w-auto w-full lg:w-full inline-block bg-button rounded-lg text-white font-bold text-base">
-                            Submit a
-                            Parking Request
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1426,19 +1588,19 @@
         <section id="faq"
             class="container scroll-mt-[60px] grid grid-cols-1 lg:grid-cols-2 mx-auto px-4 md:px-8 py-12 md:py-16 xl:py-24.5">
             <div>
-                <h2
+                <h2 data-reveal
                     class="font-semibold text-center lg:text-left text-3xl w-full lg:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
                     Frequently Asked Questions
                 </h2>
-                <p class="text-text-secondary text-center lg:text-left text-lg md:text-lg xl:text-xl">
+                <p data-reveal data-delay="100" class="text-text-secondary text-center lg:text-left text-lg md:text-lg xl:text-xl">
                     For questions related to parking operations, rates, or permits.
                 </p>
             </div>
 
-            <div class="space-y-4 items-center w-full mt-6 md:mt-12 lg:mt-0 mx-auto divide-y divide-gray-100"
+            <div data-reveal data-delay="200" class="space-y-4 items-center w-full mt-6 md:mt-12 lg:mt-0 mx-auto divide-y divide-gray-100"
                 x-data="faq">
                 <template x-for="item in data">
-                    <div class="w-full p-4 md:p-6 bg-white">
+                    <div class="faq-item w-full p-4 md:p-6 bg-white">
                         <button x-on:click="toggle(item)" :aria-expanded="item.isOpen"
                             :aria-controls="'faq-answer-' + item.id"
                             class="flex justify-between items-center w-full cursor-pointer text-left group">
@@ -1465,7 +1627,19 @@
         </section>
     </main>
 
-    <footer role="contentinfo" class="bg-[#3B5E68] px-4 md:px-16 pt-10 pb-8">
+    <!-- Back to Top Button -->
+    <button x-data="{ visible: false }"
+        @scroll.window="visible = (window.pageYOffset > 600)"
+        x-show="visible" x-cloak x-transition
+        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-6 right-6 z-50 bg-brand text-white p-3 rounded-full shadow-lg hover:bg-brand/90 transition-colors cursor-pointer"
+        aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <footer role="contentinfo" data-reveal class="bg-[#3B5E68] px-4 md:px-16 pt-10 pb-8">
         <section
             class="container mx-auto flex-col flex lg:flex-row gap-12 pb-16 border-b border-[#FFFAE6] text-[#FFFAE6] justify-between">
             <div class="flex flex-col md:flex-row  md:justify-between lg:justify-start lg:items-start lg:flex-col">
@@ -1529,13 +1703,6 @@
     </footer>
 
     <script type="module" src="/src/main.js"></script>
-    <script type="text/javascript">
-        function googleTranslateElementInitMobile() {
-            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element_mobile');
-        }
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInitMobile"></script>
 </body>
 
 </html>
