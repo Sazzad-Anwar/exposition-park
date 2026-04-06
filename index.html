@@ -165,7 +165,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[#1F1F1F]/60 backdrop-blur-2xl shadow-lg py-3 md:py-4 transition-colors duration-300"
+            <div class="bg-[#1F1F1F]/85 backdrop-blur-2xl shadow-lg py-3 md:py-4 transition-colors duration-300"
                 :class="mobileMenuOpen && 'max-lg:!bg-brand/80'">
                 <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
                     <div class="flex items-center">
@@ -275,16 +275,20 @@
                 <!-- Pricing Cards -->
                 <div x-data="{ activePopup: null }" class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full" role="list">
                     <div role="listitem"
-                        class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
-                        <img src="/parking.svg" alt="" aria-hidden="true"
-                            class="size-10 md:mt-2 md:size-12 md:mb-8 lg:mb-0" />
-                        <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between w-full">
-                            <h2 class="text-text-secondary text-xl font-semibold">
+                        class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
+                        @click="activePopup = 'museum'">
+                        <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                            <img src="/parking.svg" alt="" aria-hidden="true"
+                                class="size-7 md:size-8 brightness-0 invert" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
                                 Daily Parking Rate
                             </h2>
-
-                            <button @click="activePopup = 'museum'"
-                                class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
+                            <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                View Rates
+                                <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                            </span>
                         </div>
 
                         <!-- Modal 1 -->
@@ -353,16 +357,21 @@
                             </div>
                         </template>
                     </div>
-                    <div role="listitem"                         class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
-                        <img src="/calendar.svg" alt="" aria-hidden="true"
-                            class="size-10 md:mt-2 md:size-12 md:mb-8 lg:mb-0" />
-                        <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between w-full">
-                            <h2 class="text-text-secondary text-xl font-semibold">
+                    <div role="listitem"
+                        class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
+                        @click="activePopup = 'event'">
+                        <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                            <img src="/calendar.svg" alt="" aria-hidden="true"
+                                class="size-7 md:size-8 brightness-0 invert" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
                                 Special Event & After Hours Parking Rates
                             </h2>
-
-                            <button @click="activePopup = 'event'"
-                                class="font-semibold text-sm md:text-base text-button underline">View Rates</button>
+                            <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                View Rates
+                                <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                            </span>
                         </div>
 
                         <!-- Modal 2 -->
@@ -452,17 +461,23 @@
                             </div>
                         </template>
                     </div>
-                    <div class=" w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
-                        <div role="listitem"                             class="card-hover bg-white rounded-lg p-5 md:p-8 flex flex-row lg:flex-row items-center md:items-start justify-start w-full lg:ml-auto shadow-lg gap-5 md:h-[148px]">
-                            <img src="/car.png" alt="" aria-hidden="true" class="w-auto h-9 md:mt-2 md:mb-8 lg:mb-0" />
-                            <div class="flex flex-col items-start md:gap-3 space-y-3 md:space-y-0 justify-between">
-                                <h2 class="text-text-secondary text-xl font-semibold">
-                                    Oversized Vehicle
-                                    Parking Rate
+                    <div class="w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
+                        <div role="listitem"
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
+                            @click="activePopup = 'bus'">
+                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                <svg class="size-7 md:size-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h17.25M3.375 14.25V6.375c0-.621.504-1.125 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125v7.875m3 0V9.75a2.25 2.25 0 00-2.25-2.25h-.75m3 4.5h1.5a1.5 1.5 0 011.5 1.5v1.5m-1.5-4.5V9m0 0h-3" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
+                                    Oversized Vehicle Parking Rate
                                 </h2>
-                                <button @click="activePopup = 'bus'"
-                                    class="font-semibold text-sm md:text-base text-button underline">View
-                                    Rates</button>
+                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                    View Rates
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                </span>
                             </div>
 
                             <!-- Modal 3 -->
