@@ -274,192 +274,196 @@
                 </div>
                 <!-- Pricing Cards -->
                 <div x-data="{ activePopup: null }" class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full" role="list">
-                    <div role="listitem"
-                        class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
-                        @click="activePopup = 'museum'">
-                        <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                            <img src="/parking.svg" alt="" aria-hidden="true"
-                                class="size-7 md:size-8 brightness-0 invert" />
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
-                                Daily Parking Rate
-                            </h2>
-                            <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
-                                View Rates
-                                <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-                            </span>
-                        </div>
-
-                        <!-- Modal 1 -->
-                        <template x-teleport="body">
-                            <div x-show="activePopup === 'museum'" x-cloak x-transition.opacity
-                                x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
-                                class="fixed inset-0 z-100 flex items-center justify-center p-4"
-                                @keydown.escape.window="activePopup = null">
-                                <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
-                                <div class="relative z-10 popup-custom" @click.stop>
-                                    <div class="popup-head">
-                                        <div class="popup-head-left">
-                                            <div class="popup-icon museum">
-                                                <svg fill="none" viewBox="0 0 24 24" stroke="#2457A3"
-                                                    stroke-width="1.8">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <div class="popup-head-title">Museum Rate</div>
-                                                <div class="popup-head-sub">Daily parking for museum visitors</div>
-                                            </div>
-                                        </div>
-                                        <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
-                                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="popup-content">
-                                        <div class="rate-row">
-                                            <div>
-                                                <div class="rate-row-label">Museum Rate</div>
-                                                <div class="tag blue">
-                                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                        stroke-width="2.5">
-                                                        <circle cx="12" cy="12" r="10" />
-                                                        <path d="M12 6v6l4 2" />
-                                                    </svg>
-                                                    9:00 AM – 5:00 PM
-                                                </div>
-                                            </div>
-                                            <div class="rate-row-amount">$20.00</div>
-                                        </div>
-                                        <p class="rate-desc">Daily Parking rate is applicable only to guests with
-                                            confirmed
-                                            museum attendance or valid exhibit proof of purchase between the hours of
-                                            9:00
-                                            a.m. to 5:00 p.m.</p>
-                                        <div class="notice blue">
-                                            <svg class="notice-icon" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                                            </svg>
-                                            <p>Valid museum ticket or exhibit proof of purchase required at the time of
-                                                parking payment.</p>
-                                        </div>
-                                    </div>
-                                    <div class="popup-foot">
-                                        <button class="btn-primary" @click="activePopup = null">Got It</button>
-                                    </div>
-                                </div>
+                    <div class="w-full">
+                        <div role="listitem"
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
+                            @click="activePopup = 'museum'">
+                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                <img src="/parking.svg" alt="" aria-hidden="true"
+                                    class="size-7 md:size-8 brightness-0 invert" />
                             </div>
-                        </template>
-                    </div>
-                    <div role="listitem"
-                        class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
-                        @click="activePopup = 'event'">
-                        <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                            <img src="/calendar.svg" alt="" aria-hidden="true"
-                                class="size-7 md:size-8 brightness-0 invert" />
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
-                                Special Event & After Hours Parking Rates
-                            </h2>
-                            <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
-                                View Rates
-                                <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-                            </span>
-                        </div>
+                            <div class="flex-1 min-w-0">
+                                <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
+                                    Daily Parking Rate
+                                </h2>
+                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                    View Rates
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                </span>
+                            </div>
 
-                        <!-- Modal 2 -->
-                        <template x-teleport="body">
-                            <div x-show="activePopup === 'event'" x-cloak x-transition.opacity
-                                x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
-                                class="fixed inset-0 z-100 flex items-center justify-center p-4"
-                                @keydown.escape.window="activePopup = null">
-                                <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
-                                <div class="relative z-10 popup-custom" @click.stop>
-                                    <div class="popup-head">
-                                        <div class="popup-head-left">
-                                            <div class="popup-icon event">
-                                                <svg fill="none" viewBox="0 0 24 24" stroke="#B5700A"
-                                                    stroke-width="1.8">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <div class="popup-head-title">Special Event & After Hours</div>
-                                                <div class="popup-head-sub">After 5:00 PM event parking rates</div>
-                                            </div>
-                                        </div>
-                                        <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
-                                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="popup-content">
-                                        <div class="rate-row">
-                                            <div>
-                                                <div class="rate-row-label">Museum After 5:00 p.m. Rate</div>
-                                                <div class="tag amber">
-                                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                        stroke-width="2.5">
+                            <!-- Modal 1 -->
+                            <template x-teleport="body">
+                                <div x-show="activePopup === 'museum'" x-cloak x-transition.opacity
+                                    x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
+                                    class="fixed inset-0 z-100 flex items-center justify-center p-4"
+                                    @keydown.escape.window="activePopup = null">
+                                    <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
+                                    <div class="relative z-10 popup-custom" @click.stop>
+                                        <div class="popup-head">
+                                            <div class="popup-head-left">
+                                                <div class="popup-icon museum">
+                                                    <svg fill="none" viewBox="0 0 24 24" stroke="#2457A3"
+                                                        stroke-width="1.8">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                                                            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
                                                     </svg>
-                                                    After 5:00 PM
+                                                </div>
+                                                <div>
+                                                    <div class="popup-head-title">Museum Rate</div>
+                                                    <div class="popup-head-sub">Daily parking for museum visitors</div>
                                                 </div>
                                             </div>
-                                            <div class="rate-row-amount">$24.00</div>
+                                            <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
+                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
                                         </div>
-                                        <p class="rate-desc">After 5:00 p.m. rate is applicable only to approved museum
-                                            events or other authorized entity events with valid proof of event ticket
-                                            purchase.</p>
-                                        <div class="section-divider"></div>
-                                        <div class="section-heading">Event Parking Rates</div>
-                                        <div class="event-table">
-                                            <div class="event-row">
-                                                <span class="event-name">LAFC Events</span>
-                                                <span class="event-rate">$65.00</span>
+                                        <div class="popup-content">
+                                            <div class="rate-row">
+                                                <div>
+                                                    <div class="rate-row-label">Museum Rate</div>
+                                                    <div class="tag blue">
+                                                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2.5">
+                                                            <circle cx="12" cy="12" r="10" />
+                                                            <path d="M12 6v6l4 2" />
+                                                        </svg>
+                                                        9:00 AM – 5:00 PM
+                                                    </div>
+                                                </div>
+                                                <div class="rate-row-amount">$20.00</div>
                                             </div>
-                                            <div class="event-row">
-                                                <span class="event-name">ACFC Events</span>
-                                                <span class="event-rate">$65.00</span>
-                                            </div>
-                                            <div class="event-row">
-                                                <span class="event-name">BMO Stadium Concerts</span>
-                                                <span class="event-rate">$80.00</span>
-                                            </div>
-                                            <div class="event-row">
-                                                <span class="event-name">LAMC Events</span>
-                                                <span class="event-rate">$40.00–$50.00</span>
+                                            <p class="rate-desc">Daily Parking rate is applicable only to guests with
+                                                confirmed
+                                                museum attendance or valid exhibit proof of purchase between the hours of
+                                                9:00
+                                                a.m. to 5:00 p.m.</p>
+                                            <div class="notice blue">
+                                                <svg class="notice-icon" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                                </svg>
+                                                <p>Valid museum ticket or exhibit proof of purchase required at the time of
+                                                    parking payment.</p>
                                             </div>
                                         </div>
-                                        <div class="notice neutral">
-                                            <svg class="notice-icon" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                                            </svg>
-                                            <p>Event parking rates are determined by the respective stadium and event
-                                                organizer. Rates may vary by event and are subject to change without
-                                                notice.
-                                                For the most current information, please visit the respective entity's
-                                                website.</p>
+                                        <div class="popup-foot">
+                                            <button class="btn-primary" @click="activePopup = null">Got It</button>
                                         </div>
-                                    </div>
-                                    <div class="popup-foot">
-                                        <button class="btn-primary" @click="activePopup = null">Got It</button>
                                     </div>
                                 </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="w-full">
+                        <div role="listitem"
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
+                            @click="activePopup = 'event'">
+                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                <img src="/calendar.svg" alt="" aria-hidden="true"
+                                    class="size-7 md:size-8 brightness-0 invert" />
                             </div>
-                        </template>
+                            <div class="flex-1 min-w-0">
+                                <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
+                                    Special Event & After Hours Parking Rates
+                                </h2>
+                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                    View Rates
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                </span>
+                            </div>
+
+                            <!-- Modal 2 -->
+                            <template x-teleport="body">
+                                <div x-show="activePopup === 'event'" x-cloak x-transition.opacity
+                                    x-effect="document.body.style.overflow = activePopup ? 'hidden' : ''"
+                                    class="fixed inset-0 z-100 flex items-center justify-center p-4"
+                                    @keydown.escape.window="activePopup = null">
+                                    <div class="fixed inset-0 bg-black/50" @click="activePopup = null"></div>
+                                    <div class="relative z-10 popup-custom" @click.stop>
+                                        <div class="popup-head">
+                                            <div class="popup-head-left">
+                                                <div class="popup-icon event">
+                                                    <svg fill="none" viewBox="0 0 24 24" stroke="#B5700A"
+                                                        stroke-width="1.8">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <div class="popup-head-title">Special Event & After Hours</div>
+                                                    <div class="popup-head-sub">After 5:00 PM event parking rates</div>
+                                                </div>
+                                            </div>
+                                            <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
+                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="popup-content">
+                                            <div class="rate-row">
+                                                <div>
+                                                    <div class="rate-row-label">Museum After 5:00 p.m. Rate</div>
+                                                    <div class="tag amber">
+                                                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2.5">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                                                        </svg>
+                                                        After 5:00 PM
+                                                    </div>
+                                                </div>
+                                                <div class="rate-row-amount">$24.00</div>
+                                            </div>
+                                            <p class="rate-desc">After 5:00 p.m. rate is applicable only to approved museum
+                                                events or other authorized entity events with valid proof of event ticket
+                                                purchase.</p>
+                                            <div class="section-divider"></div>
+                                            <div class="section-heading">Event Parking Rates</div>
+                                            <div class="event-table">
+                                                <div class="event-row">
+                                                    <span class="event-name">LAFC Events</span>
+                                                    <span class="event-rate">$65.00</span>
+                                                </div>
+                                                <div class="event-row">
+                                                    <span class="event-name">ACFC Events</span>
+                                                    <span class="event-rate">$65.00</span>
+                                                </div>
+                                                <div class="event-row">
+                                                    <span class="event-name">BMO Stadium Concerts</span>
+                                                    <span class="event-rate">$80.00</span>
+                                                </div>
+                                                <div class="event-row">
+                                                    <span class="event-name">LAMC Events</span>
+                                                    <span class="event-rate">$40.00–$50.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="notice neutral">
+                                                <svg class="notice-icon" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                                </svg>
+                                                <p>Event parking rates are determined by the respective stadium and event
+                                                    organizer. Rates may vary by event and are subject to change without
+                                                    notice.
+                                                    For the most current information, please visit the respective entity's
+                                                    website.</p>
+                                            </div>
+                                        </div>
+                                        <div class="popup-foot">
+                                            <button class="btn-primary" @click="activePopup = null">Got It</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
                     </div>
                     <div class="w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
                         <div role="listitem"
