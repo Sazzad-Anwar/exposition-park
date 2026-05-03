@@ -308,6 +308,12 @@ Alpine.data('faq', () => ({
         'Overnight parking is not permitted. Vehicles must vacate the premises within two hours after the event. Violators will be towed by United Carriers Inc. (213-747-2868).',
       isOpen: false,
     },
+    {
+      title: 'Are parking rates different during events?',
+      description:
+        'es, event parking rates vary depending on the venue and/or daily events. For parking rate information, guests should visit the LAMC or BMO Stadium website.',
+      isOpen: false,
+    },
   ],
   toggle(item) {
     this.data.forEach((i) => {
@@ -384,7 +390,9 @@ if (currentYear) {
 
 // Scroll reveal observer
 function initScrollReveal() {
-  const targets = document.querySelectorAll('[data-reveal], [data-reveal-children]')
+  const targets = document.querySelectorAll(
+    '[data-reveal], [data-reveal-children]',
+  )
   if (!targets.length) return
 
   const observer = new IntersectionObserver(
