@@ -311,7 +311,7 @@ Alpine.data('faq', () => ({
     {
       title: 'Are parking rates different during events?',
       description:
-        'es, event parking rates vary depending on the venue and/or daily events. For parking rate information, guests should visit the LAMC or BMO Stadium website.',
+        'Yes, event parking rates vary depending on the venue and/or daily events. For parking rate information, guests should visit the LAMC or BMO Stadium website.',
       isOpen: false,
     },
   ],
