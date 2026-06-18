@@ -423,7 +423,8 @@ jQuery(document).on('elementor/popup.show', function (event, id, instance) {
   // Accessibility functionality for Elementor popup
   ;(function () {
     // Retrieve stored settings or use defaults
-    const highContrast = localStorage.getItem('highContrast') === 'true'
+    // Use `let` because the value is toggled later
+    let highContrast = localStorage.getItem('highContrast') === 'true'
     let fontSize = parseInt(localStorage.getItem('fontSize')) || 100
 
     // Apply current settings to the page
