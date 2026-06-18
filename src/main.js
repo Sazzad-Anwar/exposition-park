@@ -418,3 +418,76 @@ if (document.readyState === 'loading') {
 } else {
   initScrollReveal()
 }
+
+jQuery(document).on('elementor/popup.show', function (event, id, instance) {
+  // Accessibility functionality for Elementor popup
+  ;(function () {
+    // Retrieve stored settings or use defaults
+    const highContrast = localStorage.getItem('highContrast') === 'true'
+    let fontSize = parseInt(localStorage.getItem('fontSize')) || 100
+
+    // Apply current settings to the page
+    function applySettings() {
+      const html = document.documentElement
+      if (highContrast) {
+        html.classList.add('high-contrast')
+      } else {
+        html.classList.remove('high-contrast')
+      }
+      html.style.fontSize = `${fontSize}%`
+    }
+
+    // Toggle high contrast
+    function toggleHighContrast() {
+      highContrast = !highContrast
+      localStorage.setItem('highContrast', highContrast)
+      applySettings()
+    }
+
+    // Increase font size
+    function increaseFont() {
+      if (fontSize < 150) {
+        fontSize += 10
+        localStorage.setItem('fontSize', fontSize)
+        applySettings()
+      }
+    }
+
+    // Decrease font size
+    function decreaseFont() {
+      if (fontSize > 100) {
+        fontSize -= 10
+        localStorage.setItem('fontSize', fontSize)
+        applySettings()
+      }
+    }
+
+    // Reset font size to default
+    function resetFontSize() {
+      fontSize = 100
+      localStorage.setItem('fontSize', fontSize)
+      applySettings()
+    }
+
+    // Set defaults (high contrast off, font size 100)
+    function setDefaults() {
+      highContrast = false
+      fontSize = 100
+      localStorage.setItem('highContrast', highContrast)
+      localStorage.setItem('fontSize', fontSize)
+      applySettings()
+    }
+
+    // Bind UI elements that exist inside this popup
+    const $popup = jQuery(this) // `this` is the popup element
+
+    $popup.find('#default-btn').on('click', setDefaults)
+    $popup.find('#high-contrast-toggle-btn').on('click', toggleHighContrast)
+    $popup.find('#reset-btn').on('click', resetFontSize)
+    $popup.find('#text-increase-btn').on('click', increaseFont)
+    $popup.find('#text-decrease-btn').on('click', decreaseFont)
+
+    // Apply saved settings when the popup loads
+    applySettings()
+  })()
+})

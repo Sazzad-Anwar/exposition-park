@@ -12,9 +12,11 @@
     <link rel="preload" as="image" href="/hero-bg.webp" />
     <link href="/src/style.css" rel="stylesheet" />
     <title>Exposition Park - Parking Rates & Information</title>
-    <meta name="description" content="Parking rates, locations, and guidelines for Exposition Park, Los Angeles. Find ADA parking, EV charging, bus drop-off, and event parking information." />
+    <meta name="description"
+        content="Parking rates, locations, and guidelines for Exposition Park, Los Angeles. Find ADA parking, EV charging, bus drop-off, and event parking information." />
     <meta property="og:title" content="Exposition Park - Parking Rates & Information" />
-    <meta property="og:description" content="Find convenient parking options, rates, accessibility information, and event-day guidelines all in one place." />
+    <meta property="og:description"
+        content="Find convenient parking options, rates, accessibility information, and event-day guidelines all in one place." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/hero-bg.webp" />
 </head>
@@ -166,7 +168,7 @@
                 </div>
             </div>
             <div class="bg-[#1F1F1F]/85 backdrop-blur-2xl shadow-lg py-3 md:py-4 transition-colors duration-300"
-                :class="mobileMenuOpen && 'max-lg:!bg-brand/80'">
+                :class="mobileMenuOpen && 'max-lg:bg-brand/80!'">
                 <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
                     <div class="flex items-center">
                         <a href="https://expositionpark.ca.gov/" target="_blank" rel="noopener noreferrer">
@@ -252,8 +254,7 @@
 
     <main id="main-content" role="main" class="bg-[#FAFAFA]">
         <!-- Hero section -->
-        <section
-            class="relative overflow-hidden min-h-[75vh] md:min-h-screen lg:h-220 grid items-center py-20">
+        <section class="relative overflow-hidden min-h-[75vh] md:min-h-screen lg:h-220 grid items-center py-20">
             <div class="absolute inset-0 bg-no-repeat bg-bottom md:bg-center bg-cover hero-bg-zoom"
                 style="background-image: url('/hero-bg.webp')"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
@@ -263,7 +264,8 @@
                         class="hero-title text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-semibold text-[#FFFFFFE5] mb-4 leading-[100%] lg:leading-25.5">
                         Exposition Park Parking Rates
                     </h1>
-                    <p class="hero-subtitle text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
+                    <p
+                        class="hero-subtitle text-[#FFFFFF]/80 font-normal text-base md:text-lg xl:text-xl mb-8 w-full md:w-10/12 ">
                         Find convenient parking options, rates, accessibility information,
                         and event-day guidelines all in one place
                     </p>
@@ -273,12 +275,15 @@
                     </a>
                 </div>
                 <!-- Pricing Cards -->
-                <div x-data="{ activePopup: null }" class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full" role="list">
+                <div x-data="{ activePopup: null }"
+                    class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] w-full"
+                    role="list">
                     <div class="w-full">
                         <div role="listitem"
                             class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
                             @click="activePopup = 'museum'">
-                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                            <div
+                                class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                                 <img src="/parking.svg" alt="" aria-hidden="true"
                                     class="size-7 md:size-8 brightness-0 invert" />
                             </div>
@@ -286,9 +291,14 @@
                                 <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
                                     Daily Parking Rate
                                 </h2>
-                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                <span
+                                    class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
                                     View Rates
-                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                    </svg>
                                 </span>
                             </div>
 
@@ -314,8 +324,10 @@
                                                     <div class="popup-head-sub">Daily parking for museum visitors</div>
                                                 </div>
                                             </div>
-                                            <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
-                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <button class="close-btn" @click="activePopup = null"
+                                                aria-label="Close popup">
+                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
@@ -338,7 +350,8 @@
                                             </div>
                                             <p class="rate-desc">Daily Parking rate is applicable only to guests with
                                                 confirmed
-                                                museum attendance or valid exhibit proof of purchase between the hours of
+                                                museum attendance or valid exhibit proof of purchase between the hours
+                                                of
                                                 9:00
                                                 a.m. to 5:00 p.m.</p>
                                             <div class="notice blue">
@@ -347,7 +360,8 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                                                 </svg>
-                                                <p>Valid museum ticket or exhibit proof of purchase required at the time of
+                                                <p>Valid museum ticket or exhibit proof of purchase required at the time
+                                                    of
                                                     parking payment.</p>
                                             </div>
                                         </div>
@@ -363,7 +377,8 @@
                         <div role="listitem"
                             class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
                             @click="activePopup = 'event'">
-                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                            <div
+                                class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                                 <img src="/calendar.svg" alt="" aria-hidden="true"
                                     class="size-7 md:size-8 brightness-0 invert" />
                             </div>
@@ -371,9 +386,14 @@
                                 <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
                                     Special Event & After Hours Parking Rates
                                 </h2>
-                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                <span
+                                    class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
                                     View Rates
-                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                    </svg>
                                 </span>
                             </div>
 
@@ -399,8 +419,10 @@
                                                     <div class="popup-head-sub">After 5:00 PM event parking rates</div>
                                                 </div>
                                             </div>
-                                            <button class="close-btn" @click="activePopup = null" aria-label="Close popup">
-                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <button class="close-btn" @click="activePopup = null"
+                                                aria-label="Close popup">
+                                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
@@ -421,8 +443,10 @@
                                                 </div>
                                                 <div class="rate-row-amount">$24.00</div>
                                             </div>
-                                            <p class="rate-desc">After 5:00 p.m. rate is applicable only to approved museum
-                                                events or other authorized entity events with valid proof of event ticket
+                                            <p class="rate-desc">After 5:00 p.m. rate is applicable only to approved
+                                                museum
+                                                events or other authorized entity events with valid proof of event
+                                                ticket
                                                 purchase.</p>
                                             <div class="section-divider"></div>
                                             <div class="section-heading">Event Parking Rates</div>
@@ -450,10 +474,12 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                                                 </svg>
-                                                <p>Event parking rates are determined by the respective stadium and event
+                                                <p>Event parking rates are determined by the respective stadium and
+                                                    event
                                                     organizer. Rates may vary by event and are subject to change without
                                                     notice.
-                                                    For the most current information, please visit the respective entity's
+                                                    For the most current information, please visit the respective
+                                                    entity's
                                                     website.</p>
                                             </div>
                                         </div>
@@ -469,18 +495,26 @@
                         <div role="listitem"
                             class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
                             @click="activePopup = 'bus'">
-                            <div class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                                <svg class="size-7 md:size-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h17.25M3.375 14.25V6.375c0-.621.504-1.125 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125v7.875m3 0V9.75a2.25 2.25 0 00-2.25-2.25h-.75m3 4.5h1.5a1.5 1.5 0 011.5 1.5v1.5m-1.5-4.5V9m0 0h-3" />
+                            <div
+                                class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                                <svg class="size-7 md:size-8 text-white" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h17.25M3.375 14.25V6.375c0-.621.504-1.125 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125v7.875m3 0V9.75a2.25 2.25 0 00-2.25-2.25h-.75m3 4.5h1.5a1.5 1.5 0 011.5 1.5v1.5m-1.5-4.5V9m0 0h-3" />
                                 </svg>
                             </div>
                             <div class="flex-1 min-w-0">
                                 <h2 class="text-white font-semibold text-base md:text-lg leading-snug">
                                     Oversized Vehicle Parking Rate
                                 </h2>
-                                <span class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
+                                <span
+                                    class="inline-flex items-center gap-1 text-white/70 text-sm mt-1 group-hover:text-white transition-colors">
                                     View Rates
-                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                                    <svg class="size-3.5 transition-transform group-hover:translate-x-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                    </svg>
                                 </span>
                             </div>
 
@@ -578,7 +612,8 @@
             <h2 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-center">
                 Blue Structure Pay Stations and Guidelines
             </h2>
-            <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+            <p data-reveal data-delay="100"
+                class="text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                 Payment methods, parking rules, and important information for visitors.
             </p>
             <div x-data="{selectedTab:'cash'}" data-reveal data-delay="200" class="mt-12">
@@ -745,7 +780,8 @@
                 <h2 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mb-4 text-left">
                     Key Parking Processes
                 </h2>
-                <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl font-normal text-left max-w-2xl mr-auto">
+                <p data-reveal data-delay="100"
+                    class="text-lg md:text-lg lg:text-xl font-normal text-left max-w-2xl mr-auto">
                     Click links below for directions to specified areas
                 </p>
                 <div x-data="{ activeModal: null }" data-reveal-children>
@@ -755,23 +791,32 @@
                         <div @click="activeModal = 'non-automated'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/non-automated.webp" alt="Blue Structure parking" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/non-automated.webp" alt="Blue Structure parking"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">B</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Non-automated Parking Process During Event Days</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Non-automated
+                                            Parking Process During Event Days</h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
                                         During events, payments are due upfront at kiosks while automation is paused.
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -780,23 +825,32 @@
                         <div @click="activeModal = 'automated'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/automated.webp" alt="Blue Structure automated parking" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/automated.webp" alt="Blue Structure automated parking"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">B</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Automated Parking Process During Non-Event Days</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">Automated Parking
+                                            Process During Non-Event Days</h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
                                         Cash and credit cards are accepted at the pay station on Level A.
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -808,15 +862,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/non-automated.webp" alt="Non-automated parking process" class="w-full h-full object-cover">
+                                <img src="/non-automated.webp" alt="Non-automated parking process"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -828,14 +890,26 @@
                                         <p class="text-sm text-text-secondary">Blue Structure - Event Days</p>
                                     </div>
                                 </div>
-                                <p class="text-sm text-text-secondary mt-4 mb-5">During events, payments are due upfront at kiosks while automation is paused.</p>
+                                <p class="text-sm text-text-secondary mt-4 mb-5">During events, payments are due upfront
+                                    at kiosks while automation is paused.</p>
                                 <div class="flex items-start gap-2 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
                                     <p class="text-sm">3855 S Figueroa St, Los Angeles, CA 90037</p>
                                 </div>
-                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank" rel="noopener noreferrer"
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
+                                    rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -847,15 +921,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/automated.webp" alt="Automated parking process" class="w-full h-full object-cover">
+                                <img src="/automated.webp" alt="Automated parking process"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -867,14 +949,26 @@
                                         <p class="text-sm text-text-secondary">Blue Structure - Non-Event Days</p>
                                     </div>
                                 </div>
-                                <p class="text-sm text-text-secondary mt-4 mb-5">Cash and credit cards are accepted at the pay station on Level A.</p>
+                                <p class="text-sm text-text-secondary mt-4 mb-5">Cash and credit cards are accepted at
+                                    the pay station on Level A.</p>
                                 <div class="flex items-start gap-2 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
                                     <p class="text-sm">3855 S Figueroa St, Los Angeles, CA 90037</p>
                                 </div>
-                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank" rel="noopener noreferrer"
+                                <a href="https://maps.app.goo.gl/MyQrE7STEdTgPJxH8" target="_blank"
+                                    rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -882,10 +976,12 @@
                     </div>
 
                     <!-- Direction to Elevators Sub-section -->
-                    <h3 data-reveal class="font-semibold text-3xl md:text-[40px] lg:text-5xl mt-16 md:mt-20 lg:mt-24 mb-4 text-left">
+                    <h3 data-reveal
+                        class="font-semibold text-3xl md:text-[40px] lg:text-5xl mt-16 md:mt-20 lg:mt-24 mb-4 text-left">
                         Direction to Elevators
                     </h3>
-                    <p data-reveal data-delay="100" class="text-lg font-normal text-left text-text-secondary max-w-2xl mr-auto mb-8 md:mb-10">
+                    <p data-reveal data-delay="100"
+                        class="text-lg font-normal text-left text-text-secondary max-w-2xl mr-auto mb-8 md:mb-10">
                         Click links below for directions to elevators
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -893,23 +989,33 @@
                         <div @click="activeModal = 'south-elevator'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">E1</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator Location</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator
+                                            Location</h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
-                                        Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA 90037
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                        Located at 669 Exposition Park Dr, on the corner of Exposition Park Drive, Los
+                                        Angeles, CA 90037
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -918,23 +1024,32 @@
                         <div @click="activeModal = 'north-elevator'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-blue-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">E2</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator Location</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator
+                                            Location</h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
                                         Located Near Lockheed A-12 "Trainer"
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -943,23 +1058,32 @@
                         <div @click="activeModal = 'orange-north'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/orange-north-elevator.webp" alt="Orange Structure North Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/orange-north-elevator.webp" alt="Orange Structure North Elevator"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">O1</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">North Elevator
+                                        </h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
                                         Located at 3924-14 Bill Robertson Ln, Los Angeles, CA 90037
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -968,23 +1092,32 @@
                         <div @click="activeModal = 'orange-south'"
                             class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
-                                <img src="/orange-south-elevator.webp" alt="Orange Structure South Elevator" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+                                <img src="/orange-south-elevator.webp" alt="Orange Structure South Elevator"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 sm:p-5 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-start gap-2.5 mb-1.5">
-                                        <div class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="size-6 sm:size-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0 mt-0.5">
                                             <p class="text-white font-semibold text-[10px] sm:text-xs">O2</p>
                                         </div>
-                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator</h3>
+                                        <h3 class="font-semibold text-[15px] sm:text-lg leading-snug">South Elevator
+                                        </h3>
                                     </div>
-                                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
+                                    <p
+                                        class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-1.5 pl-[34px] sm:pl-[38px]">
                                         Located at 3983 Bill Robertson Ln, Los Angeles, CA 90037
                                     </p>
                                 </div>
-                                <span class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
+                                <span
+                                    class="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:underline pl-[34px] sm:pl-[38px]">
                                     View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 sm:size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -996,15 +1129,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator" class="w-full h-full object-cover">
+                                <img src="/south-elevator.webp" alt="Blue Structure South Elevator"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -1017,13 +1158,24 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                                    <p class="text-sm">669 Exposition Park Dr, on the corner of Exposition Park Drive, Los Angeles, CA 90037</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
+                                    <p class="text-sm">669 Exposition Park Dr, on the corner of Exposition Park Drive,
+                                        Los Angeles, CA 90037</p>
                                 </div>
                                 <a href="https://www.google.com/maps/@34.0144994,-118.285494,3a,75y,57.4h,90t/data=!3m7!1e1!3m5!1skOHaD3gKKgk-GLg95KvWWQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DkOHaD3gKKgk-GLg95KvWWQ%26yaw%3D57.401665!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
                                     target="_blank" rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -1035,15 +1187,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator" class="w-full h-full object-cover">
+                                <img src="/north-elevator.webp" alt="Blue Structure North Elevator"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -1056,13 +1216,23 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
                                     <p class="text-sm">Located Near Lockheed A-12 "Trainer"</p>
                                 </div>
                                 <a href="https://www.google.com/maps/place/Lockheed+A-12+%22Trainer%22,+600+State+Dr,+Los+Angeles,+CA+90037/@34.0153464,-118.2946275,3603m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c809b5fc8d1d:0xfcb08415b838e7a4!8m2!3d34.0153295!4d-118.2843278!16s%2Fg%2F11bvthnrsn?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
                                     target="_blank" rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -1074,15 +1244,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/orange-north-elevator.webp" alt="Orange Structure North Elevator" class="w-full h-full object-cover">
+                                <img src="/orange-north-elevator.webp" alt="Orange Structure North Elevator"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -1095,13 +1273,23 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
                                     <p class="text-sm">3924-14 Bill Robertson Ln, Los Angeles, CA 90037</p>
                                 </div>
                                 <a href="https://www.google.com/maps/place/3924-14+Bill+Robertson+Ln,+Los+Angeles,+CA+90037/@34.01385,-118.2927036,1802m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x80c2c809c115ef39:0xf60597dd3906e107!2sExposition+Park!8m2!3d34.0153446!4d-118.2871848!16zL20vMDVicTc0!3m5!1s0x80c2c807a39e5503:0xaedcaf1b8d60795e!8m2!3d34.0138456!4d-118.2901287!16s%2Fg%2F11yhfc6bpv?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
                                     target="_blank" rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -1113,15 +1301,23 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                         @keydown.escape.window="activeModal = null">
                         <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" @click="activeModal = null"></div>
-                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto" @click.stop
-                            x-transition:enter="transition ease-out duration-300"
+                        <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto"
+                            @click.stop x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-95"
                             x-transition:enter-end="opacity-100 scale-100">
-                            <button @click="activeModal = null" class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer" aria-label="Close modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            <button @click="activeModal = null"
+                                class="absolute top-3 right-3 z-20 size-8 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
                             </button>
                             <div class="aspect-[4/3] w-full overflow-hidden">
-                                <img src="/orange-south-elevator.webp" alt="Orange Structure South Elevator" class="w-full h-full object-cover">
+                                <img src="/orange-south-elevator.webp" alt="Orange Structure South Elevator"
+                                    class="w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-3 mb-3">
@@ -1134,13 +1330,23 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-2 mt-4 mb-5 text-text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0 mt-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                    </svg>
                                     <p class="text-sm">3983 Bill Robertson Ln, Los Angeles, CA 90037</p>
                                 </div>
                                 <a href="https://www.google.com/maps/place/3983+Bill+Robertson+Ln,+Los+Angeles,+CA+90037/@34.0130916,-118.2922943,1802m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c807ac32f823:0x7b4ffdc537d46a17!8m2!3d34.0130879!4d-118.2901291!16s%2Fg%2F11xtysgltc?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
                                     target="_blank" rel="noopener noreferrer"
                                     class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand text-white font-semibold text-sm rounded-lg hover:bg-brand/90 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
                                     Get Directions
                                 </a>
                             </div>
@@ -1171,18 +1377,19 @@
                 class="font-semibold text-3xl px-4 md:px-0 md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                 Directions to Parking Structures and Parking Lots
             </h2>
-            <p data-reveal data-delay="100" class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
+            <p data-reveal data-delay="100"
+                class="text-lg md:text-lg lg:text-xl px-4 md:px-0 font-normal text-center max-w-2xl mx-auto">
                 Click the directional links below to get GPS directions to bus drop-off, pick-up, and parking locations.
             </p>
             <div class="px-4 md:px-0">
 
             </div>
-            <div x-cloak x-data="directions" data-reveal="scale-up" data-delay="200" class="mt-12 p-3 md:p-6 rounded-lg bg-white">
+            <div x-cloak x-data="directions" data-reveal="scale-up" data-delay="200"
+                class="mt-12 p-3 md:p-6 rounded-lg bg-white">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6" x-on:mouseleave="hoveredItem = null">
                     <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <template x-for="(item, index) in data">
-                            <div x-on:mouseenter="hover(item)"
-                                :data-direction-card="index"
+                            <div x-on:mouseenter="hover(item)" :data-direction-card="index"
                                 :class="(hoveredItem?.name === item.name || activeItem?.name === item.name) ? item.borderColor : 'border-transparent'"
                                 class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
                                 <div class="space-y-3">
@@ -1210,17 +1417,17 @@
                             </p>
                         </div>
                     </div>
-                    <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                    <div
+                        class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
                         <!-- Default image always visible underneath -->
                         <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
                         <!-- Hover image crossfades on top -->
                         <template x-for="(item, index) in data" :key="index">
-                            <img :src="item.image"
-                                :alt="item.name || item.title || ''"
+                            <img :src="item.image" :alt="item.name || item.title || ''"
                                 class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
-                                :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
-                                loading="lazy" decoding="async">
+                                :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'" loading="lazy"
+                                decoding="async">
                         </template>
                     </div>
                 </div>
@@ -1235,7 +1442,8 @@
                     class="px-4 md:px-0 font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     Bus Drop-off and Pickup
                 </h2>
-                <p data-reveal data-delay="100" class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100"
+                    class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Click the directional links below to get GPS directions to bus drop-off, pick-up, and parking
                     locations
                 </p>
@@ -1260,17 +1468,17 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                        <div
+                            class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
                             <!-- Default image always visible underneath -->
                             <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
                             <!-- Hover image crossfades on top -->
                             <template x-for="(item, index) in data" :key="index">
-                                <img :src="item.image"
-                                    :alt="item.title || item.name || ''"
+                                <img :src="item.image" :alt="item.title || item.name || ''"
                                     class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
-                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
-                                    loading="lazy" decoding="async">
+                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'" loading="lazy"
+                                    decoding="async">
                             </template>
                         </div>
                     </div>
@@ -1286,10 +1494,12 @@
                     class="px-4 md:px-0 font-semibold text-3xl md:text-[40px] md:w-[70%] lg:w-[644px] mx-auto lg:text-5xl mb-4 text-center">
                     ADA Accessible Parking
                 </h2>
-                <p data-reveal data-delay="100" class=" px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100"
+                    class=" px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Click any lot to see details, availability, rates, and accessibility features.
                 </p>
-                <div data-reveal="scale-up" class="mt-12 bg-white border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
+                <div data-reveal="scale-up"
+                    class="mt-12 bg-white border border-[rgba(0,0,0,0.04)] rounded-lg p-3 md:p-6 ">
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-6" x-on:mouseleave="hoveredItem = null">
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="(item, index) in data">
@@ -1318,17 +1528,17 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
+                        <div
+                            class="order-1 xl:order-1 sticky top-16 xl:top-0 z-[1] w-[calc(100%+24px)] -mx-3 md:w-full md:mx-0 rounded-none md:rounded-lg overflow-hidden reveal-container h-[280px] md:h-[364px] lg:h-[576px]">
                             <!-- Default image always visible underneath -->
                             <img :src="defaultImage" alt="" class="reveal-layer object-center">
 
                             <!-- Hover image crossfades on top -->
                             <template x-for="(item, index) in data" :key="index">
-                                <img :src="item.image"
-                                    :alt="item.title || item.name || ''"
+                                <img :src="item.image" :alt="item.title || item.name || ''"
                                     class="reveal-layer object-center transition-opacity duration-500 ease-in-out"
-                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'"
-                                    loading="lazy" decoding="async">
+                                    :class="currentImage === item.image ? 'opacity-100' : 'opacity-0'" loading="lazy"
+                                    decoding="async">
                             </template>
                         </div>
                     </div>
@@ -1344,7 +1554,8 @@
                     EV Charging & Guideline
                 </h2>
 
-                <p data-reveal data-delay="100" class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
+                <p data-reveal data-delay="100"
+                    class="px-4 md:px-0 text-lg md:text-lg lg:text-xl font-normal text-center max-w-2xl mx-auto">
                     Please see below for EV charging details and terms of use
                 </p>
                 <div data-reveal="scale-up" class="mt-12 border border-[rgba(0,0,0,0.04)] rounded-lg md:p-6 ">
@@ -1441,7 +1652,8 @@
                         </a>
                     </div>
                 </div>
-                <div x-data="{showModal: false}" class="card-hover p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
+                <div x-data="{showModal: false}"
+                    class="card-hover p-4 md:p-6 xl:p-10 space-y-4 bg-white rounded-lg flex flex-col">
                     <img src="/parking-2.svg" alt="Oversized vehicle parking area" class="size-20 md:size-30"
                         loading="lazy" decoding="async" />
                     <div class="flex-1 flex flex-col">
@@ -1531,7 +1743,8 @@
                         Parking Office
                         Hours & Contact
                     </h2>
-                    <p data-reveal data-delay="100" class="text-text-secondary text-center xl:text-left text-lg md:text-lg xl:text-xl">
+                    <p data-reveal data-delay="100"
+                        class="text-text-secondary text-center xl:text-left text-lg md:text-lg xl:text-xl">
                         For questions related to parking operations, rates, or permits.
                     </p>
                     <img src="/contact-image.svg" alt="Parking office exterior"
@@ -1611,12 +1824,14 @@
                     class="font-semibold text-center lg:text-left text-3xl w-full lg:w-7/12 2xl:w-1/2 xl:mr-auto md:text-4xl xl:text-5xl leading-tight mb-4">
                     Frequently Asked Questions
                 </h2>
-                <p data-reveal data-delay="100" class="text-text-secondary text-center lg:text-left text-lg md:text-lg xl:text-xl">
+                <p data-reveal data-delay="100"
+                    class="text-text-secondary text-center lg:text-left text-lg md:text-lg xl:text-xl">
                     For questions related to parking operations, rates, or permits.
                 </p>
             </div>
 
-            <div data-reveal data-delay="200" class="space-y-4 items-center w-full mt-6 md:mt-12 lg:mt-0 mx-auto divide-y divide-gray-100"
+            <div data-reveal data-delay="200"
+                class="space-y-4 items-center w-full mt-6 md:mt-12 lg:mt-0 mx-auto divide-y divide-gray-100"
                 x-data="faq">
                 <template x-for="item in data">
                     <div class="faq-item w-full p-4 md:p-6 bg-white">
@@ -1647,13 +1862,12 @@
     </main>
 
     <!-- Back to Top Button -->
-    <button x-data="{ visible: false }"
-        @scroll.window="visible = (window.pageYOffset > 600)"
-        x-show="visible" x-cloak x-transition
-        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    <button x-data="{ visible: false }" @scroll.window="visible = (window.pageYOffset > 600)" x-show="visible" x-cloak
+        x-transition @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
         class="fixed bottom-6 right-6 z-50 bg-brand text-white p-3 rounded-full shadow-lg hover:bg-brand/90 transition-colors cursor-pointer"
         aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
         </svg>
     </button>
