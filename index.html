@@ -18,8 +18,8 @@
         content="Find convenient parking options, rates, accessibility information, and event-day guidelines all in one place." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/exposition-park/hero-bg.webp" />
-  <script type="module" crossorigin src="/exposition-park/assets/index-DlYu8gPd.js"></script>
-  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-0itbtjkq.css">
+  <script type="module" crossorigin src="/exposition-park/assets/index-hYPOWI0S.js"></script>
+  <link rel="stylesheet" crossorigin href="/exposition-park/assets/index-CI1d3ghA.css">
 </head>
 
 <body class="relative font-sans">
@@ -73,9 +73,9 @@
                         </a>
                         <div x-data="{ settingsOpen: false }" class="relative">
                             <button @click="settingsOpen = !settingsOpen"
-                                class="text-white text-sm flex items-center gap-1 focus:outline-none"
-                                aria-label="Accessibility Settings" :aria-expanded="settingsOpen"
-                                aria-controls="accessibility-settings-dropdown" aria-haspopup="true">
+                                class="text-white text-sm flex items-center gap-1" aria-label="Accessibility Settings"
+                                :aria-expanded="settingsOpen" aria-controls="accessibility-settings-dropdown"
+                                aria-haspopup="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                                     class="bi bi-gear" viewBox="0 0 16 16" aria-hidden="true">
                                     <path
@@ -282,8 +282,10 @@
                     class="hero-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-25 w-full" role="list">
                     <div class="w-full">
                         <div role="listitem"
-                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
-                            @click="activePopup = 'museum'">
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300 focus-visible:outline-3 focus-visible:outline-white focus-visible:outline-offset-2"
+                            tabindex="0" aria-label="View Daily Parking Rate details" aria-haspopup="dialog"
+                            @click="activePopup = 'museum'" @keydown.enter="activePopup = 'museum'"
+                            @keydown.space.prevent="activePopup = 'museum'">
                             <div
                                 class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                                 <img src="/exposition-park/parking.svg" alt="" aria-hidden="true"
@@ -377,8 +379,10 @@
                     </div>
                     <div class="w-full">
                         <div role="listitem"
-                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
-                            @click="activePopup = 'event'">
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300 focus-visible:outline-3 focus-visible:outline-white focus-visible:outline-offset-2"
+                            tabindex="0" aria-label="View Special Event and After Hours Parking Rate details"
+                            aria-haspopup="dialog" @click="activePopup = 'event'" @keydown.enter="activePopup = 'event'"
+                            @keydown.space.prevent="activePopup = 'event'">
                             <div
                                 class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                                 <img src="/exposition-park/calendar.svg" alt="" aria-hidden="true"
@@ -495,8 +499,10 @@
                     </div>
                     <div class="w-full md:col-span-2 lg:col-span-1 lg:ml-auto">
                         <div role="listitem"
-                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300"
-                            @click="activePopup = 'bus'">
+                            class="card-hover group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-6 flex items-center gap-4 w-full cursor-pointer hover:bg-white/20 transition-all duration-300 focus-visible:outline-3 focus-visible:outline-white focus-visible:outline-offset-2"
+                            tabindex="0" aria-label="View Oversized Vehicle Parking Rate details" aria-haspopup="dialog"
+                            @click="activePopup = 'bus'" @keydown.enter="activePopup = 'bus'"
+                            @keydown.space.prevent="activePopup = 'bus'">
                             <div
                                 class="size-12 md:size-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                                 <svg class="size-7 md:size-8 text-white" fill="none" viewBox="0 0 24 24"
@@ -625,7 +631,7 @@
                             aria-label="Payment methods">
                             <!-- Animated background slider -->
                             <div class="absolute top-1 bottom-1 bg-white rounded-sm shadow-md transition-all duration-300 ease-in-out"
-                                :class="selectedTab === 'cash' ? 'left-1 w-[calc(50%-2px)]' : 'left-[calc(50%+1px)] w-[calc(50%-5px)] right-1'"
+                                :class="selectedTab === 'cash' ? 'left-1 right-[50%]' : 'left-[50%] right-1'"
                                 aria-hidden="true">
                             </div>
                             <button @click="selectedTab = 'cash'" role="tab" :aria-selected="selectedTab === 'cash'"
@@ -791,7 +797,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 md:mt-13 lg:mt-20">
                         <!-- Non-automated Parking -->
                         <div @click="activeModal = 'non-automated'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'non-automated'"
+                            @keydown.space.prevent="activeModal = 'non-automated'"
+                            tabindex="0"
+                            aria-label="View Non-automated Parking Process details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/non-automated.webp" alt="Blue Structure parking"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -825,7 +836,12 @@
 
                         <!-- Automated Parking -->
                         <div @click="activeModal = 'automated'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'automated'"
+                            @keydown.space.prevent="activeModal = 'automated'"
+                            tabindex="0"
+                            aria-label="View Automated Parking Process details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/automated.webp" alt="Blue Structure automated parking"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -989,7 +1005,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Blue Structure South Elevator -->
                         <div @click="activeModal = 'south-elevator'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'south-elevator'"
+                            @keydown.space.prevent="activeModal = 'south-elevator'"
+                            tabindex="0"
+                            aria-label="View South Elevator Location details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/south-elevator.webp" alt="Blue Structure South Elevator"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -1024,7 +1045,12 @@
 
                         <!-- Blue Structure North Elevator -->
                         <div @click="activeModal = 'north-elevator'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'north-elevator'"
+                            @keydown.space.prevent="activeModal = 'north-elevator'"
+                            tabindex="0"
+                            aria-label="View North Elevator Location details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/north-elevator.webp" alt="Blue Structure North Elevator"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -1058,7 +1084,12 @@
 
                         <!-- Orange Structure North Elevator -->
                         <div @click="activeModal = 'orange-north'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'orange-north'"
+                            @keydown.space.prevent="activeModal = 'orange-north'"
+                            tabindex="0"
+                            aria-label="View Orange Structure North Elevator details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/orange-north-elevator.webp" alt="Orange Structure North Elevator"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -1092,7 +1123,12 @@
 
                         <!-- Orange Structure South Elevator -->
                         <div @click="activeModal = 'orange-south'"
-                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer">
+                            @keydown.enter="activeModal = 'orange-south'"
+                            @keydown.space.prevent="activeModal = 'orange-south'"
+                            tabindex="0"
+                            aria-label="View Orange Structure South Elevator details"
+                            aria-haspopup="dialog"
+                            class="card-hover flex flex-row overflow-hidden rounded-xl border border-[rgba(0,0,0,0.06)] shadow-sm bg-white group cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                             <div class="w-32 sm:w-48 md:w-56 shrink-0 overflow-hidden">
                                 <img src="/exposition-park/orange-south-elevator.webp" alt="Orange Structure South Elevator"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -1392,8 +1428,14 @@
                     <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <template x-for="(item, index) in data">
                             <div x-on:mouseenter="hover(item)" :data-direction-card="index"
+                                tabindex="0"
+                                :aria-label="'Get directions to ' + item.name"
+                                @focus="hover(item)"
+                                @blur="hoveredItem = null"
+                                @keydown.enter="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
+                                @keydown.space.prevent="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
                                 :class="(hoveredItem?.name === item.name || activeItem?.name === item.name) ? item.borderColor : 'border-transparent'"
-                                class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
+                                class="bg-[#FAFAFA] border-2 rounded-lg p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                                 <div class="space-y-3">
                                     <div class="flex items-center gap-2">
                                         <div :class="item.bgColor || 'bg-[#869395]'"
@@ -1454,7 +1496,13 @@
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="(item, index) in data">
                                 <div x-on:mouseenter="hover(item)" :data-bus-card="index"
-                                    class="bg-[#FAFAFA] mx-4 md:mx-0 border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between">
+                                    tabindex="0"
+                                    :aria-label="item.link ? 'Get directions to ' + item.title : item.title"
+                                    @focus="hover(item)"
+                                    @blur="hoveredItem = null"
+                                    @keydown.enter="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
+                                    @keydown.space.prevent="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
+                                    class="bg-[#FAFAFA] mx-4 md:mx-0 border-2 border-transparent rounded-lg p-5 space-y-3 flex flex-col justify-between cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
                                             <img x-bind:src="item.icon" x-bind:alt="item.title" class="size-5"
@@ -1506,8 +1554,14 @@
                         <div class="order-2 xl:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <template x-for="(item, index) in data">
                                 <div x-on:mouseenter="hover(item)" :data-ada-card="index"
+                                    tabindex="0"
+                                    :aria-label="item.link ? 'Get directions to ' + item.title : item.title"
+                                    @focus="hover(item)"
+                                    @blur="hoveredItem = null"
+                                    @keydown.enter="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
+                                    @keydown.space.prevent="item.link && window.open(item.link, '_blank', 'noopener,noreferrer')"
                                     :class="(hoveredItem?.title === item.title || activeItem?.title === item.title) ? item.borderColor : 'border-transparent'"
-                                    class="bg-[#FAFAFA] border-2 rounded-lg mx-4 md:mx-0 p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out">
+                                    class="bg-[#FAFAFA] border-2 rounded-lg mx-4 md:mx-0 p-5 space-y-3 flex flex-col justify-between transition-all duration-300 ease-in-out cursor-pointer focus-visible:outline-3 focus-visible:outline-brand focus-visible:outline-offset-2">
                                     <div class="space-y-3">
                                         <div class="flex items-center gap-2">
                                             <div :class="item.bgColor || 'bg-[#869395]'"
@@ -1788,10 +1842,14 @@
                             </h3>
                             <div class="space-y-2">
                                 <p class="text-base">
-                                    Phone: <b class="inline">(213) 744-2119</b>
+                                    Phone: <a href="tel:+12137442119"
+                                        class="font-bold hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded-sm"
+                                        aria-label="Call Exposition Park Parking at (213) 744-2119">(213) 744-2119</a>
                                 </p>
                                 <p class="text-base">
-                                    Email: <b class="inline">parking@expositionpark.ca.gov</b>
+                                    Email: <a href="mailto:parking@expositionpark.ca.gov"
+                                        class="font-bold hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded-sm"
+                                        aria-label="Email Exposition Park Parking at parking@expositionpark.ca.gov">parking@expositionpark.ca.gov</a>
                                 </p>
                             </div>
                         </div>
@@ -1879,7 +1937,7 @@
             class="container mx-auto flex-col flex lg:flex-row gap-12 pb-16 border-b border-[#FFFAE6] text-[#FFFAE6] justify-between">
             <div class="flex flex-col md:flex-row  md:justify-between lg:justify-start lg:items-start lg:flex-col">
                 <div>
-                    <a href="https://expositionpark.ca.gov/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://expositionpark.ca.gov/" target="_blank" rel="noopener noreferrer" class="inline-block rounded-sm">
                         <img src="/exposition-park/logo.svg" alt="Exposition Park Logo" class="w-auto h-12 mb-3 lg:mb-6" loading="lazy"
                             decoding="async" />
                     </a>
@@ -1890,7 +1948,7 @@
                     <p class="text-lg mb-4">Follow us on</p>
                     <div class="flex space-x-6">
                         <a href="https://www.instagram.com/ExpositionParkLA" target="_blank" rel="noopener noreferrer"
-                            class="hover:opacity-80 transition-opacity" aria-label="Follow us on Instagram"><img
+                            class="hover:opacity-80 transition-opacity inline-block rounded-sm" aria-label="Follow us on Instagram"><img
                                 src="/exposition-park/instagram-icon.svg" alt="ig" aria-hidden="true" class="h-9 w-9" loading="lazy"
                                 decoding="async" /></a>
                     </div>
