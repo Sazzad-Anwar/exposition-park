@@ -131,6 +131,32 @@ button:focus-visible {
   border-radius: 2px;
 }
 
+/* Focus ring override for elements on dark/brand-colored backgrounds */
+/* Top header bar (#top-header) uses bg-brand (#036b99) — use white ring instead.
+   Exclude the settings dropdown (white background) so it keeps the standard blue ring. */
+#top-header a:focus-visible,
+#top-header button:not(#accessibility-settings-dropdown button):focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Restore standard blue ring inside the settings dropdown (white background) */
+#accessibility-settings-dropdown a:focus-visible,
+#accessibility-settings-dropdown button:focus-visible {
+  outline: 3px solid #036b99;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Footer uses bg-[#3B5E68] (dark teal) — use white ring for visibility */
+footer a:focus-visible,
+footer button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
 /* Screen Reader Only Utility */
 .sr-only {
   position: absolute;
