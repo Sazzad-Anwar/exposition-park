@@ -1,15 +1,15 @@
-import Alpine from 'alpinejs'
-import collapse from '@alpinejs/collapse'
+import Alpine from "alpinejs";
+import collapse from "@alpinejs/collapse";
 
-Alpine.plugin(collapse)
-window.Alpine = Alpine
+Alpine.plugin(collapse);
+window.Alpine = Alpine;
 
 // Get base URL for assets (handles GitHub Pages deployment)
-const base = import.meta.env.BASE_URL || '/'
+const base = import.meta.env.BASE_URL || "/";
 
 // Shared factory for card-reveal components (directions, bus drop-off, ADA parking)
 function createCardReveal(items, defaultImg, attrName) {
-  const datasetKey = attrName.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+  const datasetKey = attrName.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
   return () => ({
     data: items,
@@ -20,475 +20,475 @@ function createCardReveal(items, defaultImg, attrName) {
     _preloaded: false,
 
     _preloadImages() {
-      if (this._preloaded) return
-      this._preloaded = true
+      if (this._preloaded) return;
+      this._preloaded = true;
       this.data.forEach((item) => {
-        const img = new Image()
-        img.src = item.image
-      })
+        const img = new Image();
+        img.src = item.image;
+      });
     },
 
     hover(item) {
-      if (this.hoveredItem === item) return
-      this._preloadImages()
-      this.hoveredItem = item
+      if (this.hoveredItem === item) return;
+      this._preloadImages();
+      this.hoveredItem = item;
     },
 
     get currentImage() {
-      if (this.hoveredItem) return this.hoveredItem.image
-      if (this.activeItem) return this.activeItem.image
-      return this.defaultImage
+      if (this.hoveredItem) return this.hoveredItem.image;
+      if (this.activeItem) return this.activeItem.image;
+      return this.defaultImage;
     },
 
     init() {
       // Preload only the default image; others load on first interaction
-      const defaultPreload = new Image()
-      defaultPreload.src = this.defaultImage
+      const defaultPreload = new Image();
+      defaultPreload.src = this.defaultImage;
 
       this.$nextTick(() => {
-        const cards = this.$root.querySelectorAll(`[data-${attrName}]`)
-        if (!cards.length) return
+        const cards = this.$root.querySelectorAll(`[data-${attrName}]`);
+        if (!cards.length) return;
 
         this._observer = new IntersectionObserver(
           (entries) => {
-            if (window.innerWidth >= 1280) return
+            if (window.innerWidth >= 1280) return;
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                this._preloadImages()
-                const index = parseInt(entry.target.dataset[datasetKey])
-                this.activeItem = this.data[index]
+                this._preloadImages();
+                const index = parseInt(entry.target.dataset[datasetKey]);
+                this.activeItem = this.data[index];
               }
-            })
+            });
           },
           {
-            rootMargin: '-280px 0px -60% 0px',
+            rootMargin: "-280px 0px -60% 0px",
             threshold: 0,
           },
-        )
+        );
 
-        cards.forEach((card) => this._observer.observe(card))
-      })
+        cards.forEach((card) => this._observer.observe(card));
+      });
     },
 
     destroy() {
       if (this._observer) {
-        this._observer.disconnect()
+        this._observer.disconnect();
       }
     },
-  })
+  });
 }
 
 Alpine.data(
-  'directions',
+  "directions",
   createCardReveal(
     [
       {
-        name: 'Blue Structure',
-        initials: 'B',
-        bgColor: 'bg-blue-500',
-        borderColor: 'border-blue-500',
-        description: '3855 S Figueroa St, Los Angeles, CA 90037 Get directions',
-        link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
+        name: "Blue Structure",
+        initials: "B",
+        bgColor: "bg-blue-500",
+        borderColor: "border-blue-500",
+        description: "3855 S Figueroa St, Los Angeles, CA 90037 Get directions",
+        link: "https://maps.app.goo.gl/MyQrE7STEdTgPJxH8",
         image: `${base}direction-parking-blue.webp`,
       },
       {
-        name: 'Orange Structure',
-        initials: 'O',
-        bgColor: 'bg-orange-500',
-        borderColor: 'border-orange-500',
-        description: '3975 Bill Robertson Ln, Los Angeles, CA 90037',
-        link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
+        name: "Red Structure",
+        initials: "R",
+        bgColor: "bg-red-600",
+        borderColor: "border-orange-500",
+        description: "3975 Bill Robertson Ln, Los Angeles, CA 90037",
+        link: "https://maps.app.goo.gl/T9pC5t4bCzarCcqR8",
         image: `${base}direction-parking-orange.webp`,
       },
       {
-        name: 'Pink Lot',
-        initials: 'P',
-        bgColor: 'bg-pink-500',
-        borderColor: 'border-pink-500',
-        description: '899 S Park Dr, Los Angeles, CA 90037',
-        link: 'https://www.google.com/maps/place/800-898+S+Park+Dr,+Los+Angeles,+CA+90037/@34.0119915,-118.2899569,1515m/data=!3m1!1e3!4m6!3m5!1s0x80c2c806206cf8bd:0x8fc4a3fd677d1e03!8m2!3d34.0122078!4d-118.287761!16s%2Fg%2F11df0qvxj2?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D',
+        name: "Pink Lot",
+        initials: "P",
+        bgColor: "bg-pink-500",
+        borderColor: "border-pink-500",
+        description: "899 S Park Dr, Los Angeles, CA 90037",
+        link: "https://www.google.com/maps/place/800-898+S+Park+Dr,+Los+Angeles,+CA+90037/@34.0119915,-118.2899569,1515m/data=!3m1!1e3!4m6!3m5!1s0x80c2c806206cf8bd:0x8fc4a3fd677d1e03!8m2!3d34.0122078!4d-118.287761!16s%2Fg%2F11df0qvxj2?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-pink.webp`,
       },
       {
-        name: 'Yellow Lot',
-        initials: 'Y',
-        bgColor: 'bg-yellow-500',
-        borderColor: 'border-yellow-500',
-        description: '3991 Hoover St, Los Angeles, CA 90037',
-        link: 'https://www.google.com/maps/place/Yellow+Lot/@34.0114957,-118.2904453,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c8061d305c0d:0xba6274dff4a364b2!8m2!3d34.0114913!4d-118.2878704!16s%2Fg%2F11q40j1sd5?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        name: "Yellow Lot",
+        initials: "Y",
+        bgColor: "bg-yellow-500",
+        borderColor: "border-yellow-500",
+        description: "3991 Hoover St, Los Angeles, CA 90037",
+        link: "https://www.google.com/maps/place/Yellow+Lot/@34.0114957,-118.2904453,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c8061d305c0d:0xba6274dff4a364b2!8m2!3d34.0114913!4d-118.2878704!16s%2Fg%2F11q40j1sd5?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-yellow.webp`,
       },
       {
-        name: 'Green Lot',
-        initials: 'G',
-        bgColor: 'bg-green-500',
-        borderColor: 'border-green-500',
-        description: '3986 Hoover St, Los Angeles, CA 90037',
-        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        name: "Green Lot",
+        initials: "G",
+        bgColor: "bg-green-500",
+        borderColor: "border-green-500",
+        description: "3986 Hoover St, Los Angeles, CA 90037",
+        link: "https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-green.webp`,
       },
     ],
     `${base}direction-parking-all.webp`,
-    'direction-card',
+    "direction-card",
   ),
-)
+);
 
 Alpine.data(
-  'dropOffPickup',
+  "dropOffPickup",
   createCardReveal(
     [
       {
-        title: 'Drop-Off and Pick-Up',
+        title: "Drop-Off and Pick-Up",
         icon: `${base}location-icon.svg`,
         description:
-          'Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.',
-        link: 'https://www.google.com/maps/place/631-693+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA/@34.0154501,-118.2901703,790m/data=!3m2!1e3!4b1!4m15!1m8!3m7!1s0x80c2c7e2aa25f9e9:0x9b567c4059f24b05!2s700+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA!3b1!8m2!3d34.0161726!4d-118.2874233!16s%2Fg%2F11ckqrv23x!3m5!1s0x80c2c807fd7ad3e9:0xe620e9f8b1e3b67b!8m2!3d34.0154457!4d-118.2875954!16s%2Fg%2F11rz5m8hkh?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D',
+          "Designated areas for safe loading and unloading of passengers. Parking buses in these areas is prohibited.",
+        link: "https://www.google.com/maps/place/631-693+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA/@34.0154501,-118.2901703,790m/data=!3m2!1e3!4b1!4m15!1m8!3m7!1s0x80c2c7e2aa25f9e9:0x9b567c4059f24b05!2s700+Exposition+Park+Dr,+Los+Angeles,+CA+90037,+USA!3b1!8m2!3d34.0161726!4d-118.2874233!16s%2Fg%2F11ckqrv23x!3m5!1s0x80c2c807fd7ad3e9:0xe620e9f8b1e3b67b!8m2!3d34.0154457!4d-118.2875954!16s%2Fg%2F11rz5m8hkh?entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}drop-off-pickup-image.webp`,
       },
       {
-        title: 'Bus Parking',
+        title: "Bus Parking",
         icon: `${base}bus-parking-icon.svg`,
         description:
-          'Bus Parking available in the Green Lot, subject to availability and event reservations.',
-        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+          "Bus Parking available in the Green Lot, subject to availability and event reservations.",
+        link: "https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-green.webp`,
       },
       {
-        title: 'Oversize Vehicles',
+        title: "Oversize Vehicles",
         icon: `${base}bus-parking-icon.svg`,
         description:
-          'Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.',
-        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+          "Oversized vehicle parking available in the Green Lot, subject to availability and event reservations.",
+        link: "https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-green.webp`,
       },
       {
-        title: 'Route from Bus Drop-Off to Bus Parking',
+        title: "Route from Bus Drop-Off to Bus Parking",
         icon: `${base}location-icon.svg`,
         description:
-          'Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037',
+          "Exposition Park Dr. (IMAX entrance).Via S. BRL, left on MLK, and left on Hoover 700 Exposition Park Dr, Los Angeles, CA 90037",
         link: null,
         image: `${base}drop-off-pickup-image.webp`,
       },
     ],
     `${base}drop-off-pickup-image.webp`,
-    'bus-card',
+    "bus-card",
   ),
-)
+);
 
 Alpine.data(
-  'accessibleParking',
+  "accessibleParking",
   createCardReveal(
     [
       {
-        title: 'Blue Structure',
-        initials: 'B',
-        bgColor: 'bg-blue-500',
-        borderColor: 'border-blue-500',
+        title: "Blue Structure",
+        initials: "B",
+        bgColor: "bg-blue-500",
+        borderColor: "border-blue-500",
         description: [
-          '3855 S Figueroa St, Los Angeles, CA 90037',
-          'Level A: 43 ADA Spaces',
-          'Level B: 9 ADA Spaces',
-          'Level C: 11 ADA Spaces',
+          "3855 S Figueroa St, Los Angeles, CA 90037",
+          "Level A: 43 ADA Spaces",
+          "Level B: 9 ADA Spaces",
+          "Level C: 11 ADA Spaces",
         ],
-        link: 'https://maps.app.goo.gl/MyQrE7STEdTgPJxH8',
+        link: "https://maps.app.goo.gl/MyQrE7STEdTgPJxH8",
         image: `${base}direction-parking-blue.webp`,
       },
       {
-        title: 'Orange Structure',
-        initials: 'O',
-        bgColor: 'bg-orange-500',
-        borderColor: 'border-orange-500',
+        title: "Red Structure",
+        initials: "R",
+        bgColor: "bg-red-600",
+        borderColor: "border-orange-500",
         description: [
-          '3975 Bill Robertson Ln, Los Angeles, CA 90037',
-          'P1 Level: 25 ADA Spaces',
+          "3975 Bill Robertson Ln, Los Angeles, CA 90037",
+          "P1 Level: 25 ADA Spaces",
         ],
-        link: 'https://maps.app.goo.gl/T9pC5t4bCzarCcqR8',
+        link: "https://maps.app.goo.gl/T9pC5t4bCzarCcqR8",
         image: `${base}direction-parking-orange.webp`,
       },
       {
-        title: 'Pink Lot',
-        initials: 'P',
-        bgColor: 'bg-pink-500',
-        borderColor: 'border-pink-500',
+        title: "Pink Lot",
+        initials: "P",
+        bgColor: "bg-pink-500",
+        borderColor: "border-pink-500",
         description: [
-          '899 S Park Dr, Los Angeles, CA 90037',
-          'Lot: 10 ADA Spaces',
+          "899 S Park Dr, Los Angeles, CA 90037",
+          "Lot: 10 ADA Spaces",
         ],
-        link: 'https://www.google.com/maps/dir//Pink+Lot',
+        link: "https://www.google.com/maps/dir//Pink+Lot",
         image: `${base}direction-parking-pink.webp`,
       },
       {
-        title: 'Green Lot',
-        initials: 'G',
-        bgColor: 'bg-green-500',
-        borderColor: 'border-green-500',
-        description: ['3986 Hoover St, Los Angeles, CA 90037', '20 ADA Spaces'],
-        link: 'https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D',
+        title: "Green Lot",
+        initials: "G",
+        bgColor: "bg-green-500",
+        borderColor: "border-green-500",
+        description: ["3986 Hoover St, Los Angeles, CA 90037", "20 ADA Spaces"],
+        link: "https://www.google.com/maps/place/Green+Lot/@34.0115496,-118.2874912,909m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80c2c9ebb031b70d:0x95a91ffb0e923c36!8m2!3d34.0115452!4d-118.2849163!16s%2Fg%2F11j1zmpq3s?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D",
         image: `${base}direction-parking-green.webp`,
       },
     ],
     `${base}ada-accessible-parking.webp`,
-    'ada-card',
+    "ada-card",
   ),
-)
+);
 
-Alpine.data('faq', () => ({
+Alpine.data("faq", () => ({
   data: [
     {
-      title: 'What types of payments are accepted?',
+      title: "What types of payments are accepted?",
       description:
-        'Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.',
+        "Cash and all major credit cards, except American Express, are accepted at Exposition Park. For cash payments in the Blue Parking Structure, guests should use the Pay Station located on the northwest corner of Level A.",
       isOpen: true,
     },
     {
-      title: 'Is there bus and oversized parking during events?',
+      title: "Is there bus and oversized parking during events?",
       description:
-        'Bus, RV, and oversized vehicle parking is extremely limited and must be purchased in advance of the event. Tall vans, large SUVs, RVs, or buses cannot be accommodated in any parking garage due to height restrictions.',
+        "Bus, RV, and oversized vehicle parking is extremely limited and must be purchased in advance of the event. Tall vans, large SUVs, RVs, or buses cannot be accommodated in any parking garage due to height restrictions.",
       isOpen: false,
     },
     {
-      title: 'Is in-and-out parking access allowed?',
-      description: 'No, in-and-out access is not allowed at any time.',
+      title: "Is in-and-out parking access allowed?",
+      description: "No, in-and-out access is not allowed at any time.",
       isOpen: false,
     },
     {
-      title: 'Is there bus parking for museum visitors?',
+      title: "Is there bus parking for museum visitors?",
       description:
-        'Yes, bus parking is available. Buses should enter via the 39th and Figueroa entrance and proceed to Exposition Park Drive in front of the California Science Center IMAX Theater entrance.',
+        "Yes, bus parking is available. Buses should enter via the 39th and Figueroa entrance and proceed to Exposition Park Drive in front of the California Science Center IMAX Theater entrance.",
       isOpen: false,
     },
     {
-      title: 'Where is ADA parking located?',
+      title: "Where is ADA parking located?",
       description:
-        'All parking facilities at Exposition Park are ADA-accessible and include designated ADA spaces. In the Blue Parking Structure, ADA spaces are located on all floors and are available on a first-come, first-serve basis.',
+        "All parking facilities at Exposition Park are ADA-accessible and include designated ADA spaces. In the Blue Parking Structure, ADA spaces are located on all floors and are available on a first-come, first-serve basis.",
       isOpen: false,
     },
     {
-      title: 'Are there electric vehicle (EV) charging stations?',
+      title: "Are there electric vehicle (EV) charging stations?",
       description:
-        'Yes, EV charging stations are available in the Blue Parking Structure. They are located on the north side of Levels A and B and can be used for the duration of your visit.',
+        "Yes, EV charging stations are available in the Blue Parking Structure. They are located on the north side of Levels A and B and can be used for the duration of your visit.",
       isOpen: false,
     },
     {
-      title: 'Are there height restrictions in the Blue Parking Structure?',
+      title: "Are there height restrictions in the Blue Parking Structure?",
       description:
         "Yes, the Blue Parking Structure has a height restriction of 8'2″ on Level A. Levels B, C, and D have a height restriction of 7'0″.",
       isOpen: false,
     },
     {
-      title: 'Is tailgating allowed?',
+      title: "Is tailgating allowed?",
       description:
-        'Tailgating is generally not permitted during events at Exposition Park. For USC football games, it is allowed only in specific areas with a Tailgate Pass, which must be obtained through the University of Southern California (USC).',
+        "Tailgating is generally not permitted during events at Exposition Park. For USC football games, it is allowed only in specific areas with a Tailgate Pass, which must be obtained through the University of Southern California (USC).",
       isOpen: false,
     },
     {
-      title: 'Are parking rates different during events?',
+      title: "Are parking rates different during events?",
       description:
-        'Yes, event parking rates vary depending on the venue. For parking rate information, guests should visit the LAMC or BMO Stadium website.',
+        "Yes, event parking rates vary depending on the venue. For parking rate information, guests should visit the LAMC or BMO Stadium website.",
       isOpen: false,
     },
     {
-      title: 'Is there discounted parking?',
-      description: 'No, discounted parking rates are not available.',
+      title: "Is there discounted parking?",
+      description: "No, discounted parking rates are not available.",
       isOpen: false,
     },
     {
-      title: 'Is EBT accepted for parking fees?',
-      description: 'No, EBT payment is not accepted for parking fees.',
+      title: "Is EBT accepted for parking fees?",
+      description: "No, EBT payment is not accepted for parking fees.",
       isOpen: false,
     },
     {
-      title: 'Can payment methods be split into multiple payments?',
-      description: 'No, payments must be made using a single form of payment.',
+      title: "Can payment methods be split into multiple payments?",
+      description: "No, payments must be made using a single form of payment.",
       isOpen: false,
     },
     {
-      title: 'Is overnight parking allowed?',
+      title: "Is overnight parking allowed?",
       description:
-        'Overnight parking is not permitted. Vehicles must vacate the premises within two hours after the event. Violators will be towed by United Carriers Inc. (213-747-2868).',
+        "Overnight parking is not permitted. Vehicles must vacate the premises within two hours after the event. Violators will be towed by United Carriers Inc. (213-747-2868).",
       isOpen: false,
     },
     {
-      title: 'Are parking rates different during events?',
+      title: "Are parking rates different during events?",
       description:
-        'Yes, event parking rates vary depending on the venue and/or daily events. For parking rate information, guests should visit the LAMC or BMO Stadium website.',
+        "Yes, event parking rates vary depending on the venue and/or daily events. For parking rate information, guests should visit the LAMC or BMO Stadium website.",
       isOpen: false,
     },
   ],
   toggle(item) {
     this.data.forEach((i) => {
       if (i === item) {
-        i.isOpen = !i.isOpen
+        i.isOpen = !i.isOpen;
       } else {
-        i.isOpen = false
+        i.isOpen = false;
       }
-    })
+    });
   },
-}))
+}));
 
-Alpine.store('accessibility', {
-  highContrast: localStorage.getItem('highContrast') === 'true',
-  fontSize: parseInt(localStorage.getItem('fontSize')) || 100,
+Alpine.store("accessibility", {
+  highContrast: localStorage.getItem("highContrast") === "true",
+  fontSize: parseInt(localStorage.getItem("fontSize")) || 100,
 
   toggleHighContrast() {
-    this.highContrast = !this.highContrast
-    localStorage.setItem('highContrast', this.highContrast)
-    this.applySettings()
+    this.highContrast = !this.highContrast;
+    localStorage.setItem("highContrast", this.highContrast);
+    this.applySettings();
   },
 
   increaseFont() {
     if (this.fontSize < 150) {
-      this.fontSize += 10
-      localStorage.setItem('fontSize', this.fontSize)
-      this.applySettings()
+      this.fontSize += 10;
+      localStorage.setItem("fontSize", this.fontSize);
+      this.applySettings();
     }
   },
 
   decreaseFont() {
     if (this.fontSize > 100) {
-      this.fontSize -= 10
-      localStorage.setItem('fontSize', this.fontSize)
-      this.applySettings()
+      this.fontSize -= 10;
+      localStorage.setItem("fontSize", this.fontSize);
+      this.applySettings();
     }
   },
 
   reset() {
-    this.fontSize = 100
-    localStorage.setItem('fontSize', this.fontSize)
-    this.applySettings()
+    this.fontSize = 100;
+    localStorage.setItem("fontSize", this.fontSize);
+    this.applySettings();
   },
 
   setDefaults() {
-    this.highContrast = false
-    this.fontSize = 100
-    localStorage.setItem('highContrast', this.highContrast)
-    localStorage.setItem('fontSize', this.fontSize)
-    this.applySettings()
+    this.highContrast = false;
+    this.fontSize = 100;
+    localStorage.setItem("highContrast", this.highContrast);
+    localStorage.setItem("fontSize", this.fontSize);
+    this.applySettings();
   },
 
   applySettings() {
-    const html = document.documentElement
+    const html = document.documentElement;
     if (this.highContrast) {
-      html.classList.add('high-contrast')
+      html.classList.add("high-contrast");
     } else {
-      html.classList.remove('high-contrast')
+      html.classList.remove("high-contrast");
     }
-    html.style.fontSize = `${this.fontSize}%`
+    html.style.fontSize = `${this.fontSize}%`;
   },
 
   init() {
-    this.applySettings()
+    this.applySettings();
   },
-})
+});
 
-Alpine.start()
+Alpine.start();
 
-const currentYear = document.getElementById('current-year')
+const currentYear = document.getElementById("current-year");
 if (currentYear) {
-  currentYear.textContent = new Date().getFullYear()
+  currentYear.textContent = new Date().getFullYear();
 }
 
 // Scroll reveal observer
 function initScrollReveal() {
   const targets = document.querySelectorAll(
-    '[data-reveal], [data-reveal-children]',
-  )
-  if (!targets.length) return
+    "[data-reveal], [data-reveal-children]",
+  );
+  if (!targets.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed')
-          observer.unobserve(entry.target)
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
         }
-      })
+      });
     },
     {
       threshold: 0.08,
-      rootMargin: '0px 0px -40px 0px',
+      rootMargin: "0px 0px -40px 0px",
     },
-  )
+  );
 
-  targets.forEach((el) => observer.observe(el))
+  targets.forEach((el) => observer.observe(el));
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initScrollReveal)
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initScrollReveal);
 } else {
-  initScrollReveal()
+  initScrollReveal();
 }
 
-jQuery(document).on('elementor/popup.show', function (event, id, instance) {
+jQuery(document).on("elementor/popup.show", function (event, id, instance) {
   // Accessibility functionality for Elementor popup
-  ;(function () {
+  (function () {
     // Retrieve stored settings or use defaults
     // Use `let` because the value is toggled later
-    let highContrast = localStorage.getItem('highContrast') === 'true'
-    let fontSize = parseInt(localStorage.getItem('fontSize')) || 100
+    let highContrast = localStorage.getItem("highContrast") === "true";
+    let fontSize = parseInt(localStorage.getItem("fontSize")) || 100;
 
     // Apply current settings to the page
     function applySettings() {
-      const html = document.documentElement
+      const html = document.documentElement;
       if (highContrast) {
-        html.classList.add('high-contrast')
+        html.classList.add("high-contrast");
       } else {
-        html.classList.remove('high-contrast')
+        html.classList.remove("high-contrast");
       }
-      html.style.fontSize = `${fontSize}%`
+      html.style.fontSize = `${fontSize}%`;
     }
 
     // Toggle high contrast
     function toggleHighContrast() {
-      highContrast = !highContrast
-      localStorage.setItem('highContrast', highContrast)
-      applySettings()
+      highContrast = !highContrast;
+      localStorage.setItem("highContrast", highContrast);
+      applySettings();
     }
 
     // Increase font size
     function increaseFont() {
       if (fontSize < 150) {
-        fontSize += 10
-        localStorage.setItem('fontSize', fontSize)
-        applySettings()
+        fontSize += 10;
+        localStorage.setItem("fontSize", fontSize);
+        applySettings();
       }
     }
 
     // Decrease font size
     function decreaseFont() {
       if (fontSize > 100) {
-        fontSize -= 10
-        localStorage.setItem('fontSize', fontSize)
-        applySettings()
+        fontSize -= 10;
+        localStorage.setItem("fontSize", fontSize);
+        applySettings();
       }
     }
 
     // Reset font size to default
     function resetFontSize() {
-      fontSize = 100
-      localStorage.setItem('fontSize', fontSize)
-      applySettings()
+      fontSize = 100;
+      localStorage.setItem("fontSize", fontSize);
+      applySettings();
     }
 
     // Set defaults (high contrast off, font size 100)
     function setDefaults() {
-      highContrast = false
-      fontSize = 100
-      localStorage.setItem('highContrast', highContrast)
-      localStorage.setItem('fontSize', fontSize)
-      applySettings()
+      highContrast = false;
+      fontSize = 100;
+      localStorage.setItem("highContrast", highContrast);
+      localStorage.setItem("fontSize", fontSize);
+      applySettings();
     }
 
     // Bind UI elements that exist inside this popup
-    const $popup = jQuery(this) // `this` is the popup element
+    const $popup = jQuery(this); // `this` is the popup element
 
-    $popup.find('#default-btn').on('click', setDefaults)
-    $popup.find('#high-contrast-toggle-btn').on('click', toggleHighContrast)
-    $popup.find('#reset-btn').on('click', resetFontSize)
-    $popup.find('#text-increase-btn').on('click', increaseFont)
-    $popup.find('#text-decrease-btn').on('click', decreaseFont)
+    $popup.find("#default-btn").on("click", setDefaults);
+    $popup.find("#high-contrast-toggle-btn").on("click", toggleHighContrast);
+    $popup.find("#reset-btn").on("click", resetFontSize);
+    $popup.find("#text-increase-btn").on("click", increaseFont);
+    $popup.find("#text-decrease-btn").on("click", decreaseFont);
 
     // Apply saved settings when the popup loads
-    applySettings()
-  })()
-})
+    applySettings();
+  })();
+});
