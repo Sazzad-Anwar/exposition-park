@@ -75,10 +75,10 @@
 
 ### Font Family
 
-**Source Sans 3** (Google Fonts) -- the only typeface used across the entire site.
+**Source Sans 3** (self-hosted) -- the only typeface used across the entire site.
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+<!-- Source Sans 3 is self-hosted from /public/fonts/source-sans-3. -->
 ```
 
 Tailwind config: `--font-sans: 'Source Sans 3', sans-serif;`
@@ -494,7 +494,7 @@ Every new section or page MUST follow these standards:
 | Styling | Tailwind CSS 4.x (via `@tailwindcss/vite`) + custom CSS |
 | Interactivity | Alpine.js 3.x + `@alpinejs/collapse` |
 | Build | Vite (with rolldown-vite) |
-| Fonts | Google Fonts (Source Sans 3) |
+| Fonts | Self-hosted Source Sans 3 |
 | Animations | Custom CSS keyframes + Animate.css (CDN) |
 | Deployment | GitHub Pages (gh-pages) |
 

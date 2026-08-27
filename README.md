@@ -124,7 +124,7 @@ cd dist && zip -r ../exposition-park-site-dist.zip . -x '*/.DS_Store'
 
 ## External resources and deployment considerations
 
-- `index.html` loads the Source Sans 3 font from Google Fonts. The deployed site therefore makes requests to `fonts.googleapis.com` and `fonts.gstatic.com`. If an offline or self-contained package is required, download and self-host the font and update the stylesheet references.
+- Source Sans 3 is self-hosted from `public/fonts/source-sans-3`, so the deployed site does not need to request the font from Google Fonts.
 - The page contains outbound links to Exposition Park, California government, Google Maps, Instagram, TikTok, and other external sites. Those links are not bundled into the ZIP and remain dependent on the external services being available.
 - Assets are referenced from the Vite base URL in JavaScript. Keep the configured `base` value aligned with the hosting path.
 - Browser APIs used include `IntersectionObserver`, `localStorage`, `window.scrollTo`, and `new Image()`. Current evergreen browsers support these features; older browsers may need a compatibility strategy.
